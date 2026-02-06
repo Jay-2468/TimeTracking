@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create Project</title>
+    <title>Create New Module</title>
 
     <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,10 +14,8 @@
 </head>
 <body class="bg-light">
 
-<!-- Header -->
 <jsp:include page="AdminHeader.jsp"></jsp:include>
 
-<!-- Sidebar -->
 <jsp:include page="AdminSidebar.jsp"></jsp:include>
 
 <div class="content">
@@ -26,14 +24,14 @@
 
             <div class="card shadow">
                 <div class="card-body p-4">
-                    <h3 class="text-center mb-4">Create Project</h3>
+                    <h3 class="text-center mb-4">Create New Module</h3>
 
-                    <form action="createProject" method="post">
+                    <form action="createModule" method="post">
 
-                        <!-- Project Name -->
+                        <!-- Module Name -->
                         <div class="mb-3">
-                            <label class="form-label">Project Name</label>
-                            <input type="text" name="projectName" class="form-control" required>
+                            <label class="form-label">Module Name</label>
+                            <input type="text" name="moduleName" class="form-control" required>
                         </div>
 
                         <!-- Description -->
@@ -42,26 +40,11 @@
                             <textarea name="description" class="form-control" rows="4" required></textarea>
                         </div>
 
-                        <!-- Start Date -->
-                        <div class="mb-3">
-                            <label class="form-label">Start Date</label>
-                            <input type="date" name="startDate" class="form-control" required>
-                        </div>
-
-                        <!-- End Date -->
-                        <div class="mb-3">
-                            <label class="form-label">End Date</label>
-                            <input type="date" name="endDate" class="form-control" required>
-                        </div>
-
-                        <!-- Buttons -->
-                        <div class="d-grid gap-2">
+                        <!-- Submit Button -->
+                        <div class="d-grid">
                             <button type="submit" class="btn btn-primary">
-                                Save Project
+                                Create Module
                             </button>
-                            <a href="admin-dashboard" class="btn btn-secondary">
-                                Cancel
-                            </a>
                         </div>
 
                     </form>

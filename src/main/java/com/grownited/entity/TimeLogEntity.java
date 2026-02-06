@@ -20,8 +20,8 @@ public class TimeLogEntity {
 	private LocalDateTime start_time;
 	private LocalDateTime end_time;
 	private Double total_hours;
-	private String log_type;
-	private String approval_status;
+	private String log_type; // log type : Auto / Manual
+	private String approval_status; // approval status : Approved / Rejected / Pending
 	
 	
 	public Integer getLogId() {

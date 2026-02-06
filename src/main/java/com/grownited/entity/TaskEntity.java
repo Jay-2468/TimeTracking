@@ -1,6 +1,5 @@
 package com.grownited.entity;
 
-import java.security.KeyStore.PrivateKeyEntry;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;

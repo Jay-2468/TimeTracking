@@ -10,7 +10,7 @@
 			</li>
 
             <li class="nav-item mb-2">
-            		<a class="nav-link text-white" href="users">
+            		<a class="nav-link text-white" href="userList">
                 		<i class="bi bi-people me-2"></i> Manage Users
                 	</a>
 			</li>

@@ -8,5 +8,5 @@ import com.grownited.entity.UserEntity;
 @Repository // has to use this annotation for every Repository
 public interface UserRepository extends JpaRepository<UserEntity, Integer> // has to extends JpaRepository for Repository 
 { 
-
+	
 }

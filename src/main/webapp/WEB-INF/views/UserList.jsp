@@ -104,11 +104,11 @@
 
                             <!-- Actions -->
                             <td class="text-center">
-                                <a href="editUser?id=${user.userId}" 
+                                <a href="editUser?userId=${user.userId}" 
                                    class="btn btn-sm btn-warning">
                                     Edit
                                 </a>
-                                <a href="deleteUser?id=${user.userId}" 
+                                <a href="deleteUser?userId=${user.userId}" 
                                    class="btn btn-sm btn-danger"
                                    onclick="return confirm('Are you sure you want to delete this user?')">
                                     Delete

@@ -59,11 +59,11 @@
                             <td>${project.startDate}</td>
                             <td>${project.endDate}</td>
                             <td class="text-center">
-                                <a href="editProject?id=${project.projectId}" 
+                                <a href="editProject?projectId=${project.projectId}" 
                                    class="btn btn-sm btn-warning">
                                     Edit
                                 </a>
-                                <a href="deleteProject?id=${project.projectId}" 
+                                <a href="deleteProject?projectId=${project.projectId}" 
                                    class="btn btn-sm btn-danger"
                                    onclick="return confirm('Are you sure you want to delete this project?')">
                                     Delete

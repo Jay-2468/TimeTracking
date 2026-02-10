@@ -15,31 +15,37 @@ public class ModuleEntity {
 	private String moduleName;
 	private Integer projectId; // Foreign Key
 	private String description;
-	
+
 	public Integer getModuleId() {
 		return moduleId;
 	}
+
 	public void setModuleId(Integer moduleId) {
 		this.moduleId = moduleId;
 	}
+
 	public String getModuleName() {
 		return moduleName;
 	}
+
 	public void setModuleName(String moduleName) {
 		this.moduleName = moduleName;
 	}
+
 	public Integer getProjectId() {
 		return projectId;
 	}
+
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
+
 }

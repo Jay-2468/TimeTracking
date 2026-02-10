@@ -28,7 +28,7 @@ public class ProjectController {
 		
 		projectRepository.save(projectEntity);
 		
-		return "AdminDashboard";
+		return "redirect:/projectList";
 	}
 	
 	@GetMapping("/projectList")
@@ -37,5 +37,12 @@ public class ProjectController {
 		model.addAttribute("projectList", projectList);
 		
 		return "ProjectList";
+	}
+	
+	@GetMapping("/deleteProject")
+	public String deleteProject(Integer projectId) { 
+		projectRepository.deleteById(projectId);
+		
+		return "redirect:/projectList";
 	}
 }

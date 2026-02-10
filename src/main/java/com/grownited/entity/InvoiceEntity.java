@@ -3,6 +3,8 @@ package com.grownited.entity;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,6 +14,10 @@ import jakarta.persistence.Table;
 @Table(name = "invoices")
 public class InvoiceEntity {
 
+	private enum PaymentStatus {
+		PAID, UNPAID	
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer invoiceId;
@@ -21,7 +27,8 @@ public class InvoiceEntity {
 	private Double ratePerHour;
 	private Double totalAmount;
 	private LocalDate invoiceDate;
-	private String paymentStatus; // payment status : Paid / Unpaid
+	@Enumerated(EnumType.STRING)
+	private PaymentStatus paymentStatus; // payment status : Paid / Unpaid
 
 	public Integer getInvoiceId() {
 		return invoiceId;
@@ -79,11 +86,11 @@ public class InvoiceEntity {
 		this.invoiceDate = invoiceDate;
 	}
 
-	public String getPaymentStatus() {
+	public PaymentStatus getPaymentStatus() {
 		return paymentStatus;
 	}
 
-	public void setPaymentStatus(String paymentStatus) {
+	public void setPaymentStatus(PaymentStatus paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
 

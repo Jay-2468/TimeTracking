@@ -7,5 +7,5 @@ import com.grownited.entity.TaskEntity;
 
 @Repository
 public interface TaskRepository extends JpaRepository<TaskEntity, Integer>{
-
+	
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "modules")
@@ -15,6 +16,8 @@ public class ModuleEntity {
 	private String moduleName;
 	private Integer projectId; // Foreign Key
 	private String description;
+	@Transient
+	private String projectName;
 
 	public Integer getModuleId() {
 		return moduleId;
@@ -47,5 +50,15 @@ public class ModuleEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+	
+	
 
 }

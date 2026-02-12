@@ -22,17 +22,17 @@ public class SessionController {
 	
 	@GetMapping("/signup")
 	public String openSignupPage() {
-		return "Signup"; // Signup jsp file name
+		return "Authentication/Signup"; // Signup jsp file name
 	}
 	
 	@GetMapping("/login")
 	public String openLoginPage() {
-		return "Login"; // Login jsp file name
+		return "Authentication/Login"; // Login jsp file name
 	}
 
-	@GetMapping("/forgotpassword")
+	@GetMapping("/forgotPassword")
 	public String openForgotPasswordPage() {
-		return "ForgotPassword"; // Login jsp file name
+		return "Authentication/ForgotPassword"; // Login jsp file name
 	}
 	
 	@PostMapping("/register") // this should be same as action value in the form
@@ -50,7 +50,7 @@ public class SessionController {
 		// for every Entity/Database there has to be a Repository (interface) file
 		userRepository.save(userEntity); // this will insert the data into the table
 		
-		return "Login";
+		return "redirect:/login";
 	}
 	
 }

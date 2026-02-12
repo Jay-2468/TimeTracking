@@ -27,7 +27,7 @@ public class TaskController {
 	public String newTask(Model model) {
 		List<UserEntity> userList = userRepository.findAll();
 		model.addAttribute("userList", userList);
-		return "NewTask";
+		return "Task/NewTask";
 	}
 	
 	@PostMapping("/createTask")
@@ -52,7 +52,7 @@ public class TaskController {
 		model.addAttribute("taskList", taskList);
 //		model.addAttribute("user", user);
 		
-		return "TaskList";
+		return "Task/TaskList";
 	}
 	
 	@GetMapping("/deleteTask")

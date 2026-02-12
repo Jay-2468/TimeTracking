@@ -26,7 +26,7 @@ public class ModuleController {
 	public String newModule(Model model) { 
 		List<ProjectEntity> projectList = projectRepository.findAll();
 		model.addAttribute("projectList", projectList);
-		return "NewModule";
+		return "Module/NewModule";
 	}
 	
 	@PostMapping("/createModule")
@@ -39,7 +39,13 @@ public class ModuleController {
 	public String moduleList(Model model) {
 		List<ModuleEntity> moduleList = moduleRepository.findAll();
 		model.addAttribute("moduleList", moduleList);		
-		return "ModuleList";
+		return "Module/ModuleList";
+	}
+	
+	@GetMapping("/deleteModule")
+	public String deleteModule(Integer moduleId) {
+		moduleRepository.deleteById(moduleId);
+		return "redirect:/moduleList";
 	}
 	
 }

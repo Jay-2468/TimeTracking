@@ -8,16 +8,16 @@
 <meta charset="UTF-8">
 <title>User List</title>
 
-<jsp:include page="AdminCSS.jsp"></jsp:include>
+<jsp:include page="../Admin/AdminCSS.jsp"></jsp:include>
 </head>
 <body>
 
 	<!-- Header -->
-	<jsp:include page="AdminHeader.jsp"></jsp:include>
+	<jsp:include page="../Admin/AdminHeader.jsp"></jsp:include>
 
 	<div class="container-fluid page-body-wrapper">
 		<!-- Sidebar -->
-		<jsp:include page="AdminLeftSidebar.jsp"></jsp:include>
+		<jsp:include page="../Admin/AdminLeftSidebar.jsp"></jsp:include>
 
 		<!-- Main Content -->
 		<div class="main-panel">
@@ -26,7 +26,8 @@
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0">User List</h3>
-					<a href="createUser" class="btn btn-primary btn-sm"> + New User
+					<a href="newUser" class="btn btn-primary btn-sm"> <i
+						class="mdi mdi-plus-circle-outline"></i> New User
 					</a>
 				</div>
 
@@ -96,12 +97,16 @@
 										<!-- Actions -->
 										<td class="text-center"><a
 											href="editUser?userId=${user.userId}"
-											class="btn btn-sm btn-warning"> Edit </a> <a
-											href="deleteUser?userId=${user.userId}"
+											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
+												Edit
+										</a> <a href="deleteUser?userId=${user.userId}"
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this user?')">
-												Delete </a> <a href="viewUser?userId=${user.userId}"
-											class="btn btn-sm btn-primary"> View </a></td>
+												<i class="mdi mdi-delete"></i> Delete
+										</a> <a href="viewUser?userId=${user.userId}"
+											class="btn btn-sm btn-primary"> <i class="mdi mdi-eye"></i>
+												View
+										</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -109,7 +114,7 @@
 					</div>
 				</c:if>
 				<!-- partial:partials/_footer.html -->
-				<jsp:include page="AdminFooter.jsp"></jsp:include>
+				<jsp:include page="../Admin/AdminFooter.jsp"></jsp:include>
 			</div>
 			<!-- main-panel ends -->
 		</div>

@@ -8,15 +8,15 @@
 <meta charset="UTF-8">
 <title>View User</title>
 
-<jsp:include page="AdminCSS.jsp"></jsp:include>
+<jsp:include page="../Admin/AdminCSS.jsp"></jsp:include>
 </head>
 <body>
 
 <!-- Header -->
-<jsp:include page="AdminHeader.jsp"></jsp:include>
+<jsp:include page="../Admin/AdminHeader.jsp"></jsp:include>
 
 <!-- Sidebar -->
-<jsp:include page="AdminLeftSidebar.jsp"></jsp:include>
+<jsp:include page="../Admin/AdminLeftSidebar.jsp"></jsp:include>
 
 <!-- Main Content -->
 <div class="content p-4">

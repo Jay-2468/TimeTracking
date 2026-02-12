@@ -13,22 +13,29 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<jsp:include page="AdminCSS.jsp"></jsp:include>
+<jsp:include page="../Admin/AdminCSS.jsp"></jsp:include>
 </head>
 <body class="bg-light">
 
-	<jsp:include page="AdminHeader.jsp"></jsp:include>
+	<!-- Header -->
+	<jsp:include page="../Admin/AdminHeader.jsp"></jsp:include>
 
-	<jsp:include page="AdminLeftSidebar.jsp"></jsp:include>
+	<div class="container-fluid page-body-wrapper">
+		<!-- Sidebar -->
+		<jsp:include page="../Admin/AdminLeftSidebar.jsp"></jsp:include>
 
-	<div class="content">
-		<div class="row justify-content-center align-items-center min-vh-100">
-			<div class="col-12 col-sm-10 col-md-8 col-lg-6">
+		<!-- Main Content -->
+		<div class="main-panel">
+			<div class="content-wrapper">
+				<h2 class="text-dark font-weight-bold mb-2">Create New Module</h2>
+				<div class="d-flex justify-content-between align-items-center mb-3">
+					<h3 class="mb-0">Create New Module</h3>
+					<a href="moduleList" class="btn btn-secondary btn-sm"> Back to
+						List </a>
+				</div>
 
-				<div class="card shadow">
-					<div class="card-body p-4">
-						<h3 class="text-center mb-4">Create New Module</h3>
-
+				<div class="card shadow-sm">
+					<div class="card-body">
 						<form action="createModule" method="post">
 
 							<!-- Module Name -->
@@ -58,19 +65,24 @@
 							</div>
 
 							<!-- Submit Button -->
-							<div class="d-grid">
+							<div class="d-grid gap-2">
 								<button type="submit" class="btn btn-primary">Create
 									Module</button>
+								<a href="admin-dashboard" class="btn btn-secondary"> Cancel
+								</a>
 							</div>
 
 						</form>
 
 					</div>
 				</div>
-
 			</div>
+			<!-- partial:partials/_footer.html -->
+			<jsp:include page="../Admin/AdminFooter.jsp"></jsp:include>
 		</div>
-	</div>
+		<!-- main-panel ends -->
 
+	</div>
+	<!-- page-body-wrapper ends -->
 </body>
 </html>

@@ -4,15 +4,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<jsp:include page="AdminCSS.jsp"></jsp:include>
+<jsp:include page="../Admin/AdminCSS.jsp"></jsp:include>
 </head>
 <body>
 	<!-- Header -->
-	<jsp:include page="AdminHeader.jsp"></jsp:include>
+	<jsp:include page="../Admin/AdminHeader.jsp"></jsp:include>
 
 	<div class="container-fluid page-body-wrapper">
 		<!-- Sidebar -->
-		<jsp:include page="AdminLeftSidebar.jsp"></jsp:include>
+		<jsp:include page="../Admin/AdminLeftSidebar.jsp"></jsp:include>
 
 		<!-- Main Content -->
 		<div class="main-panel">
@@ -23,11 +23,10 @@
 				
 			</div>
 			<!-- partial:partials/_footer.html -->
-			<jsp:include page="AdminFooter.jsp"></jsp:include>
+			<jsp:include page="../Admin/AdminFooter.jsp"></jsp:include>
 		</div>
 		<!-- main-panel ends -->
 	</div>
 	<!-- page-body-wrapper ends -->
-	</div>
 </body>
 </html>

@@ -20,7 +20,7 @@ public class ProjectController {
 	
 	@GetMapping("/newProject")
 	public String newProject() {
-		return "NewProject";
+		return "Project/NewProject";
 	}
 	
 	@PostMapping("/createProject") 
@@ -36,7 +36,7 @@ public class ProjectController {
 		List<ProjectEntity> projectList = projectRepository.findAll();
 		model.addAttribute("projectList", projectList);
 		
-		return "ProjectList";
+		return "Project/ProjectList";
 	}
 	
 	@GetMapping("/deleteProject")

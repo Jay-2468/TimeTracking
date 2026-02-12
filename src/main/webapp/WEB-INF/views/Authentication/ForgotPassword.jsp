@@ -23,7 +23,7 @@
                         Enter your email address to reset your password
                     </p>
 
-                    <form action="ForgotPasswordServlet" method="post">
+                    <form action="ForgotPassword" method="post">
 
                         <!-- Email -->
                         <div class="mb-3">

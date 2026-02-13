@@ -28,7 +28,7 @@ public class NotificationEntity {
 	private Integer userId; // FK
 	private String message;
 	@Enumerated(EnumType.STRING)
-	private NotificationType notificationType; // the types : Deadline / Idle / Alert
+	private NotificationType notificationType; // types : Deadline / Idle / Alert
 	private LocalDateTime sentTime;
 	@Enumerated(EnumType.STRING)
 	private Status status; // status : Read / Unread

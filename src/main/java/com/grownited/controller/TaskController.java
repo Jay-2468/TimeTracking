@@ -33,11 +33,11 @@ public class TaskController {
 	@PostMapping("/createTask")
 	public String saveTask(TaskEntity taskEntity) {
 		taskRepository.save(taskEntity);
-		return "redirect:/taskList";
+		return "redirect:/tasksList";
 	}
 
-	@GetMapping("/taskList")
-	public String taskList(Model model) {
+	@GetMapping("/tasksList")
+	public String tasksList(Model model) {
 //		if (assignedTo == null) 
 //			return "redirect:/newTask";
 		
@@ -48,17 +48,17 @@ public class TaskController {
 		
 //		UserEntity user = opUser.get();
 		
-		List<TaskEntity> taskList = taskRepository.findAll();
-		model.addAttribute("taskList", taskList);
+		List<TaskEntity> tasksList = taskRepository.findAll();
+		model.addAttribute("tasksList", tasksList);
 //		model.addAttribute("user", user);
 		
-		return "Task/TaskList";
+		return "Task/TasksList";
 	}
 	
 	@GetMapping("/deleteTask")
 	public String deleteTask(Integer taskId) {
 		taskRepository.deleteById(taskId);
-		return "redirect:/taskList";
+		return "redirect:/tasksList";
 	}
 
 }

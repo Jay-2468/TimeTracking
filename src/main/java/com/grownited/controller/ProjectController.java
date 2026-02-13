@@ -28,21 +28,21 @@ public class ProjectController {
 		
 		projectRepository.save(projectEntity);
 		
-		return "redirect:/projectList";
+		return "redirect:/projectsList";
 	}
 	
-	@GetMapping("/projectList")
-	public String projectList(Model model) {
-		List<ProjectEntity> projectList = projectRepository.findAll();
-		model.addAttribute("projectList", projectList);
+	@GetMapping("/projectsList")
+	public String projectsList(Model model) {
+		List<ProjectEntity> projectsList = projectRepository.findAll();
+		model.addAttribute("projectsList", projectsList);
 		
-		return "Project/ProjectList";
+		return "Project/ProjectsList";
 	}
 	
 	@GetMapping("/deleteProject")
 	public String deleteProject(Integer projectId) { 
 		projectRepository.deleteById(projectId);
 		
-		return "redirect:/projectList";
+		return "redirect:/projectsList";
 	}
 }

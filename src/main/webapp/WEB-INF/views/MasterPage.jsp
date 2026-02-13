@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +21,7 @@
 				<h2 class="text-dark font-weight-bold mb-2">Overview Dashboard</h2>
 
 				<!-- Page Main Content -->
-				
+
 			</div>
 			<!-- partial:partials/_footer.html -->
 			<jsp:include page="../Admin/AdminFooter.jsp"></jsp:include>

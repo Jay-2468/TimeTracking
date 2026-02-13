@@ -15,7 +15,7 @@ public class PayrollEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer payrollId;
-	private Integer userId;
+	private Integer userId; // FK
 	private Double totalHours;
 	private Double salaryAmount;
 	private LocalDate paymentDate;

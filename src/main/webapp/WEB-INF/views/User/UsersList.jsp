@@ -32,12 +32,12 @@
 				</div>
 
 				<!-- Empty State -->
-				<c:if test="${empty userList}">
+				<c:if test="${empty usersList}">
 					<div class="alert alert-warning">No users found.</div>
 				</c:if>
 
 				<!-- User Table -->
-				<c:if test="${not empty userList}">
+				<c:if test="${not empty usersList}">
 					<div class="table-responsive">
 						<table class="table table-bordered table-hover align-middle">
 							<thead class="table-dark">
@@ -55,7 +55,7 @@
 							</thead>
 
 							<tbody>
-								<c:forEach var="user" items="${userList}" varStatus="i">
+								<c:forEach var="user" items="${usersList}" varStatus="i">
 									<tr>
 										<td>${i.index + 1}</td>
 

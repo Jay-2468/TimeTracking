@@ -32,12 +32,12 @@
 				</div>
 
 				<!-- Empty State -->
-				<c:if test="${empty taskList}">
+				<c:if test="${empty tasksList}">
 					<div class="alert alert-warning">No tasks found.</div>
 				</c:if>
 
 				<!-- Task Table -->
-				<c:if test="${not empty taskList}">
+				<c:if test="${not empty tasksList}">
 					<div class="table-responsive">
 						<table class="table table-bordered table-hover align-middle">
 							<thead class="table-dark">
@@ -54,7 +54,7 @@
 							</thead>
 
 							<tbody>
-								<c:forEach var="task" items="${taskList}" varStatus="i">
+								<c:forEach var="task" items="${tasksList}" varStatus="i">
 									<tr>
 										<td>${i.index + 1}</td>
 

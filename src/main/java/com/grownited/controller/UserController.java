@@ -18,11 +18,11 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 
-	@GetMapping("/userList")
-	public String userList(Model model) {
-		List<UserEntity> userList = userRepository.findAll();
-		model.addAttribute("userList", userList);
-		return "User/UserList";
+	@GetMapping("/usersList")
+	public String usersList(Model model) {
+		List<UserEntity> usersList = userRepository.findAll();
+		model.addAttribute("usersList", usersList);
+		return "User/UsersList";
 	}
 
 	@GetMapping("/viewUser")
@@ -41,7 +41,7 @@ public class UserController {
 	@GetMapping("/deleteUser")
 	public String deleteUser(Integer userId) {
 		userRepository.deleteById(userId);
-		return "redirect:/userList";
+		return "redirect:/usersList";
 	}
 	
 	@GetMapping("/newUser")

@@ -32,14 +32,14 @@ public class ModuleController {
 	@PostMapping("/createModule")
 	public String createModule(ModuleEntity moduleEntity) {
 		moduleRepository.save(moduleEntity);
-		return "redirect:/moduleList";
+		return "redirect:/modulesList";
 	}
 	
-	@GetMapping("/moduleList")
-	public String moduleList(Model model) {
-		List<ModuleEntity> moduleList = moduleRepository.findAll();
-		model.addAttribute("moduleList", moduleList);		
-		return "Module/ModuleList";
+	@GetMapping("/modulesList")
+	public String modulesList(Model model) {
+		List<ModuleEntity> modulesList = moduleRepository.findAll();
+		model.addAttribute("moduleList", modulesList);		
+		return "Module/ModulesList";
 	}
 	
 	@GetMapping("/deleteModule")

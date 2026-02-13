@@ -5,7 +5,7 @@
 				class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span> <span
 				class="menu-title">Dashboard</span>
 		</a></li>
-		
+
 		<li class="nav-item"><a class="nav-link"
 			data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
 			aria-controls="ui-basic"> <span class="icon-bg"><i
@@ -20,7 +20,7 @@
 							Users</a></li>
 				</ul>
 			</div></li>
-			
+
 		<li class="nav-item"><a class="nav-link"
 			data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
 			aria-controls="ui-basic"> <span class="icon-bg"><i
@@ -35,8 +35,8 @@
 							Projects</a></li>
 				</ul>
 			</div></li>
-			
-			<li class="nav-item"><a class="nav-link"
+
+		<li class="nav-item"><a class="nav-link"
 			data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
 			aria-controls="ui-basic"> <span class="icon-bg"><i
 					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
@@ -46,11 +46,12 @@
 				<ul class="nav flex-column sub-menu">
 					<li class="nav-item"><a class="nav-link" href="newModule">Create
 							New Module</a></li>
-					<li class="nav-item"><a class="nav-link" href="moduleList">List Modules</a></li>
+					<li class="nav-item"><a class="nav-link" href="moduleList">List
+							Modules</a></li>
 				</ul>
 			</div></li>
-			
-			<li class="nav-item"><a class="nav-link"
+
+		<li class="nav-item"><a class="nav-link"
 			data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
 			aria-controls="ui-basic"> <span class="icon-bg"><i
 					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
@@ -65,6 +66,94 @@
 				</ul>
 			</div></li>
 
+		<li class="nav-item"><a class="nav-link"
+			data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+			aria-controls="ui-basic"> <span class="icon-bg"><i
+					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
+				class="menu-title">Manage Time Logs</span> <i class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="ui-basic">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link" href="createTimeLog">Add
+							New Time Log</a></li>
+					<li class="nav-item"><a class="nav-link" href="timeLogList">List
+							Time Logs</a></li>
+				</ul>
+			</div></li>
+
+		<li class="nav-item"><a class="nav-link"
+			data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+			aria-controls="ui-basic"> <span class="icon-bg"><i
+					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
+				class="menu-title">Manage Time Sheets</span> <i class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="ui-basic">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link"
+						href="createTimeSheet">Add New Time Sheet</a></li>
+					<li class="nav-item"><a class="nav-link" href="timeSheetList">List
+							Time Sheets</a></li>
+				</ul>
+			</div></li>
+
+		<li class="nav-item"><a class="nav-link"
+			data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+			aria-controls="ui-basic"> <span class="icon-bg"><i
+					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
+				class="menu-title">Manage Notifications</span> <i class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="ui-basic">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link"
+						href="createNotification">Send Notification</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="notificationsList">List Notifications</a></li>
+				</ul>
+			</div></li>
+
+		<li class="nav-item"><a class="nav-link"
+			data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+			aria-controls="ui-basic"> <span class="icon-bg"><i
+					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
+				class="menu-title">Manage Reports</span> <i class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="ui-basic">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link" href="createReport">Generate
+							Reports</a></li>
+					<li class="nav-item"><a class="nav-link" href="reportsList">List
+							Reports</a></li>
+				</ul>
+			</div></li>
+
+		<li class="nav-item"><a class="nav-link"
+			data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+			aria-controls="ui-basic"> <span class="icon-bg"><i
+					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
+				class="menu-title">Manage Invoice</span> <i class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="ui-basic">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link" href="createInvoice">Generate
+							Invoices</a></li>
+					<li class="nav-item"><a class="nav-link" href="invoiceList">List
+							Invoices</a></li>
+				</ul>
+			</div></li>
+
+		<li class="nav-item"><a class="nav-link"
+			data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+			aria-controls="ui-basic"> <span class="icon-bg"><i
+					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
+				class="menu-title">Manage Payroll</span> <i class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="ui-basic">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link" href="createPayroll">Create Payroll</a></li>
+					<li class="nav-item"><a class="nav-link" href="payrollRecords">List
+							Payrolls</a></li>
+				</ul>
+			</div></li>
 
 
 		<li class="nav-item sidebar-user-actions">

@@ -21,7 +21,7 @@ public class InvoiceEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer invoiceId;
-	private Integer projectBy; // FK
+	private Integer projectId; // FK
 	private Integer generatedBy; // FK
 	private Double totalHours;
 	private Double ratePerHour;
@@ -39,11 +39,11 @@ public class InvoiceEntity {
 	}
 
 	public Integer getProjectBy() {
-		return projectBy;
+		return projectId;
 	}
 
-	public void setProjectBy(Integer projectBy) {
-		this.projectBy = projectBy;
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
 	}
 
 	public Integer getGeneratedBy() {

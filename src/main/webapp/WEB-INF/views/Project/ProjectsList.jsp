@@ -59,7 +59,9 @@
 										<td>${project.startDate}</td>
 										<td>${project.endDate}</td>
 										<td class="text-center"><a
-											href="editProject?projectId=${project.projectId}"
+											href="viewProject?projectId=${project.projectId}"
+											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i> View
+										</a><a href="editProject?projectId=${project.projectId}"
 											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
 												Edit
 										</a> <a href="deleteProject?projectId=${project.projectId}"

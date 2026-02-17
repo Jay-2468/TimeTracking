@@ -14,7 +14,7 @@ public class ModuleEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer moduleId;
 	private String moduleName;
-	private Integer projectId; // Foreign Key
+	private Integer projectId; // FK // drop-down
 	private String description;
 	@Transient
 	private String projectName;

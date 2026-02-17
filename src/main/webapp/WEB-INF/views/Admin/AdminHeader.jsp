@@ -1,8 +1,11 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <nav
 	class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 	<div
 		class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-		<a class="navbar-brand brand-logo" href="/"><h2 class="text-success m-0">Time Tracking</h2></a>
+		<a class="navbar-brand brand-logo" href="/"><h2
+				class="text-success m-0">Time Tracking</h2></a>
 	</div>
 	<div class="navbar-menu-wrapper d-flex align-items-stretch">
 		<button class="navbar-toggler navbar-toggler align-self-center"
@@ -85,18 +88,31 @@
 				class="nav-link dropdown-toggle" id="profileDropdown" href="#"
 				data-bs-toggle="dropdown" aria-expanded="false">
 					<div class="nav-profile-img">
-						<img src="../../../assets/images/faces/face28.png" alt="image">
+						<c:if test="${not empty sessionScope.user.profilePicture}">
+							<img src="${sessionScope.user.profilePicture}" alt="image">
+						</c:if>
+
+						<c:if test="${empty sessionScope.user.profilePicture}">
+							<img src="../../../assets/images/faces/dummy-user.png"
+								alt="image">
+						</c:if>
 					</div>
 					<div class="nav-profile-text">
-						<p class="mb-1 text-black">Henry Klein</p>
+						<p class="mb-1 text-black">${user.firstName}</p>
 					</div>
 			</a>
 				<div
 					class="dropdown-menu navbar-dropdown dropdown-menu-end p-0 border-0 font-size-sm"
 					aria-labelledby="profileDropdown" data-x-placement="bottom-end">
 					<div class="p-3 text-center bg-primary">
-						<img class="img-avatar img-avatar48 img-avatar-thumb"
-							src="../../../assets/images/faces/face28.png" alt="">
+						<c:if test="${not empty sessionScope.user.profilePicture}">
+							<img src="${sessionScope.user.profilePicture}" alt="image">
+						</c:if>
+
+						<c:if test="${empty sessionScope.user.profilePicture}">
+							<img src="../../../assets/images/faces/face28.png"
+								alt="image">
+						</c:if>
 					</div>
 					<div class="p-2">
 						<h5 class="dropdown-header text-uppercase ps-2 text-dark">User
@@ -126,7 +142,8 @@
 							class="mdi mdi-lock ms-1"></i>
 						</a> <a
 							class="dropdown-item py-1 d-flex align-items-center justify-content-between"
-							href="#"> <span>Log Out</span> <i class="mdi mdi-logout ms-1"></i>
+							href="logout"> <span>Log Out</span> <i
+							class="mdi mdi-logout ms-1"></i>
 						</a>
 					</div>
 				</div></li>

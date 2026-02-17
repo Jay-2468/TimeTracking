@@ -2,6 +2,7 @@ package com.grownited.entity;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -14,12 +15,12 @@ import jakarta.persistence.Table;
 @Table(name = "users") // this will change the name of the table to users
 public class UserEntity {
 
-	private enum Status {
+	public enum Status {
 		ACTIVE, INACTIVE
 	}
 
-	private enum Role {
-		ADMIN, PROJECT_MANAGER, DEVELOPERS
+	public enum Role {
+		ADMIN, PROJECT_MANAGER, DEVELOPER
 	}
 
 	@Id // This will create primary key
@@ -33,8 +34,10 @@ public class UserEntity {
 	private String profilePicture;
 	private LocalDate createdAt;
 	@Enumerated(EnumType.STRING)
+	@Column(length = 50)
 	private Role role; // users : admin, project manager, developers
 	@Enumerated(EnumType.STRING)
+	@Column(length = 20)
 	private Status status; // status : Active / Inactive
 	private Integer otp;
 

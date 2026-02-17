@@ -26,8 +26,9 @@
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0">Payroll Records</h3>
-					<a href="createPayroll" class="btn btn-primary btn-sm">
-						Generate Payroll </a>
+					<a href="createPayroll" class="btn btn-primary btn-sm"> <i
+						class="mdi mdi-plus-circle-outline"></i> Generate Payroll
+					</a>
 				</div>
 
 				<div class="card shadow-sm">
@@ -70,13 +71,16 @@
 												pattern="dd-MM-yyyy" /></td>
 
 										<td><a href="viewPayroll?id=${payroll.id}"
-											class="btn btn-sm btn-info"> View </a> <a
-											href="editPayroll?id=${payroll.id}"
-											class="btn btn-sm btn-warning"> Edit </a> <a
-											href="deletePayroll?id=${payroll.id}"
+											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>
+												View
+										</a> <a href="editPayroll?id=${payroll.id}"
+											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
+												Edit
+										</a> <a href="deletePayroll?id=${payroll.id}"
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this payroll record?')">
-												Delete </a></td>
+												<i class="mdi mdi-delete"></i> Delete
+										</a></td>
 
 									</tr>
 								</c:forEach>

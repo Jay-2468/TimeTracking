@@ -25,15 +25,15 @@ public class TimeLogEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer logId;
-	private Integer task_id; // FK
-	private Integer user_id; // FK
-	private LocalDateTime start_time;
-	private LocalDateTime end_time;
-	private Double total_hours;
+	private Integer taskId; // FK
+	private Integer userId; // FK
+	private LocalDateTime startTime;
+	private LocalDateTime endTime;
+	private Double totalHours;
 	@Enumerated(EnumType.STRING)
-	private LogType log_type; // log type : Auto / Manual
+	private LogType logType; // log type : Auto / Manual
 	@Enumerated(EnumType.STRING)
-	private ApprovalStatus approval_status; // approval status : Approved / Rejected / Pending
+	private ApprovalStatus approvalStatus; // approval status : Approved / Rejected / Pending
 
 	public Integer getLogId() {
 		return logId;
@@ -43,60 +43,60 @@ public class TimeLogEntity {
 		this.logId = logId;
 	}
 
-	public Integer getTask_id() {
-		return task_id;
+	public Integer getTaskId() {
+		return taskId;
 	}
 
-	public void setTask_id(Integer task_id) {
-		this.task_id = task_id;
+	public void setTaskId(Integer taskId) {
+		this.taskId = taskId;
 	}
 
-	public Integer getUser_id() {
-		return user_id;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
-	public LocalDateTime getStart_time() {
-		return start_time;
+	public LocalDateTime getStartTime() {
+		return startTime;
 	}
 
-	public void setStart_time(LocalDateTime start_time) {
-		this.start_time = start_time;
+	public void setStartTime(LocalDateTime startTime) {
+		this.startTime = startTime;
 	}
 
-	public LocalDateTime getEnd_time() {
-		return end_time;
+	public LocalDateTime getEndTime() {
+		return endTime;
 	}
 
-	public void setEnd_time(LocalDateTime end_time) {
-		this.end_time = end_time;
+	public void setEndTime(LocalDateTime endTime) {
+		this.endTime = endTime;
 	}
 
-	public Double getTotal_hours() {
-		return total_hours;
+	public Double getTotalHours() {
+		return totalHours;
 	}
 
-	public void setTotal_hours(Double total_hours) {
-		this.total_hours = total_hours;
+	public void setTotalHours(Double totalHours) {
+		this.totalHours = totalHours;
 	}
 
-	public LogType getLog_type() {
-		return log_type;
+	public LogType getLogType() {
+		return logType;
 	}
 
-	public void setLog_type(LogType log_type) {
-		this.log_type = log_type;
+	public void setLogType(LogType logType) {
+		this.logType = logType;
 	}
 
-	public ApprovalStatus getApproval_status() {
-		return approval_status;
+	public ApprovalStatus getApprovalStatus() {
+		return approvalStatus;
 	}
 
-	public void setApproval_status(ApprovalStatus approval_status) {
-		this.approval_status = approval_status;
+	public void setApprovalStatus(ApprovalStatus approvalStatus) {
+		this.approvalStatus = approvalStatus;
 	}
 
 }

@@ -25,7 +25,7 @@ public class NotificationEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer notificationId;
-	private Integer userId; // FK
+	private Integer userId; // FK // drop-down
 	private String message;
 	@Enumerated(EnumType.STRING)
 	private NotificationType notificationType; // types : Deadline / Idle / Alert

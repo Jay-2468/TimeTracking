@@ -32,8 +32,8 @@ public class TaskEntity {
 	private LocalDate deadline;
 	@Enumerated(EnumType.STRING)
 	private Status status; // status : Pending / In Progress / Completed
-	private Integer moduleId; // FK
-	private Integer assignedTo; // FK
+	private Integer moduleId; // FK // drop-down
+	private Integer assignedTo; // FK // drop-down
 
 	public Integer getTaskId() {
 		return taskId;

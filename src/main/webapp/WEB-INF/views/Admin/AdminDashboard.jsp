@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +18,7 @@
 			<!-- partial -->
 			<div class="main-panel">
 				<div class="content-wrapper">
+					<h2 class="text-dark font-weight-bold mb-2">Welcome ${user.firstName}!</h2>
 					<h2 class="text-dark font-weight-bold mb-2">Overview dashboard</h2>
 					<div class="row">
 						<div class="col-md-12">

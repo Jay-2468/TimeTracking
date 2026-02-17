@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,19 +37,19 @@
 							</div>
 							<h4>Hello! let's get started</h4>
 							<h6 class="font-weight-light">Sign in to continue.</h6>
-							<form class="pt-3">
+							<form class="pt-3" action="authenticate" method="post">
 								<div class="form-group">
-									<input type="email" class="form-control form-control-lg"
-										id="exampleInputEmail1" placeholder="Email">
+									<input type="email" name="email" class="form-control form-control-lg"
+										id="email" placeholder="Email">
 								</div>
 								<div class="form-group">
-									<input type="password" class="form-control form-control-lg"
-										id="exampleInputPassword1" placeholder="Password">
+									<input type="password" name="password" class="form-control form-control-lg"
+										id="password" placeholder="Password">
 								</div>
 								<div class="mt-3">
-									<a
+									<button type="submit"
 										class="btn d-grid btn-primary btn-lg font-weight-medium auth-form-btn"
-										href="../../index.html">SIGN IN</a>
+										>LOGIN</button>
 								</div>
 								<div
 									class="my-2 d-flex justify-content-between align-items-center">
@@ -63,6 +65,8 @@
 									Don't have an account? <a href="/signup"
 										class="text-primary">Create</a>
 								</div>
+								<br>
+								<span class="text-danger">${error}</span>
 							</form>
 						</div>
 					</div>

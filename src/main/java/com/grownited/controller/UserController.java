@@ -1,5 +1,6 @@
 package com.grownited.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +44,7 @@ public class UserController {
 		userRepository.deleteById(userId);
 		return "redirect:/usersList";
 	}
-	
+
 	@GetMapping("/newUser")
 	public String newUser() {
 		return "User/NewUser";
@@ -51,7 +52,28 @@ public class UserController {
 
 	@PostMapping("/createUser")
 	public String createUser(UserEntity userEntity) {
+		userEntity.setCreatedAt(LocalDate.now());
 		userRepository.save(userEntity);
-		return "redirect:/userList";
+		return "redirect:/usersList";
+	}
+
+	@GetMapping("/updateRole")
+	public String updateRole(Model model) {
+		List<UserEntity> usersList = userRepository.findAll();
+		model.addAttribute("usersList", usersList);
+		model.addAttribute("userRole", UserEntity.Role.values());
+		return "User/UpdateUserRole";
+	}
+
+	@PostMapping("/updateUserRole")
+	public String updateUserRole(UserEntity userEntity, Integer userId, UserEntity.Role newRole) {
+		Optional<UserEntity> opUser = userRepository.findById(userId);
+
+		if (opUser.isPresent()) {
+			UserEntity user = opUser.get();
+			user.setRole(newRole);
+			userRepository.save(user);
+		}
+		return "redirect:/usersList";
 	}
 }

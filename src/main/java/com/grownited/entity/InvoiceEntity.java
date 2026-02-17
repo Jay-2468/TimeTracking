@@ -21,8 +21,8 @@ public class InvoiceEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer invoiceId;
-	private Integer projectId; // FK
-	private Integer generatedBy; // FK
+	private Integer projectId; // FK // drop-down
+	private Integer generatedBy; // FK 
 	private Double totalHours;
 	private Double ratePerHour;
 	private Double totalAmount;

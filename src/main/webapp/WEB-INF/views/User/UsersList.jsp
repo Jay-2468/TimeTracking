@@ -69,7 +69,7 @@
 											</c:if></td>
 
 										<!-- Name -->
-										<td>${user.firstName}${user.lastName}</td>
+										<td>${user.firstName} ${user.lastName}</td>
 
 										<!-- Contact -->
 										<td>${user.contactNumber}</td>

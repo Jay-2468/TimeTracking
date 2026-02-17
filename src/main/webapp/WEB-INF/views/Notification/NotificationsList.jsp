@@ -21,12 +21,13 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">Overview Dashboard</h2>
+				<h2 class="text-dark font-weight-bold mb-2">Notifications List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0">Notifications</h3>
-					<a href="sendNotification" class="btn btn-primary btn-sm"> Send
-						Notification </a>
+					<a href="sendNotification" class="btn btn-primary btn-sm"> <i
+						class="mdi mdi-plus-circle-outline"></i>Send Notification
+					</a>
 				</div>
 
 				<div class="card shadow-sm">
@@ -87,14 +88,14 @@
 
 										<!-- Actions -->
 										<td class="text-center"><a
-											href="viewNotification?id=${notification.id}"
-											class="btn btn-sm btn-info"> View </a> <a
-											href="markAsRead?id=${notification.id}"
-											class="btn btn-sm btn-success"> Mark as Read </a> <a
-											href="deleteNotification?id=${notification.id}"
+											href="viewNotification?notificationId=${notification.notificationd}"
+											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i> View </a> <a
+											href="markAsRead?notificationId=${notification.notificationId}"
+											class="btn btn-sm btn-success"> <i class="mdi mdi-read"></i>Mark as Read </a> <a
+											href="deleteNotification?notificationd=${notification.notificationId}"
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this notification?')">
-												Delete </a></td>
+												<i class="mdi mdi-delete"></i> Delete </a></td>
 
 									</tr>
 								</c:forEach>

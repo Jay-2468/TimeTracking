@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> --%> 
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> --%>
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +27,8 @@
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0">Generated Reports</h3>
-					<a href="generateReport" class="btn btn-primary btn-sm">
+					<a href="generateReport" class="btn btn-primary btn-sm"> <i
+						class="mdi mdi-plus-circle-outline"></i>
 						Generate Report </a>
 				</div>
 
@@ -91,11 +92,16 @@
 
 										<!-- Actions -->
 										<td class="text-center"><a
-											href="viewReport?id=${report.id}" class="btn btn-sm btn-info">
-												View </a> <a href="deleteReport?id=${report.id}"
+											href="viewReport?reportId=${report.reportId}" class="btn btn-sm btn-info">
+												<i class="mdi mdi-eye"></i>View
+										</a> <a href="editReport?reportId=${report.reportId}"
+											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
+												Edit
+										</a><a href="deleteReport?reportId=${report.reportId}"
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this report?')">
-												Delete </a></td>
+												<i class="mdi mdi-delete"></i>Delete
+										</a></td>
 
 									</tr>
 								</c:forEach>

@@ -26,7 +26,7 @@
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0">Create New User</h3>
-					<a href="userList" class="btn btn-secondary btn-sm"> Back to
+					<a href="usersList" class="btn btn-secondary btn-sm"> Back to
 						List </a>
 				</div>
 

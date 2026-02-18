@@ -24,8 +24,8 @@ public class ModuleController {
 	
 	@GetMapping("/newModule")
 	public String newModule(Model model) { 
-		List<ProjectEntity> projectList = projectRepository.findAll();
-		model.addAttribute("projectList", projectList);
+		List<ProjectEntity> projectsList = projectRepository.findAll();
+		model.addAttribute("projectsList", projectsList);
 		return "Module/NewModule";
 	}
 	
@@ -38,7 +38,7 @@ public class ModuleController {
 	@GetMapping("/modulesList")
 	public String modulesList(Model model) {
 		List<ModuleEntity> modulesList = moduleRepository.findAll();
-		model.addAttribute("moduleList", modulesList);		
+		model.addAttribute("modulesList", modulesList);		
 		return "Module/ModulesList";
 	}
 	

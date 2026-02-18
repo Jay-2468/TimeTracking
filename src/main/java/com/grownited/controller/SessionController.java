@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.grownited.entity.UserEntity;
 import com.grownited.entity.UserEntity.Role;
 import com.grownited.repository.UserRepository;
+import com.grownited.service.EmailService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -24,6 +25,9 @@ public class SessionController {
 	// for every new user submits their data
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	EmailService emailService;
 
 	@GetMapping("/signup")
 	public String openSignupPage() {
@@ -80,6 +84,7 @@ public class SessionController {
 		// Database queries
 		// for every Entity/Database there has to be a Repository (interface) file
 		userRepository.save(userEntity); // this will insert the data into the table
+		emailService.sendWelcomeMail(userEntity);
 
 		return "redirect:/login";
 	}

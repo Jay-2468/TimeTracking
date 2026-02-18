@@ -8,4 +8,5 @@ import com.grownited.entity.ModuleEntity;
 @Repository
 public interface ModuleRepository extends JpaRepository<ModuleEntity, Integer> {
 
+	
 }

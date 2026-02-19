@@ -1,6 +1,8 @@
 package com.grownited.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,37 +17,45 @@ import com.grownited.repository.ProjectRepository;
 
 @Controller
 public class ModuleController {
-	
+
 	@Autowired
 	ModuleRepository moduleRepository;
-	
+
 	@Autowired
 	ProjectRepository projectRepository;
-	
+
 	@GetMapping("/newModule")
-	public String newModule(Model model) { 
+	public String newModule(Model model) {
 		List<ProjectEntity> projectsList = projectRepository.findAll();
 		model.addAttribute("projectsList", projectsList);
 		return "Module/NewModule";
 	}
-	
+
 	@PostMapping("/createModule")
 	public String createModule(ModuleEntity moduleEntity) {
 		moduleRepository.save(moduleEntity);
 		return "redirect:/modulesList";
 	}
-	
+
 	@GetMapping("/modulesList")
 	public String modulesList(Model model) {
 		List<ModuleEntity> modulesList = moduleRepository.findAll();
-		model.addAttribute("modulesList", modulesList);		
+		List<ProjectEntity> projectList = projectRepository.findAll();
+		Map<Integer, String> projectMap = new HashMap<>();
+
+		for (ProjectEntity project : projectList) {
+			projectMap.put(project.getProjectId(), project.getProjectName());
+		}
+
+		model.addAttribute("modulesList", modulesList);
+		model.addAttribute("projectMap", projectMap);
 		return "Module/ModulesList";
 	}
-	
+
 	@GetMapping("/deleteModule")
 	public String deleteModule(Integer moduleId) {
 		moduleRepository.deleteById(moduleId);
 		return "redirect:/moduleList";
 	}
-	
+
 }

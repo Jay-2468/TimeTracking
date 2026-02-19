@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 @Table(name = "reports")
 public class ReportEntity {
 
-	private enum ReportType {
+	public enum ReportType {
 		PROJECT, PRODUCTIVITY, BILLING
 	}
 	

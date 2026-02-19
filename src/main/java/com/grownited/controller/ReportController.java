@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.grownited.entity.ReportEntity;
 import com.grownited.repository.ReportRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class ReportController {
 
@@ -23,15 +25,15 @@ public class ReportController {
 	}
 	
 	@PostMapping("/generateReport")
-	public String generateReport(ReportEntity reportEntity) {
+	public String generateReport(ReportEntity reportEntity, HttpSession session) {
 		reportRepository.save(reportEntity);
 		return "redirect:/reportsList";
 	}
 	
 	@GetMapping("/reportsList")
 	public String reportstList(Model model) {
-		List<ReportEntity> reportsList = reportRepository.findAll();
-		model.addAttribute("reportsList", reportsList);
+		List<ReportEntity> reports = reportRepository.findAll();
+		model.addAttribute("reports", reports); 
 		return "Report/ReportsList";
 	}
 	

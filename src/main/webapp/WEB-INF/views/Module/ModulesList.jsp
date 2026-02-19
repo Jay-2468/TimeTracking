@@ -55,7 +55,7 @@
 										<td>${i.index + 1}</td>
 										<td>${module.moduleName}</td>
 										<td>${module.description}</td>
-										<td>${module.projectId}</td>
+										<td>${projectMap[module.projectId]}</td>
 										<td class="text-center"><a
 											href="viewModule?moduleId=${module.moduleId}"
 											class="btn btn-sm btn-info text-white"> <i

@@ -20,7 +20,7 @@ public class EmailService {
 	private JavaMailSender javaMailSender;
 
 	@Autowired
-	ResourceLoader resourceLoader;
+	private ResourceLoader resourceLoader;
 
 	public void sendWelcomeMail(UserEntity user) {
 		MimeMessage message = javaMailSender.createMimeMessage();

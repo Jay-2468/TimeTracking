@@ -75,11 +75,11 @@
 											</c:choose></td>
 
 										<!-- Actions -->
-										<td><a href="viewTimeSheet?id=${sheet.id}"
+										<td><a href="viewTimeSheet?id=${sheet.timesheetId}"
 											class="btn btn-sm btn-info"><i class="mdi mdi-eye"></i>
-												View </a> <a href="editTimeSheet?id=${sheet.id}"
+												View </a> <a href="editTimeSheet?id=${sheet.timesheetId}"
 											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>Edit
-										</a> <a href="deleteTimeSheet?id=${sheet.id}"
+										</a> <a href="deleteTimeSheet?id=${sheet.timesheetId}"
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this timesheet?')">
 												<i class="mdi mdi-delete"></i>Delete

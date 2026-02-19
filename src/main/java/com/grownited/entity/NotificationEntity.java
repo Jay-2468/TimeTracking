@@ -14,11 +14,11 @@ import jakarta.persistence.Table;
 @Table(name = "notifications")
 public class NotificationEntity {
 
-	private enum NotificationType {
+	public enum NotificationType {
 		DEADLINE, IDLE, ALERT
 	}
 
-	private enum Status {
+	public enum Status {
 		READ, UNREAD
 	}
 

@@ -52,13 +52,13 @@
 								<c:forEach items="${timeLogsList}" var="log">
 									<tr>
 
-										<td>${log.start_time}</td>
-										<td>${log.end_time}</td>
-										<td>${log.total_hours}</td>
+										<td>${log.startTime}</td>
+										<td>${log.endTime}</td>
+										<td>${log.totalHours}</td>
 
 										<!-- Log Type Badge -->
 										<td class="text-center"><c:choose>
-												<c:when test="${log.log_type == 'AUTO'}">
+												<c:when test="${log.logType == 'AUTO'}">
 													<span class="badge bg-info text-dark">Auto</span>
 												</c:when>
 												<c:otherwise>
@@ -68,10 +68,10 @@
 
 										<!-- Approval Status Badge -->
 										<td class="text-center"><c:choose>
-												<c:when test="${log.approval_status == 'APPROVED'}">
+												<c:when test="${log.approvalStatus == 'APPROVED'}">
 													<span class="badge bg-success">Approved</span>
 												</c:when>
-												<c:when test="${log.approval_status == 'REJECTED'}">
+												<c:when test="${log.approvalStatus == 'REJECTED'}">
 													<span class="badge bg-danger">Rejected</span>
 												</c:when>
 												<c:otherwise>
@@ -81,13 +81,13 @@
 
 										<!-- Actions -->
 										<td class="text-center"><a
-											href="viewTimeLog?logId=${log.id}"
+											href="viewTimeLog?logId=${log.logId}"
 											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>
 												View
-										</a> <a href="editTimeLog?logId=${log.id}"
+										</a> <a href="editTimeLog?logId=${log.logId}"
 											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
 												Edit
-										</a> <a href="deleteTimeLog?logId=${log.id}"
+										</a> <a href="deleteTimeLog?logId=${log.logId}"
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this log?')">
 												<i class="mdi mdi-delete"></i> Delete

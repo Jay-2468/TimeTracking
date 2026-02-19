@@ -1,6 +1,8 @@
 package com.grownited.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +51,15 @@ public class TaskController {
 //		UserEntity user = opUser.get();
 		
 		List<TaskEntity> tasksList = taskRepository.findAll();
+		List<UserEntity> usersList = userRepository.findAll();
+		Map<Integer, String> userMap = new HashMap<>();
+		
+		for(UserEntity user : usersList) {
+			userMap.put(user.getUserId(), user.getFullUserName());
+		}
+		
 		model.addAttribute("tasksList", tasksList);
+		model.addAttribute("userMap", userMap);
 //		model.addAttribute("user", user);
 		
 		return "Task/TasksList";

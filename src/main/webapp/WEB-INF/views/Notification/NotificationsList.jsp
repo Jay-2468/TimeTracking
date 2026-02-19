@@ -25,7 +25,7 @@
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0">Notifications</h3>
-					<a href="sendNotification" class="btn btn-primary btn-sm"> <i
+					<a href="createNotification" class="btn btn-primary btn-sm"> <i
 						class="mdi mdi-plus-circle-outline"></i>Send Notification
 					</a>
 				</div>
@@ -88,11 +88,11 @@
 
 										<!-- Actions -->
 										<td class="text-center"><a
-											href="viewNotification?notificationId=${notification.notificationd}"
+											href="viewNotification?notificationId=${notification.notificationId}"
 											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i> View </a> <a
 											href="markAsRead?notificationId=${notification.notificationId}"
 											class="btn btn-sm btn-success"> <i class="mdi mdi-read"></i>Mark as Read </a> <a
-											href="deleteNotification?notificationd=${notification.notificationId}"
+											href="deleteNotification?notificationId=${notification.notificationId}"
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this notification?')">
 												<i class="mdi mdi-delete"></i> Delete </a></td>

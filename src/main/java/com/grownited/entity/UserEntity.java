@@ -128,5 +128,9 @@ public class UserEntity {
 	public void setOtp(Integer otp) {
 		this.otp = otp;
 	}
+	
+	public String getFullUserName() {
+		return firstName + " " + lastName;
+	}
 
 }

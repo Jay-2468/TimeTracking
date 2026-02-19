@@ -94,7 +94,7 @@
 								 --%>
 										<%--<td>${user.firstName}
 									${user.lastName}</td> --%>
-										<td>${task.assignedTo}</td>
+										<td>${userMap[task.assignedTo]}</td>
 
 										<!-- Actions -->
 										<td class="text-center"><a

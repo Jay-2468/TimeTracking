@@ -23,7 +23,7 @@
                         Enter your email address to reset your password
                     </p>
 
-                    <form action="ForgotPassword" method="post">
+                    <form action="sendOTP" method="post">
 
                         <!-- Email -->
                         <div class="mb-3">

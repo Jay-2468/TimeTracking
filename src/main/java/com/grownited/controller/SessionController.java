@@ -64,11 +64,6 @@ public class SessionController {
 		return "Authentication/Login";
 	}
 
-	@GetMapping("/forgotPassword")
-	public String openForgotPasswordPage() {
-		return "Authentication/ForgotPassword"; // Login jsp file name
-	}
-
 	@PostMapping("/register") // this should be same as action value in the form
 	public String register(UserEntity userEntity) {
 
@@ -94,5 +89,5 @@ public class SessionController {
 		session.invalidate();
 		return "redirect:/login";
 	}
-
+	
 }

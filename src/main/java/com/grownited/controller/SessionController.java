@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import com.grownited.service.EmailService;
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class SessionController {
@@ -29,6 +31,9 @@ public class SessionController {
 	@Autowired
 	EmailService emailService;
 
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	@GetMapping("/signup")
 	public String openSignupPage() {
 		return "Authentication/Signup"; // Signup jsp file name
@@ -45,7 +50,8 @@ public class SessionController {
 
 		if (opUser.isPresent()) {
 			UserEntity dbUser = opUser.get();
-			if (dbUser.getPassword().equals(password)) {
+//			if (dbUser.getPassword().equals(password)) {
+			if (passwordEncoder.matches(password, dbUser.getPassword())) {
 				session.setAttribute("user", dbUser);
 
 				if (dbUser.getRole() == Role.ADMIN) {
@@ -65,7 +71,7 @@ public class SessionController {
 	}
 
 	@PostMapping("/register") // this should be same as action value in the form
-	public String register(UserEntity userEntity) {
+	public String register(UserEntity userEntity, MultipartFile profilePicture) {
 
 		System.out.println(userEntity.getFirstName());
 		System.out.println(userEntity.getLastName());
@@ -74,6 +80,12 @@ public class SessionController {
 
 		userEntity.setRole(Role.DEVELOPER);
 		userEntity.setCreatedAt(LocalDate.now());
+		
+		// Encrypting Password
+		String encodedPassword = passwordEncoder.encode(userEntity.getPassword());
+		userEntity.setPassword(encodedPassword);
+		
+		// file upload
 
 		// we create Repository for every Entity/Database to separate the logic for
 		// Database queries

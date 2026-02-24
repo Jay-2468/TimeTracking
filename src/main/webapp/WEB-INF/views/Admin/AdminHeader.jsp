@@ -88,11 +88,11 @@
 				class="nav-link dropdown-toggle" id="profileDropdown" href="#"
 				data-bs-toggle="dropdown" aria-expanded="false">
 					<div class="nav-profile-img">
-						<c:if test="${not empty sessionScope.user.profilePicture}">
-							<img src="${sessionScope.user.profilePicture}" alt="image">
+						<c:if test="${not empty sessionScope.user.profilePictureURL}">
+							<img src="${sessionScope.user.profilePictureURL}" alt="image">
 						</c:if>
 
-						<c:if test="${empty sessionScope.user.profilePicture}">
+						<c:if test="${empty sessionScope.user.profilePictureURL}">
 							<img src="../../../assets/images/faces/dummy-user.png"
 								alt="image">
 						</c:if>
@@ -105,13 +105,14 @@
 					class="dropdown-menu navbar-dropdown dropdown-menu-end p-0 border-0 font-size-sm"
 					aria-labelledby="profileDropdown" data-x-placement="bottom-end">
 					<div class="p-3 text-center bg-primary">
-						<c:if test="${not empty sessionScope.user.profilePicture}">
-							<img src="${sessionScope.user.profilePicture}" alt="image">
+						<c:if test="${not empty sessionScope.user.profilePictureURL}">
+							<img src="${sessionScope.user.profilePictureURL}" alt="image"
+								width=80 height=80>
 						</c:if>
 
-						<c:if test="${empty sessionScope.user.profilePicture}">
-							<img src="../../../assets/images/faces/face28.png"
-								alt="image">
+						<c:if test="${empty sessionScope.user.profilePictureURL}">
+							<img src="../../../assets/images/faces/face28.png" alt="image"
+								width=80 height=80>
 						</c:if>
 					</div>
 					<div class="p-2">

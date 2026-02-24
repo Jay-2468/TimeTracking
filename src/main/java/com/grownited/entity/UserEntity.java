@@ -31,7 +31,7 @@ public class UserEntity {
 	private Integer contactNumber;
 	private String email;
 	private String password;
-	private String profilePicture;
+	private String profilePictureURL;
 	private LocalDate createdAt;
 	@Enumerated(EnumType.STRING)
 	@Column(length = 50)
@@ -89,12 +89,12 @@ public class UserEntity {
 		this.password = password;
 	}
 
-	public String getProfilePicture() {
-		return profilePicture;
+	public String getProfilePictureURL() {
+		return profilePictureURL;
 	}
 
-	public void setProfilePicture(String profilePicture) {
-		this.profilePicture = profilePicture;
+	public void setProfilePictureURL(String profilePictureURL) {
+		this.profilePictureURL = profilePictureURL;
 	}
 
 	public LocalDate getCreatedAt() {

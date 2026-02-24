@@ -20,7 +20,8 @@
 							New User</a></li>
 					<li class="nav-item"><a class="nav-link" href="usersList">List
 							Users</a></li>
-					<li class="nav-item"><a class="nav-link" href="updateRole">Update User Role</a></li>
+					<li class="nav-item"><a class="nav-link" href="updateRole">Update
+							User Role</a></li>
 				</ul>
 			</div></li>
 
@@ -170,12 +171,14 @@
 					<div>
 						<div class="d-flex align-items-center">
 							<div class="sidebar-profile-img">
-								<c:if test="${not empty sessionScope.user.profilePicture}">
-									<img src="${sessionScope.user.profilePicture}" alt="image">
+								<c:if test="${not empty sessionScope.user.profilePictureURL}">
+									<img src="${sessionScope.user.profilePictureURL}" alt="image"
+										width=31 height=31>
 								</c:if>
 
-								<c:if test="${empty sessionScope.user.profilePicture}">
-									<img src="../../../assets/images/faces/face28.png" alt="image">
+								<c:if test="${empty sessionScope.user.profilePictureURL}">
+									<img src="../../../assets/images/faces/face28.png" alt="image"
+										width=31 height=31>
 								</c:if>
 							</div>
 							<div class="sidebar-profile-text">

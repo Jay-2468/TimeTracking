@@ -28,8 +28,8 @@ public class TimeTrackingApplication {
 		Map<String, String> config = new HashMap<>();
 		config.put("cloud_name", "dd3wenmbz");
 		config.put("api_key", "155222639273967");
-		config.put("api_secret", "fBw7N922hfSSo6hxi815i2JO-9A\n");
-		return new Cloudinary(); 
+		config.put("api_secret", "fBw7N922hfSSo6hxi815i2JO-9A");
+		return new Cloudinary(config); 
 	}
 	
 }

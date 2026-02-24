@@ -1,6 +1,8 @@
 package com.grownited.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.cloudinary.Cloudinary;
 import com.grownited.entity.UserEntity;
 import com.grownited.entity.UserEntity.Role;
 import com.grownited.repository.UserRepository;
@@ -33,6 +36,9 @@ public class SessionController {
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	Cloudinary cloudinary;
 	
 	@GetMapping("/signup")
 	public String openSignupPage() {
@@ -85,8 +91,18 @@ public class SessionController {
 		String encodedPassword = passwordEncoder.encode(userEntity.getPassword());
 		userEntity.setPassword(encodedPassword);
 		
-		// file upload
-
+		// file uploading
+		System.out.println(profilePicture.getOriginalFilename());
+		try {
+			Map map = cloudinary.uploader().upload(profilePicture.getBytes(), null);
+			String profilePictureURL = map.get("secure_url").toString();
+			userEntity.setProfilePictureURL(profilePictureURL);
+			System.out.println(profilePictureURL);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		// we create Repository for every Entity/Database to separate the logic for
 		// Database queries
 		// for every Entity/Database there has to be a Repository (interface) file

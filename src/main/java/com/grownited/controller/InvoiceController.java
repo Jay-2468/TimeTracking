@@ -1,5 +1,6 @@
 package com.grownited.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class InvoiceController {
 	
 	@PostMapping("/generateInvoice")
 	public String generateInvoice(InvoiceEntity invoiceEntity) {
+		invoiceEntity.setInvoiceDate(LocalDate.now());
 		invoiceRepository.save(invoiceEntity);
 		return "redirect:/invoiceList";
 	}

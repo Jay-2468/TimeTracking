@@ -34,7 +34,7 @@
 					<div class="card-body">
 
 						<!-- multipart required for profile picture -->
-						<form action="createUser" method="post">
+						<form action="createUser" method="post" enctype="multipart/form-data">
 
 							<div class="row">
 

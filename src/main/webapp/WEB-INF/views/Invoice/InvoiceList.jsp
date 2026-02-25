@@ -67,8 +67,7 @@
 													value="${invoice.totalAmount}" type="currency" />
 										</strong></td>
 
-										<td><fmt:formatDate value="${invoice.invoiceDate}"
-												pattern="dd-MM-yyyy" /></td>
+										<td>${invoice.invoiceDate}</td>
 
 										<!-- Payment Status Badge -->
 										<td><c:choose>
@@ -81,11 +80,11 @@
 											</c:choose></td>
 
 										<!-- Actions -->
-										<td><a href="viewInvoice?id=${invoice.id}"
+										<td><a href="viewInvoice?invoiceId=${invoice.invoiceId}"
 											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>View
-										</a> <a href="editInvoice?id=${invoice.id}"
+										</a> <a href="editInvoice?invoiceId=${invoice.invoiceId}"
 											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>Edit
-										</a> <a href="deleteInvoice?id=${invoice.id}"
+										</a> <a href="deleteInvoice?invoiceId=${invoice.invoiceId}"
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this invoice?')">
 												<i class="mdi mdi-delete"></i>Delete

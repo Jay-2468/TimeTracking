@@ -59,7 +59,7 @@
 									<tr>
 
 										<!-- Employee Name (Join or DTO mapping required) -->
-										<td>${payroll.userName}</td>
+										<td>${userMap[payroll.userId]}</td>
 
 										<td>${payroll.totalHours}</td>
 
@@ -67,16 +67,15 @@
 													value="${payroll.salaryAmount}" type="currency" />
 										</strong></td>
 
-										<td><fmt:formatDate value="${payroll.paymentDate}"
-												pattern="dd-MM-yyyy" /></td>
+										<td>${payroll.paymentDate}</td>
 
-										<td><a href="viewPayroll?id=${payroll.id}"
+										<td><a href="viewPayroll?payrollId=${payroll.payrollId}"
 											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>
 												View
-										</a> <a href="editPayroll?id=${payroll.id}"
+										</a> <a href="editPayroll?payrollId=${payroll.payrollId}"
 											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
 												Edit
-										</a> <a href="deletePayroll?id=${payroll.id}"
+										</a> <a href="deletePayroll?payrollId=${payroll.payrollId}"
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this payroll record?')">
 												<i class="mdi mdi-delete"></i> Delete

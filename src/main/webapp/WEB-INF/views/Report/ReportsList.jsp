@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
@@ -79,14 +80,15 @@
 										<td class="text-center">${report.generatedDate}</td>
 
 										<!-- Report Data (Short Preview) -->
-										<%--<td><c:choose>
-												 <c:when test="${fn:length(report.reportData) > 100}">
-                                        ${fn:substring(report.reportData, 0, 100)}...
-                                    </c:when>
+										<td><c:choose>
+												<c:when
+													test="${not empty report.reportData and fn:length(report.reportData) > 100}">
+        ${fn:substring(report.reportData, 0, 100)}...
+    </c:when>
 												<c:otherwise>
-                                        ${report.reportData}
-                                    </c:otherwise>
-											</c:choose></td>--%><td></td>
+        ${report.reportData}
+    </c:otherwise>
+											</c:choose></td>
 
 										<!-- Actions -->
 										<td class="text-center"><a

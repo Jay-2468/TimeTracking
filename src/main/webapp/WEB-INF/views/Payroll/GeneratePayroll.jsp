@@ -32,7 +32,7 @@
 				<div class="card shadow-sm">
 					<div class="card-body">
 
-						<form action="savePayroll" method="post">
+						<form action="generatePayroll" method="post">
 
 							<div class="row">
 
@@ -45,7 +45,7 @@
 
 										<!-- users list must be sent from servlet -->
 										<c:forEach items="${users}" var="user">
-											<option value="${user.id}">${user.firstName}
+											<option value="${user.userId}">${user.firstName}
 												${user.lastName}</option>
 										</c:forEach>
 

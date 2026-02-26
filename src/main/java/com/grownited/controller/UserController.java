@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,9 @@ public class UserController {
 
 	@Autowired
 	UserRepository userRepository;
+
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	@GetMapping("/usersList")
 	public String usersList(Model model) {
@@ -52,6 +56,10 @@ public class UserController {
 
 	@PostMapping("/createUser")
 	public String createUser(UserEntity userEntity) {
+		// Encrypting Password
+		String encodedPassword = passwordEncoder.encode(userEntity.getPassword());
+		userEntity.setPassword(encodedPassword);
+
 		userEntity.setCreatedAt(LocalDate.now());
 		userRepository.save(userEntity);
 		return "redirect:/usersList";

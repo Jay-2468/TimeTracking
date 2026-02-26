@@ -6,6 +6,23 @@
 <html lang="en">
 <head>
 <jsp:include page="AdminCSS.jsp"></jsp:include>
+
+<style>
+body {
+	background-color: #f4f6f9;
+}
+
+.card {
+	border-radius: 12px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stat-number {
+	font-size: 24px;
+	font-weight: bold;
+}
+</style>
+
 </head>
 <body>
 	<div class="container-scroller">
@@ -18,83 +35,80 @@
 			<!-- partial -->
 			<div class="main-panel">
 				<div class="content-wrapper">
-					<h2 class="text-dark font-weight-bold mb-2">Welcome ${user.firstName}!</h2>
-					<h2 class="text-dark font-weight-bold mb-2">Overview dashboard</h2>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="tab-content tab-transparent-content">
-								<div class="tab-pane fade show active" id="business-1"
-									role="tabpanel" aria-labelledby="business-tab">
-									<div class="row">
-										<div
-											class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
-											<div class="card">
-												<div class="card-body text-center">
-													<h5 class="mb-2 text-dark font-weight-normal">Orders</h5>
-													<h2 class="mb-4 text-dark font-weight-bold">932.00</h2>
-													<div
-														class="dashboard-progress dashboard-progress-1 d-flex align-items-center justify-content-center item-parent">
-														<i
-															class="mdi mdi-lightbulb icon-md absolute-center text-dark"></i>
-													</div>
-													<p class="mt-4 mb-0">Completed</p>
-													<h3 class="mb-0 font-weight-bold mt-2 text-dark">5443</h3>
-												</div>
-											</div>
-										</div>
-										<div
-											class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
-											<div class="card">
-												<div class="card-body text-center">
-													<h5 class="mb-2 text-dark font-weight-normal">Unique
-														Visitors</h5>
-													<h2 class="mb-4 text-dark font-weight-bold">756,00</h2>
-													<div
-														class="dashboard-progress dashboard-progress-2 d-flex align-items-center justify-content-center item-parent">
-														<i
-															class="mdi mdi-account-circle icon-md absolute-center text-dark"></i>
-													</div>
-													<p class="mt-4 mb-0">Increased since yesterday</p>
-													<h3 class="mb-0 font-weight-bold mt-2 text-dark">50%</h3>
-												</div>
-											</div>
-										</div>
-										<div
-											class="col-xl-3  col-lg-6 col-sm-6 grid-margin stretch-card">
-											<div class="card">
-												<div class="card-body text-center">
-													<h5 class="mb-2 text-dark font-weight-normal">Impressions</h5>
-													<h2 class="mb-4 text-dark font-weight-bold">100,38</h2>
-													<div
-														class="dashboard-progress dashboard-progress-3 d-flex align-items-center justify-content-center item-parent">
-														<i class="mdi mdi-eye icon-md absolute-center text-dark"></i>
-													</div>
-													<p class="mt-4 mb-0">Increased since yesterday</p>
-													<h3 class="mb-0 font-weight-bold mt-2 text-dark">35%</h3>
-												</div>
-											</div>
-										</div>
-										<div
-											class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
-											<div class="card">
-												<div class="card-body text-center">
-													<h5 class="mb-2 text-dark font-weight-normal">Followers</h5>
-													<h2 class="mb-4 text-dark font-weight-bold">4250k</h2>
-													<div
-														class="dashboard-progress dashboard-progress-4 d-flex align-items-center justify-content-center item-parent">
-														<i class="mdi mdi-cube icon-md absolute-center text-dark"></i>
-													</div>
-													<p class="mt-4 mb-0">Decreased since yesterday</p>
-													<h3 class="mb-0 font-weight-bold mt-2 text-dark">25%</h3>
-												</div>
-											</div>
-										</div>
-									</div>
+					<h2 class="text-dark font-weight-bold mb-2">Welcome
+						${user.firstName}!</h2>
 
-								</div>
+					<!-- Page Title -->
+					<div class="d-flex justify-content-between mb-4">
+						<h3>Admin Dashboard</h3>
+					</div>
+
+					<!-- 🔹 Statistics Cards -->
+					<div class="row g-4">
+
+						<div class="col-md-3">
+							<div class="card p-3">
+								<h6>Total Users</h6>
+								<div class="stat-number text-primary">${totalUsers}</div>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="card p-3">
+								<h6>Total Projects</h6>
+								<div class="stat-number text-success">${totalProjects}</div>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="card p-3">
+								<h6>Pending Timesheets</h6>
+								<div class="stat-number text-warning">${pendingTimesheets}</div>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="card p-3">
+								<h6>Unpaid Invoices</h6>
+								<div class="stat-number text-danger">${unpaidInvoices}</div>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- 🔹 Charts Section -->
+					<div class="row mt-5">
+
+						<div class="col-md-6">
+							<div class="card p-3">
+								<h6>Weekly Hours Overview</h6>
+								<canvas id="hoursChart"></canvas>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="card p-3">
+								<h6>Monthly Revenue</h6>
+								<canvas id="revenueChart"></canvas>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- 🔹 Recent Activity -->
+					<div class="row mt-5">
+						<div class="col-md-12">
+							<div class="card p-3">
+								<h6>Recent Activities</h6>
+								<ul class="list-group list-group-flush">
+									<c:forEach items="${recentActivities}" var="activity">
+										<li class="list-group-item">${activity}</li>
+									</c:forEach>
+								</ul>
 							</div>
 						</div>
 					</div>
+
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:partials/_footer.html -->
@@ -105,6 +119,38 @@
 		</div>
 		<!-- page-body-wrapper ends -->
 	</div>
+	<!-- Chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+	<script>
+    // Weekly Hours Chart
+    const ctx1 = document.getElementById('hoursChart');
+    new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ${weekLabels},
+            datasets: [{
+                label: 'Hours',
+                data: ${weekHours},
+                borderWidth: 1
+            }]
+        }
+    });
+
+    // Monthly Revenue Chart
+    const ctx2 = document.getElementById('revenueChart');
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ${monthLabels},
+            datasets: [{
+                label: 'Revenue',
+                data: ${monthlyRevenue},
+                borderWidth: 2
+            }]
+        }
+    });
+	</script>
 
 </body>
 </html>

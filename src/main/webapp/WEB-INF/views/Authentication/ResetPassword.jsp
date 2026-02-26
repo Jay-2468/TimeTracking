@@ -58,13 +58,13 @@ body {
 
 								<!-- Current Password -->
 								<div class="mb-3">
-									<label class="form-label">Current Password</label> <input
+									<label class="form-label">New Password</label> <input
 										type="password" name="password" class="form-control" required>
 								</div>
 
 								<!-- New Password -->
 								<div class="mb-3">
-									<label class="form-label">New Password</label> <input
+									<label class="form-label">Confirm Password</label> <input
 										type="password" name="newPassword" class="form-control"
 										required>
 								</div>

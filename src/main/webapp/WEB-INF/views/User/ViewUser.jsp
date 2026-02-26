@@ -37,7 +37,7 @@
 							<!-- Profile Picture -->
 							<div class="col-md-3 text-center mb-3">
 								<c:if test="${not empty user.profilePictureURL}">
-									<img src="uploads/${user.profilePictureURL}"
+									<img src="${user.profilePictureURL}"
 										class="rounded-circle mb-2" width="120" height="120"
 										alt="Profile Picture">
 								</c:if>

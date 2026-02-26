@@ -62,7 +62,7 @@
 										<!-- Profile Picture -->
 										<td class="text-center"><c:if
 												test="${not empty user.profilePictureURL}">
-												<img src="uploads/${user.profilePictureURL}"
+												<img src="${user.profilePictureURL}"
 													class="rounded-circle" width="40" height="40" alt="Profile">
 											</c:if> <c:if test="${empty user.profilePictureURL}">
 												<span class="text-muted">N/A</span>

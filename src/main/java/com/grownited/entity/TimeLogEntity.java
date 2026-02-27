@@ -14,11 +14,11 @@ import jakarta.persistence.Table;
 @Table(name = "time_logs")
 public class TimeLogEntity {
 
-	private enum LogType {
+	public enum LogType {
 		AUTO, MANUAL
 	}
 
-	private enum ApprovalStatus {
+	public enum ApprovalStatus {
 		APPROVED, REJECTED, PENDING
 	}
 

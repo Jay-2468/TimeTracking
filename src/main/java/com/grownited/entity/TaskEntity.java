@@ -14,11 +14,11 @@ import jakarta.persistence.Table;
 @Table(name = "tasks")
 public class TaskEntity {
 
-	private enum Priority {
+	public enum Priority {
 		HIGH, MEDIUM, LOW
 	}
 
-	private enum Status {
+	public enum Status {
 		PENDING, IN_PROGRESS, COMPLETED
 	}
 

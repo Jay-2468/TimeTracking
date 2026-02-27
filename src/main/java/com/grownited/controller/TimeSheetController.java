@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grownited.entity.TimeSheetEntity;
+import com.grownited.entity.TimeSheetEntity.Status;
 import com.grownited.repository.TimeSheetRepository;
 
 @Controller
@@ -24,6 +25,7 @@ public class TimeSheetController {
 	
 	@PostMapping("/saveTimeSheet")
 	public String saveTimeSheet(TimeSheetEntity timeSheetEntity) {
+		timeSheetEntity.setStatus(Status.SUBMITTED);
 		timeSheetRepository.save(timeSheetEntity);
 		return "redirect:/timeSheetsList";
 	}

@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 @Table(name = "projects")
 public class ProjectEntity {
 	
-	private enum Status {
+	public enum Status {
 		PLANNED, ONGOING, COMPLETED
 	}
 

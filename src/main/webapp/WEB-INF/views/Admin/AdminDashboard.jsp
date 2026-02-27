@@ -124,28 +124,26 @@ body {
 
 	<script>
     // Weekly Hours Chart
-    const ctx1 = document.getElementById('hoursChart');
-    new Chart(ctx1, {
+    new Chart(document.getElementById('hoursChart'), {
         type: 'bar',
         data: {
-            labels: ${weekLabels},
+            labels: JSON.parse('${weekLabels}'),
             datasets: [{
                 label: 'Hours',
-                data: ${weekHours},
+                data: JSON.parse('${weekHours}'),
                 borderWidth: 1
             }]
         }
     });
 
     // Monthly Revenue Chart
-    const ctx2 = document.getElementById('revenueChart');
-    new Chart(ctx2, {
+    new Chart(document.getElementById('revenueChart'), {
         type: 'line',
         data: {
-            labels: ${monthLabels},
+            labels: JSON.parse('${monthLabels}'),
             datasets: [{
                 label: 'Revenue',
-                data: ${monthlyRevenue},
+                data: JSON.parse('${monthlyRevenue}'),
                 borderWidth: 2
             }]
         }

@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 @Table(name = "invoices")
 public class InvoiceEntity {
 
-	private enum PaymentStatus {
+	public enum PaymentStatus {
 		PAID, UNPAID	
 	}
 	

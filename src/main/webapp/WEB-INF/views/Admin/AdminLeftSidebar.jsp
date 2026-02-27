@@ -104,33 +104,17 @@
 			</div></li>
 
 		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageNotifications"
-			aria-expanded="false" aria-controls="manageNotifications"> <span
-				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-				<span class="menu-title">Manage Notifications</span> <i
-				class="menu-arrow"></i>
-		</a>
-			<div class="collapse" id="manageNotifications">
-				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link"
-						href="createNotification">Send Notification</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="notificationsList">List Notifications</a></li>
-				</ul>
-			</div></li>
-
-		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageReports" aria-expanded="false"
-			aria-controls="manageReports"> <span class="icon-bg"><i
+			data-bs-toggle="collapse" href="#managePayroll" aria-expanded="false"
+			aria-controls="managePayroll"> <span class="icon-bg"><i
 					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
-				class="menu-title">Manage Reports</span> <i class="menu-arrow"></i>
+				class="menu-title">Manage Payroll</span> <i class="menu-arrow"></i>
 		</a>
-			<div class="collapse" id="manageReports">
+			<div class="collapse" id="managePayroll">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="createReport">Generate
-							Reports</a></li>
-					<li class="nav-item"><a class="nav-link" href="reportsList">List
-							Reports</a></li>
+					<li class="nav-item"><a class="nav-link" href="createPayroll">Create
+							Payroll</a></li>
+					<li class="nav-item"><a class="nav-link" href="payrollRecords">List
+							Payrolls</a></li>
 				</ul>
 			</div></li>
 
@@ -150,20 +134,35 @@
 			</div></li>
 
 		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#managePayroll" aria-expanded="false"
-			aria-controls="managePayroll"> <span class="icon-bg"><i
+			data-bs-toggle="collapse" href="#manageReports" aria-expanded="false"
+			aria-controls="manageReports"> <span class="icon-bg"><i
 					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
-				class="menu-title">Manage Payroll</span> <i class="menu-arrow"></i>
+				class="menu-title">Manage Reports</span> <i class="menu-arrow"></i>
 		</a>
-			<div class="collapse" id="managePayroll">
+			<div class="collapse" id="manageReports">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="createPayroll">Create
-							Payroll</a></li>
-					<li class="nav-item"><a class="nav-link" href="payrollRecords">List
-							Payrolls</a></li>
+					<li class="nav-item"><a class="nav-link" href="createReport">Generate
+							Reports</a></li>
+					<li class="nav-item"><a class="nav-link" href="reportsList">List
+							Reports</a></li>
 				</ul>
 			</div></li>
 
+		<li class="nav-item"><a class="nav-link"
+			data-bs-toggle="collapse" href="#manageNotifications"
+			aria-expanded="false" aria-controls="manageNotifications"> <span
+				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+				<span class="menu-title">Manage Notifications</span> <i
+				class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="manageNotifications">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link"
+						href="createNotification">Send Notification</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="notificationsList">List Notifications</a></li>
+				</ul>
+			</div></li>
 
 		<li class="nav-item sidebar-user-actions">
 			<div class="user-details">

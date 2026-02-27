@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 @Table(name = "time_sheets")
 public class TimeSheetEntity {
 
-	private enum Status {
+	public enum Status {
 		SUBMITTED, APPROVED, REJECTED
 	}
 

@@ -26,11 +26,11 @@ body {
 <body>
 
 	<!-- Header -->
-	<jsp:include page="../Admin/AdminHeader.jsp"></jsp:include>
+	<jsp:include page="includes/PMHeader.jsp"></jsp:include>
 
 	<div class="container-fluid page-body-wrapper">
 		<!-- Sidebar -->
-		<jsp:include page="../Admin/AdminLeftSidebar.jsp"></jsp:include>
+		<jsp:include page="includes/PMLeftSidebar.jsp"></jsp:include>
 
 		<!-- Main Content -->
 		<div class="main-panel">
@@ -38,7 +38,7 @@ body {
 				<h2 class="text-dark font-weight-bold mb-2">Project Manager
 					Dashboard</h2>
 
-				<h2 class="mb-4">Welcome, ${sessionScope.userName}</h2>
+				<h2 class="mb-4">Welcome, ${user.firstName}</h2>
 
 				<div class="row">
 

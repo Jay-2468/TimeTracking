@@ -63,7 +63,7 @@ public class SessionController {
 				if (dbUser.getRole() == Role.ADMIN) {
 					return "redirect:/admin-dashboard";
 				} else if (dbUser.getRole() == Role.PROJECT_MANAGER) {
-					return "redirect:/project-manager-dashboard";
+					return "redirect:/pm-dashboard";
 				} else if (dbUser.getRole() == Role.DEVELOPER) {
 					return "redirect:/developer-dashboard";
 				}

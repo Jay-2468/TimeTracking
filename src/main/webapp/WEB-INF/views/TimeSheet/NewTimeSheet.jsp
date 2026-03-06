@@ -26,7 +26,7 @@
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0">Create Weekly Time Sheet</h3>
-					<a href="timeSheetList" class="btn btn-secondary btn-sm"> Back
+					<a href="timeSheetsList" class="btn btn-secondary btn-sm"> Back
 						to List </a>
 				</div>
 

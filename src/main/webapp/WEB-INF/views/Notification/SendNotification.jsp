@@ -24,7 +24,7 @@
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0">Send Notification</h3>
-					<a href="notificationList" class="btn btn-secondary btn-sm">
+					<a href="notificationsList" class="btn btn-secondary btn-sm">
 						Back to Notifications </a>
 				</div>
 

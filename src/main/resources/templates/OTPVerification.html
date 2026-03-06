@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>OTP Verification</title>
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background-color:#f4f4f4;
+        margin:0;
+        padding:0;
+    }
+
+    .container{
+        max-width:600px;
+        margin:40px auto;
+        background:#ffffff;
+        padding:30px;
+        border-radius:8px;
+        box-shadow:0 0 10px rgba(0,0,0,0.1);
+        text-align:center;
+    }
+
+    .header{
+        font-size:24px;
+        font-weight:bold;
+        color:#333;
+        margin-bottom:20px;
+    }
+
+    .message{
+        font-size:16px;
+        color:#555;
+        margin-bottom:25px;
+    }
+
+    .otp-box{
+        display:inline-block;
+        padding:15px 30px;
+        font-size:28px;
+        font-weight:bold;
+        letter-spacing:5px;
+        background:#007bff;
+        color:#ffffff;
+        border-radius:6px;
+    }
+
+    .footer{
+        margin-top:30px;
+        font-size:13px;
+        color:#888;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        Time Tracking System
+    </div>
+
+    <div class="message">
+        Hello, ${name}<br><br>
+        You requested to reset your password.  
+        Please use the OTP below to verify your request.
+    </div>
+
+    <div class="otp-box">
+        ${otp}
+    </div>
+
+    <div class="message" style="margin-top:20px;">
+        This OTP will expire in <b>5 minutes</b>.
+    </div>
+
+    <div class="footer">
+        If you did not request this, please ignore this email.<br><br>
+        © 2026 Time Tracking System
+    </div>
+
+</div>
+
+</body>
+</html>

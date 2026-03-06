@@ -31,7 +31,7 @@
 				<h2 class="text-dark font-weight-bold mb-2">Create New Module</h2>
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0">Create New Module</h3>
-					<a href="moduleList" class="btn btn-secondary btn-sm"> Back to
+					<a href="modulesList" class="btn btn-secondary btn-sm"> Back to
 						List </a>
 				</div>
 

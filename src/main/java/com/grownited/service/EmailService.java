@@ -9,6 +9,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import com.grownited.entity.ForgotPasswordEntity;
 import com.grownited.entity.UserEntity;
 
 import jakarta.mail.internet.MimeMessage;
@@ -36,7 +37,7 @@ public class EmailService {
 
 			helper = new MimeMessageHelper(message, true);
 			helper.setTo(user.getEmail());
-			helper.setSubject("TimeTracking - Welcome aboard !!! ");
+			helper.setSubject("TimeTracking - Your Account is Ready !!! ");
 			helper.setText(body, true);
 
 			javaMailSender.send(message);
@@ -44,6 +45,29 @@ public class EmailService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
 
+	public void sendOtp(UserEntity user, ForgotPasswordEntity fp) {
+		MimeMessage message = javaMailSender.createMimeMessage();
+		Resource resource = resourceLoader.getResource("classpath:templates/OTPVerification.html");
+
+		try {
+			String html = new String(resource.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+
+			MimeMessageHelper helper;
+
+			String body = html.replace("${name}", user.getFirstName()).replace("${otp}",
+					String.valueOf(fp.getOtp()));
+
+			helper = new MimeMessageHelper(message, true);
+			helper.setTo(user.getEmail());
+			helper.setSubject("TimeTracking - OTP Code for Verification");
+			helper.setText(body, true);
+
+			javaMailSender.send(message);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

@@ -12,6 +12,7 @@ import com.grownited.entity.ForgotPasswordEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.ForgotPasswordRepository;
 import com.grownited.repository.UserRepository;
+import com.grownited.service.EmailService;
 import com.grownited.service.OtpService;
 
 @Controller
@@ -24,6 +25,9 @@ public class ForgotPasswordController {
 
 	@Autowired
 	OtpService otpService;
+	
+	@Autowired
+	EmailService emailService;
 
 	@GetMapping("/forgotPassword")
 	public String openForgotPasswordPage() {
@@ -48,7 +52,9 @@ public class ForgotPasswordController {
 
 			fp.setRequestTime(LocalDateTime.now());
 			forgotPasswordRepository.save(fp);
-
+			
+			emailService.sendOtp(user, fp);
+			
 			System.out.println("Generated otp: " + otp);
 
 			return "redirect:/resetPassword";

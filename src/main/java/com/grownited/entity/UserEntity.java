@@ -39,7 +39,6 @@ public class UserEntity {
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
 	private Status status; // status : Active / Inactive
-	private Integer otp;
 
 	public Integer getUserId() {
 		return userId;
@@ -119,14 +118,6 @@ public class UserEntity {
 
 	public void setStatus(Status status) {
 		this.status = status;
-	}
-
-	public Integer getOtp() {
-		return otp;
-	}
-
-	public void setOtp(Integer otp) {
-		this.otp = otp;
 	}
 	
 	public String getFullUserName() {

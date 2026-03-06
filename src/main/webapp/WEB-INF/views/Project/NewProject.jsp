@@ -27,7 +27,7 @@
 			<div class="content-wrapper">
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h2 class="text-dark font-weight-bold mb-2">Create New Project</h2>
-					<a href="projectList" class="btn btn-secondary btn-sm"> Back to
+					<a href="projectsList" class="btn btn-secondary btn-sm"> Back to
 						List </a>
 				</div>
 				<div class="card shadow">

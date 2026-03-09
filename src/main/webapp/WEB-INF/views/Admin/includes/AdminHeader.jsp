@@ -4,7 +4,7 @@
 	class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 	<div
 		class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-		<a class="navbar-brand brand-logo" href="/pm-dashboard"><h2
+		<a class="navbar-brand brand-logo" href="/admin-dashboard"><h2
 				class="text-success m-0">Time Tracking</h2></a>
 	</div>
 	<div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -143,7 +143,7 @@
 							class="mdi mdi-lock ms-1"></i>
 						</a> <a
 							class="dropdown-item py-1 d-flex align-items-center justify-content-between"
-							href="/pm/logout"> <span>Log Out</span> <i
+							href="/admin/logout"> <span>Log Out</span> <i
 							class="mdi mdi-logout ms-1"></i>
 						</a>
 					</div>

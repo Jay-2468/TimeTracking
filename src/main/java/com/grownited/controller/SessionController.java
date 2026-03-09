@@ -112,8 +112,14 @@ public class SessionController {
 		return "redirect:/login";
 	}
 	
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
+	@GetMapping("/admin/logout")
+	public String adminLogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
+	}
+	
+	@GetMapping("/pm/logout")
+	public String pmLogout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/login";
 	}

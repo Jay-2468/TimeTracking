@@ -18,6 +18,7 @@ public class ModuleEntity {
 	private String description;
 	@Transient
 	private String projectName;
+	private Integer createdBy; // FK
 
 	public Integer getModuleId() {
 		return moduleId;
@@ -58,7 +59,13 @@ public class ModuleEntity {
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
-	
-	
+
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
 
 }

@@ -6,7 +6,7 @@
 <head>
 <title>Project Manager Dashboard</title>
 
-<jsp:include page="../Admin/AdminCSS.jsp"></jsp:include>
+<jsp:include page="../GlobalCSS.jsp"></jsp:include>
 <style>
 body {
 	background-color: #f4f6f9;
@@ -67,7 +67,7 @@ body {
 						<div class="card card-box bg-warning text-white">
 							<div class="card-body">
 								<h5>Team Members</h5>
-								<h3>${totalMembers}</h3>
+								<h3>${totalTeamMembers}</h3>
 							</div>
 						</div>
 					</div>
@@ -77,7 +77,7 @@ body {
 						<div class="card card-box bg-danger text-white">
 							<div class="card-body">
 								<h5>Pending Approvals</h5>
-								<h3>${pendingTimesheets}</h3>
+								<h3>${totalPendingTimesheets}</h3>
 							</div>
 						</div>
 					</div>
@@ -112,7 +112,7 @@ body {
 				</div>
 			</div>
 			<!-- partial:partials/_footer.html -->
-			<jsp:include page="../Admin/AdminFooter.jsp"></jsp:include>
+			<jsp:include page="../GlobalFooter.jsp"></jsp:include>
 		</div>
 		<!-- main-panel ends -->
 	</div>

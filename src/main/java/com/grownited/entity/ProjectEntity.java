@@ -23,11 +23,11 @@ public class ProjectEntity {
 	private Integer projectId;
 	private String projectName;
 	private String description;
+	private Integer assignedTo; // FK - Drop Down
 	private LocalDate startDate;
 	private LocalDate endDate;
 	@Enumerated(EnumType.STRING)
 	private Status status; // status : Planned / Ongoing / Completed
-	private Integer createdBy; // Foreign Key - Project manager ID
 
 	public Integer getProjectId() {
 		return projectId;
@@ -51,6 +51,15 @@ public class ProjectEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+
+	public Integer getAssignedTo() {
+		return assignedTo;
+	}
+
+	public void setAssignedTo(Integer assignedTo) {
+		this.assignedTo = assignedTo;
 	}
 
 	public LocalDate getStartDate() {
@@ -77,12 +86,6 @@ public class ProjectEntity {
 		this.status = status;
 	}
 
-	public Integer getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(Integer createdBy) {
-		this.createdBy = createdBy;
-	}
+	
 
 }

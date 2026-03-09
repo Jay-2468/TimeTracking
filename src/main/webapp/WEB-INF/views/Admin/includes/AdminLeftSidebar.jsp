@@ -3,23 +3,41 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
 	<ul class="nav">
 		<li class="nav-item nav-category">Main</li>
-		<li class="nav-item"><a class="nav-link" href="/pm-dashboard">
-				<span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-				<span class="menu-title">Dashboard</span>
+		<li class="nav-item"><a class="nav-link" href="/"> <span
+				class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span> <span
+				class="menu-title">Dashboard</span>
 		</a></li>
+
+		<li class="nav-item"><a class="nav-link"
+			data-bs-toggle="collapse" href="#manageUsers" aria-expanded="false"
+			aria-controls="manageUsers"> <span class="icon-bg"><i
+					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
+				class="menu-title">Manage Users</span> <i class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="manageUsers">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link" href="/admin/newUser">Add
+							New User</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/usersList">List
+							Users</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/updateRole">Update
+							User Role</a></li>
+				</ul>
+			</div></li>
 
 		<li class="nav-item"><a class="nav-link"
 			data-bs-toggle="collapse" href="#manageProjects"
 			aria-expanded="false" aria-controls="manageProjects"> <span
 				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-				<span class="menu-title">View Projects</span> <i class="menu-arrow"></i>
+				<span class="menu-title">Manage Projects</span> <i
+				class="menu-arrow"></i>
 		</a>
 			<div class="collapse" id="manageProjects">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/newProject">Add
+					<li class="nav-item"><a class="nav-link" href="/admin/newProject">Add
 							New Project</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/projectsList">List Projects</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/projectsList">List
+							Projects</a></li>
 				</ul>
 			</div></li>
 
@@ -31,10 +49,10 @@
 		</a>
 			<div class="collapse" id="manageModules">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/newModule">Create
+					<li class="nav-item"><a class="nav-link" href="/admin/newModule">Create
 							New Module</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/modulesList">List Modules</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/modulesList">List
+							Modules</a></li>
 				</ul>
 			</div></li>
 
@@ -46,23 +64,10 @@
 		</a>
 			<div class="collapse" id="manageTasks">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/newTask">Add
+					<li class="nav-item"><a class="nav-link" href="/admin/newTask">Add
 							New Task</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/tasksList">List Tasks</a></li>
-				</ul>
-			</div></li>
-
-		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageTasks" aria-expanded="false"
-			aria-controls="manageTasks"> <span class="icon-bg"><i
-					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
-				class="menu-title">View Team</span> <i class="menu-arrow"></i>
-		</a>
-			<div class="collapse" id="manageTasks">
-				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/newTask">View
-							Team Members</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/tasksList">List
+							Tasks</a></li>
 				</ul>
 			</div></li>
 
@@ -70,29 +75,61 @@
 			data-bs-toggle="collapse" href="#manageTimeLogs"
 			aria-expanded="false" aria-controls="manageTimeLogs"> <span
 				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-				<span class="menu-title">View Time Logs</span> <i class="menu-arrow"></i>
+				<span class="menu-title">Manage Time Logs</span> <i
+				class="menu-arrow"></i>
 		</a>
 			<div class="collapse" id="manageTimeLogs">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/createTimeLog">Add New Time Log</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/timeLogsList">List Time Logs</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/createTimeLog">Add
+							New Time Log</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/timeLogsList">List
+							Time Logs</a></li>
 				</ul>
 			</div></li>
 
 		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageTimeSheets"
-			aria-expanded="false" aria-controls="manageTimeSheets"> <span
+			data-bs-toggle="collapse" href="#manageTimesheets"
+			aria-expanded="false" aria-controls="manageTimesheets"> <span
 				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-				<span class="menu-title">Time Sheets</span> <i class="menu-arrow"></i>
+				<span class="menu-title">Manage Timesheets</span> <i
+				class="menu-arrow"></i>
 		</a>
-			<div class="collapse" id="manageTimeSheets">
+			<div class="collapse" id="manageTimesheets">
 				<ul class="nav flex-column sub-menu">
 					<li class="nav-item"><a class="nav-link"
-						href="createTimeSheet">Add New Time Sheet</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/timeSheetsList">List Time Sheets</a></li>
+						href="/admin/createTimesheet">Add New Timesheet</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/timesheetsList">List
+							Timesheets</a></li>
+				</ul>
+			</div></li>
+
+		<li class="nav-item"><a class="nav-link"
+			data-bs-toggle="collapse" href="#managePayroll" aria-expanded="false"
+			aria-controls="managePayroll"> <span class="icon-bg"><i
+					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
+				class="menu-title">Manage Payroll</span> <i class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="managePayroll">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link" href="/admin/createPayroll">Create
+							Payroll</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/payrollRecords">List
+							Payrolls</a></li>
+				</ul>
+			</div></li>
+
+		<li class="nav-item"><a class="nav-link"
+			data-bs-toggle="collapse" href="#manageInvoice" aria-expanded="false"
+			aria-controls="manageInvoice"> <span class="icon-bg"><i
+					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
+				class="menu-title">Manage Invoice</span> <i class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="manageInvoice">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link" href="/admin/createInvoice">Generate
+							Invoices</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/invoiceList">List
+							Invoices</a></li>
 				</ul>
 			</div></li>
 
@@ -104,10 +141,10 @@
 		</a>
 			<div class="collapse" id="manageReports">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/createReport">Generate Reports</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/reportsList">List Reports</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/createReport">Generate
+							Reports</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/reportsList">List
+							Reports</a></li>
 				</ul>
 			</div></li>
 
@@ -121,22 +158,9 @@
 			<div class="collapse" id="manageNotifications">
 				<ul class="nav flex-column sub-menu">
 					<li class="nav-item"><a class="nav-link"
-						href="/pm/createNotification">Send Notification</a></li>
+						href="/admin/createNotification">Send Notification</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="/pm/notificationsList">List Notifications</a></li>
-				</ul>
-			</div></li>
-
-		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageUsers" aria-expanded="false"
-			aria-controls="manageUsers"> <span class="icon-bg"><i
-					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
-				class="menu-title">Manage Employees</span> <i class="menu-arrow"></i>
-		</a>
-			<div class="collapse" id="manageUsers">
-				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/newUser">View
-							Employees</a></li>
+						href="/admin/notificationsList">List Notifications</a></li>
 				</ul>
 			</div></li>
 
@@ -181,7 +205,7 @@
 		</li>
 		<li class="nav-item sidebar-user-actions">
 			<div class="sidebar-user-menu">
-				<a href="/pm/logout" class="nav-link"><i
+				<a href="/admin/logout" class="nav-link"><i
 					class="mdi mdi-logout menu-icon"></i> <span class="menu-title">Log
 						Out</span></a>
 			</div>

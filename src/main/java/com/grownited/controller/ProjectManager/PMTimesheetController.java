@@ -7,37 +7,39 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grownited.entity.TimesheetEntity;
 import com.grownited.entity.TimesheetEntity.Status;
 import com.grownited.repository.TimesheetRepository;
 
 @Controller
+@RequestMapping("/pm")
 public class PMTimesheetController {
 
 	@Autowired
 	TimesheetRepository timesheetRepository;
 	
-	@GetMapping("/pm/createTimesheet")
+	@GetMapping("/createTimesheet")
 	public String createTimesheet() {
 		return "ProjectManager/Timesheet/NewTimesheet";
 	}
 	
-	@PostMapping("/pm/saveTimesheet")
+	@PostMapping("/saveTimesheet")
 	public String saveTimesheet(TimesheetEntity timesheetEntity) {
 		timesheetEntity.setStatus(Status.SUBMITTED);
 		timesheetRepository.save(timesheetEntity);
 		return "redirect:/pm/timesheetsList";
 	}
 	
-	@GetMapping("/pm/timesheetsList")
+	@GetMapping("/timesheetsList")
 	public String timesheetsList(Model model) {
 		List<TimesheetEntity> timesheetsList = timesheetRepository.findAll();
 		model.addAttribute("timesheetsList", timesheetsList);
 		return "ProjectManager/Timesheet/TimesheetsList";
 	}
 	
-	@GetMapping("/pm/deleteTimesheet")
+	@GetMapping("/deleteTimesheet")
 	public String deleteTimesheet(Integer timesheetId) {
 		timesheetRepository.deleteById(timesheetId);
 		return "redirect:/pm/timesheetsList";

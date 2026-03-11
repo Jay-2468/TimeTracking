@@ -1,4 +1,4 @@
-package com.grownited.controller.Admin;
+package com.grownited.controller;
 
 import java.time.LocalDateTime;
 import java.util.Optional;

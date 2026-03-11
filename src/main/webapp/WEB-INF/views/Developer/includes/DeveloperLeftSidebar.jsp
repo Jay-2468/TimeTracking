@@ -24,21 +24,6 @@
 			</div></li>
 
 		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageModules" aria-expanded="false"
-			aria-controls="manageModules"> <span class="icon-bg"><i
-					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
-				class="menu-title">Manage Modules</span> <i class="menu-arrow"></i>
-		</a>
-			<div class="collapse" id="manageModules">
-				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/newModule">Create
-							New Module</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/modulesList">List Modules</a></li>
-				</ul>
-			</div></li>
-
-		<li class="nav-item"><a class="nav-link"
 			data-bs-toggle="collapse" href="#manageTasks" aria-expanded="false"
 			aria-controls="manageTasks"> <span class="icon-bg"><i
 					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
@@ -54,16 +39,14 @@
 			</div></li>
 
 		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageTeam" aria-expanded="false"
-			aria-controls="manageTeam"> <span class="icon-bg"><i
+			data-bs-toggle="collapse" href="#manageTasks" aria-expanded="false"
+			aria-controls="manageTasks"> <span class="icon-bg"><i
 					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
-				class="menu-title">Manage Team</span> <i class="menu-arrow"></i>
+				class="menu-title">View Team</span> <i class="menu-arrow"></i>
 		</a>
-			<div class="collapse" id="manageTeam">
+			<div class="collapse" id="manageTasks">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/addTeamMember">Add
-							Team Members</a></li>
-					<li class="nav-item"><a class="nav-link" href="/pm/viewTeamMembers">View
+					<li class="nav-item"><a class="nav-link" href="/pm/newTask">View
 							Team Members</a></li>
 				</ul>
 			</div></li>
@@ -95,50 +78,6 @@
 						href="createTimeSheet">Add New Time Sheet</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/pm/timeSheetsList">List Time Sheets</a></li>
-				</ul>
-			</div></li>
-
-		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageReports" aria-expanded="false"
-			aria-controls="manageReports"> <span class="icon-bg"><i
-					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
-				class="menu-title">Manage Reports</span> <i class="menu-arrow"></i>
-		</a>
-			<div class="collapse" id="manageReports">
-				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/createReport">Generate Reports</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/reportsList">List Reports</a></li>
-				</ul>
-			</div></li>
-
-		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageNotifications"
-			aria-expanded="false" aria-controls="manageNotifications"> <span
-				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-				<span class="menu-title">Manage Notifications</span> <i
-				class="menu-arrow"></i>
-		</a>
-			<div class="collapse" id="manageNotifications">
-				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/createNotification">Send Notification</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/notificationsList">List Notifications</a></li>
-				</ul>
-			</div></li>
-
-		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageUsers" aria-expanded="false"
-			aria-controls="manageUsers"> <span class="icon-bg"><i
-					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
-				class="menu-title">Manage Employees</span> <i class="menu-arrow"></i>
-		</a>
-			<div class="collapse" id="manageUsers">
-				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/newUser">View
-							Employees</a></li>
 				</ul>
 			</div></li>
 

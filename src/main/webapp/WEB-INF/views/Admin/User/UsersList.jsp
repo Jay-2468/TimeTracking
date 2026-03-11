@@ -78,7 +78,7 @@
 										<td>${user.email}</td>
 
 										<!-- Role -->
-										<td><span class="badge bg-info text-dark">
+										<td><span class="badge bg-info">
 												${user.role} </span></td>
 
 										<!-- Status -->

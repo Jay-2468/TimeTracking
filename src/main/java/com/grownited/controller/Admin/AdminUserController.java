@@ -10,12 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.UserRepository;
 
 @Controller
-public class UserController {
+@RequestMapping("/admin")
+public class AdminUserController {
 
 	@Autowired
 	UserRepository userRepository;
@@ -23,14 +25,14 @@ public class UserController {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
-	@GetMapping("/admin/usersList")
+	@GetMapping("/usersList")
 	public String usersList(Model model) {
 		List<UserEntity> usersList = userRepository.findAll();
 		model.addAttribute("usersList", usersList);
 		return "Admin/User/UsersList";
 	}
 
-	@GetMapping("/admin/viewUser")
+	@GetMapping("/viewUser")
 	public String viewUser(Integer userId, Model model) {
 		Optional<UserEntity> opUser = userRepository.findById(userId);
 		if (opUser.isEmpty()) {
@@ -43,18 +45,18 @@ public class UserController {
 
 	}
 
-	@GetMapping("/admin/deleteUser")
+	@GetMapping("/deleteUser")
 	public String deleteUser(Integer userId) {
 		userRepository.deleteById(userId);
 		return "redirect:/admin/usersList";
 	}
 
-	@GetMapping("/admin/newUser")
+	@GetMapping("/newUser")
 	public String newUser() {
 		return "Admin/User/NewUser";
 	}
 
-	@PostMapping("/admin/createUser")
+	@PostMapping("/createUser")
 	public String createUser(UserEntity userEntity) {
 		// Encrypting Password
 		String encodedPassword = passwordEncoder.encode(userEntity.getPassword());
@@ -65,7 +67,7 @@ public class UserController {
 		return "redirect:/admin/usersList";
 	}
 
-	@GetMapping("/admin/updateRole")
+	@GetMapping("/updateRole")
 	public String updateRole(Model model) {
 		List<UserEntity> usersList = userRepository.findAll();
 		model.addAttribute("usersList", usersList);
@@ -73,7 +75,7 @@ public class UserController {
 		return "Admin/User/UpdateUserRole";
 	}
 
-	@PostMapping("/admin/updateUserRole")
+	@PostMapping("/updateUserRole")
 	public String updateUserRole(UserEntity userEntity, Integer userId, UserEntity.Role newRole) {
 		Optional<UserEntity> opUser = userRepository.findById(userId);
 

@@ -10,11 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.UserRepository;
 
 @Controller
+@RequestMapping("/pm")
 public class PMUserController {
 
 	@Autowired
@@ -23,14 +25,14 @@ public class PMUserController {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
-	@GetMapping("/pm/usersList")
+	@GetMapping("/usersList")
 	public String usersList(Model model) {
 		List<UserEntity> usersList = userRepository.findAll();
 		model.addAttribute("usersList", usersList);
 		return "ProjectManager/User/UsersList";
 	}
 
-	@GetMapping("/pm/viewUser")
+	@GetMapping("/viewUser")
 	public String viewUser(Integer userId, Model model) {
 		Optional<UserEntity> opUser = userRepository.findById(userId);
 		if (opUser.isEmpty()) {
@@ -41,47 +43,5 @@ public class PMUserController {
 			return "ProjectManager/User/ViewUser";
 		}
 
-	}
-
-	@GetMapping("/pm/deleteUser")
-	public String deleteUser(Integer userId) {
-		userRepository.deleteById(userId);
-		return "redirect:/pm/usersList";
-	}
-
-	@GetMapping("/pm/newUser")
-	public String newUser() {
-		return "ProjectManager/User/NewUser";
-	}
-
-	@PostMapping("/pm/createUser")
-	public String createUser(UserEntity userEntity) {
-		// Encrypting Password
-		String encodedPassword = passwordEncoder.encode(userEntity.getPassword());
-		userEntity.setPassword(encodedPassword);
-
-		userEntity.setCreatedAt(LocalDate.now());
-		userRepository.save(userEntity);
-		return "redirect:/pm/usersList";
-	}
-
-	@GetMapping("/pm/updateRole")
-	public String updateRole(Model model) {
-		List<UserEntity> usersList = userRepository.findAll();
-		model.addAttribute("usersList", usersList);
-		model.addAttribute("userRole", UserEntity.Role.values());
-		return "ProjectManager/User/UpdateUserRole";
-	}
-
-	@PostMapping("/pm/updateUserRole")
-	public String updateUserRole(UserEntity userEntity, Integer userId, UserEntity.Role newRole) {
-		Optional<UserEntity> opUser = userRepository.findById(userId);
-
-		if (opUser.isPresent()) {
-			UserEntity user = opUser.get();
-			user.setRole(newRole);
-			userRepository.save(user);
-		}
-		return "redirect:/pm/usersList";
 	}
 }

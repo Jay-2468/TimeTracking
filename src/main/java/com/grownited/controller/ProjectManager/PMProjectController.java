@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grownited.entity.ProjectEntity;
 import com.grownited.entity.UserEntity;
@@ -18,6 +19,7 @@ import jakarta.servlet.http.HttpSession;
 
 
 @Controller
+@RequestMapping("/pm")
 public class PMProjectController {
 
 	@Autowired
@@ -26,7 +28,7 @@ public class PMProjectController {
 	@Autowired
 	UserRepository userRepository;
 	
-	@GetMapping("/pm/newProject")
+	@GetMapping("/newProject")
 	public String newProject(Model model) {
 		List<UserEntity> userList = userRepository.findByRole(Role.PROJECT_MANAGER);
 		model.addAttribute("pmList", userList);
@@ -34,7 +36,7 @@ public class PMProjectController {
 		return "ProjectManager/Project/NewProject";
 	}
 	
-	@PostMapping("/pm/createProject") 
+	@PostMapping("/createProject") 
 	public String saveProject(ProjectEntity projectEntity){ 
 		
 		projectRepository.save(projectEntity);
@@ -42,7 +44,7 @@ public class PMProjectController {
 		return "redirect:/pm/projectsList";
 	}
 	
-	@GetMapping("/pm/projectsList")
+	@GetMapping("/projectsList")
 	public String projectsList(ProjectEntity projectEntity, Model model, HttpSession session) {
 		UserEntity user = (UserEntity) session.getAttribute("user");
 		List<ProjectEntity> projectsList = projectRepository.findByAssignedTo(user.getUserId());
@@ -50,7 +52,7 @@ public class PMProjectController {
 		return "ProjectManager/Project/ProjectsList";
 	}
 	
-	@GetMapping("/pm/deleteProject")
+	@GetMapping("/deleteProject")
 	public String deleteProject(Integer projectId) { 
 		projectRepository.deleteById(projectId);
 		

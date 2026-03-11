@@ -9,22 +9,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grownited.entity.NotificationEntity;
 import com.grownited.entity.NotificationEntity.Status;
 import com.grownited.repository.NotificationRepository;
 
 @Controller
-public class NotificationController {
+@RequestMapping("/admin")
+public class AdminNotificationController {
 	@Autowired
 	NotificationRepository notificationRepository;
 
-	@GetMapping("/admin/createNotification")
+	@GetMapping("/createNotification")
 	public String createNotification() {
 		return "Admin/Notification/SendNotification";
 	}
 
-	@PostMapping("/admin/sendNotification")
+	@PostMapping("/sendNotification")
 	public String sendNotification(NotificationEntity notificationEntity) {
 		notificationEntity.setSentTime(LocalDateTime.now());
 		notificationEntity.setStatus(Status.UNREAD);
@@ -32,20 +34,20 @@ public class NotificationController {
 		return "redirect:/admin/notificationsList";
 	}
 
-	@GetMapping("/admin/notificationsList")
+	@GetMapping("/notificationsList")
 	public String notificationsList(Model model) {
 		List<NotificationEntity> notifications = notificationRepository.findAll();
 		model.addAttribute("notifications", notifications);
 		return "Admin/Notification/NotificationsList";
 	}
 
-	@GetMapping("/admin/deleteNotification")
+	@GetMapping("/deleteNotification")
 	public String deleteNotification(Integer notificationId) {
 		notificationRepository.deleteById(notificationId);
 		return "redirect:/admin/notificationsList";
 	}
 
-	@GetMapping("/admin/markAsRead")
+	@GetMapping("/markAsRead")
 	public String markAsRead(Integer notificationId, Model model) {
 		Optional<NotificationEntity> opNotification = notificationRepository.findById(notificationId);
 

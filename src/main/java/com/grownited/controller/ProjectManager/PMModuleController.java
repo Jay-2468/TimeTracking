@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.grownited.entity.ModuleEntity;
 import com.grownited.entity.ProjectEntity;
@@ -16,9 +18,8 @@ import com.grownited.entity.UserEntity;
 import com.grownited.repository.ModuleRepository;
 import com.grownited.repository.ProjectRepository;
 
-import jakarta.servlet.http.HttpSession;
-
 @Controller
+@RequestMapping("/pm")
 public class PMModuleController {
 
 	@Autowired
@@ -27,23 +28,27 @@ public class PMModuleController {
 	@Autowired
 	ProjectRepository projectRepository;
 
-	@GetMapping("/pm/newModule")
-	public String newModule(Model model, HttpSession session) {
-		UserEntity user = (UserEntity) session.getAttribute("user");
+	@GetMapping("/newModule")
+	public String newModule(Model model, @SessionAttribute("user") UserEntity user) {
+		
 		List<ProjectEntity> projectsList = projectRepository.findByAssignedTo(user.getUserId());
 		model.addAttribute("projectsList", projectsList);
+		
 		return "ProjectManager/Module/NewModule";
 	}
 
-	@PostMapping("/pm/createModule")
-	public String createModule(ModuleEntity moduleEntity) {
+	@PostMapping("/createModule")
+	public String createModule(ModuleEntity moduleEntity, @SessionAttribute("user") UserEntity user) {
+		
+		moduleEntity.setCreatedBy(user.getUserId());
 		moduleRepository.save(moduleEntity);
+		
 		return "redirect:/pm/modulesList";
 	}
 
-	@GetMapping("/pm/modulesList")
-	public String modulesList(Model model) {
-		List<ModuleEntity> modulesList = moduleRepository.findAll();
+	@GetMapping("/modulesList")
+	public String modulesList(Model model, @SessionAttribute("user") UserEntity user) {
+		List<ModuleEntity> modulesList = moduleRepository.findByCreatedBy(user.getUserId());
 		List<ProjectEntity> projectList = projectRepository.findAll();
 		Map<Integer, String> projectMap = new HashMap<>();
 
@@ -56,10 +61,10 @@ public class PMModuleController {
 		return "ProjectManager/Module/ModulesList";
 	}
 
-	@GetMapping("/pm/deleteModule")
+	@GetMapping("/deleteModule")
 	public String deleteModule(Integer moduleId) {
 		moduleRepository.deleteById(moduleId);
-		return "redirect:/pm/moduleList";
+		return "redirect:/pm/modulesList";
 	}
 
 }

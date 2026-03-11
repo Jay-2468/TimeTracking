@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grownited.entity.ModuleEntity;
 import com.grownited.entity.ProjectEntity;
@@ -16,7 +17,8 @@ import com.grownited.repository.ModuleRepository;
 import com.grownited.repository.ProjectRepository;
 
 @Controller
-public class ModuleController {
+@RequestMapping("/admin")
+public class AdminModuleController {
 
 	@Autowired
 	ModuleRepository moduleRepository;
@@ -24,20 +26,20 @@ public class ModuleController {
 	@Autowired
 	ProjectRepository projectRepository;
 
-	@GetMapping("/admin/newModule")
+	@GetMapping("/newModule")
 	public String newModule(Model model) {
 		List<ProjectEntity> projectsList = projectRepository.findAll();
 		model.addAttribute("projectsList", projectsList);
 		return "Admin/Module/NewModule";
 	}
 
-	@PostMapping("/admin/createModule")
+	@PostMapping("/createModule")
 	public String createModule(ModuleEntity moduleEntity) {
 		moduleRepository.save(moduleEntity);
 		return "redirect:/admin/modulesList";
 	}
 
-	@GetMapping("/admin/modulesList")
+	@GetMapping("/modulesList")
 	public String modulesList(Model model) {
 		List<ModuleEntity> modulesList = moduleRepository.findAll();
 		List<ProjectEntity> projectList = projectRepository.findAll();
@@ -52,7 +54,7 @@ public class ModuleController {
 		return "Admin/Module/ModulesList";
 	}
 
-	@GetMapping("/admin/deleteModule")
+	@GetMapping("/deleteModule")
 	public String deleteModule(Integer moduleId) {
 		moduleRepository.deleteById(moduleId);
 		return "redirect:/admin/moduleList";

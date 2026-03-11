@@ -34,6 +34,7 @@ public class TaskEntity {
 	private Status status; // status : Pending / In Progress / Completed
 	private Integer moduleId; // FK // drop-down
 	private Integer assignedTo; // FK // drop-down
+	private Integer createdBy; // FK
 
 	public Integer getTaskId() {
 		return taskId;
@@ -97,6 +98,14 @@ public class TaskEntity {
 
 	public void setAssignedTo(Integer assignedTo) {
 		this.assignedTo = assignedTo;
+	}
+
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
 	}
 
 }

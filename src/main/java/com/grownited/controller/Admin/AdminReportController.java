@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grownited.entity.ReportEntity;
 import com.grownited.repository.ReportRepository;
@@ -14,30 +15,31 @@ import com.grownited.repository.ReportRepository;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class ReportController {
+@RequestMapping("/admin")
+public class AdminReportController {
 
 	@Autowired
 	ReportRepository reportRepository;
 	
-	@GetMapping("/admin/createReport")
+	@GetMapping("/createReport")
 	public String createReport() {
 		return "Admin/Report/GenerateReport";
 	}
 	
-	@PostMapping("/admin/generateReport")
+	@PostMapping("/generateReport")
 	public String generateReport(ReportEntity reportEntity, HttpSession session) {
 		reportRepository.save(reportEntity);
 		return "redirect:/admin/reportsList";
 	}
 	
-	@GetMapping("/admin/reportsList")
+	@GetMapping("/reportsList")
 	public String reportstList(Model model) {
 		List<ReportEntity> reports = reportRepository.findAll();
 		model.addAttribute("reports", reports); 
 		return "Admin/Report/ReportsList";
 	}
 	
-	@GetMapping("/admin/deleteReport")
+	@GetMapping("/deleteReport")
 	public String deleteReport(Integer reportId) {
 		reportRepository.deleteById(reportId);
 		return "redirect:/admin/reportsList";

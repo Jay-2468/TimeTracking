@@ -3,7 +3,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
 	<ul class="nav">
 		<li class="nav-item nav-category">Main</li>
-		<li class="nav-item"><a class="nav-link" href="/pm-dashboard">
+		<li class="nav-item"><a class="nav-link" href="/developer-dashboard">
 				<span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
 				<span class="menu-title">Dashboard</span>
 		</a></li>
@@ -16,10 +16,8 @@
 		</a>
 			<div class="collapse" id="manageProjects">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/newProject">Add
-							New Project</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="/pm/projectsList">List Projects</a></li>
+						href="/developer/projectsList">List Projects</a></li>
 				</ul>
 			</div></li>
 
@@ -27,26 +25,24 @@
 			data-bs-toggle="collapse" href="#manageTasks" aria-expanded="false"
 			aria-controls="manageTasks"> <span class="icon-bg"><i
 					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
-				class="menu-title">Manage Tasks</span> <i class="menu-arrow"></i>
+				class="menu-title">View Tasks</span> <i class="menu-arrow"></i>
 		</a>
 			<div class="collapse" id="manageTasks">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/newTask">Add
-							New Task</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="/pm/tasksList">List Tasks</a></li>
+						href="/developer/tasksList">List Tasks</a></li>
 				</ul>
 			</div></li>
 
 		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageTasks" aria-expanded="false"
-			aria-controls="manageTasks"> <span class="icon-bg"><i
+			data-bs-toggle="collapse" href="#manageTeams" aria-expanded="false"
+			aria-controls="manageTeams"> <span class="icon-bg"><i
 					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
 				class="menu-title">View Team</span> <i class="menu-arrow"></i>
 		</a>
-			<div class="collapse" id="manageTasks">
+			<div class="collapse" id="manageTeams">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/newTask">View
+					<li class="nav-item"><a class="nav-link" href="/developer/viewTeamMembers">View
 							Team Members</a></li>
 				</ul>
 			</div></li>
@@ -55,29 +51,29 @@
 			data-bs-toggle="collapse" href="#manageTimeLogs"
 			aria-expanded="false" aria-controls="manageTimeLogs"> <span
 				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-				<span class="menu-title">View Time Logs</span> <i class="menu-arrow"></i>
+				<span class="menu-title">Manage Time Logs</span> <i class="menu-arrow"></i>
 		</a>
 			<div class="collapse" id="manageTimeLogs">
 				<ul class="nav flex-column sub-menu">
 					<li class="nav-item"><a class="nav-link"
-						href="/pm/createTimeLog">Add New Time Log</a></li>
+						href="/developer/createTimeLog">Add New Time Log</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="/pm/timeLogsList">List Time Logs</a></li>
+						href="/developer/timeLogsList">List Time Logs</a></li>
 				</ul>
 			</div></li>
 
 		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageTimeSheets"
-			aria-expanded="false" aria-controls="manageTimeSheets"> <span
+			data-bs-toggle="collapse" href="#manageTimesheets"
+			aria-expanded="false" aria-controls="manageTimesheets"> <span
 				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-				<span class="menu-title">Time Sheets</span> <i class="menu-arrow"></i>
+				<span class="menu-title">Manage Timesheets</span> <i class="menu-arrow"></i>
 		</a>
-			<div class="collapse" id="manageTimeSheets">
+			<div class="collapse" id="manageTimesheets">
 				<ul class="nav flex-column sub-menu">
 					<li class="nav-item"><a class="nav-link"
-						href="createTimeSheet">Add New Time Sheet</a></li>
+						href="/developer/createTimesheet">Add New Timesheet</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="/pm/timeSheetsList">List Time Sheets</a></li>
+						href="/developer/timesheetsList">List Timesheets</a></li>
 				</ul>
 			</div></li>
 

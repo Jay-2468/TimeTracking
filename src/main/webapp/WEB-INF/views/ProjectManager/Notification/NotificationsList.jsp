@@ -24,7 +24,7 @@
 				<h2 class="text-dark font-weight-bold mb-2">Notifications List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Notifications</h3>
+					<h3 class="mb-0 text-dark-emphasis">Notifications</h3>
 					<a href="createNotification" class="btn btn-primary btn-sm"> <i
 						class="mdi mdi-plus-circle-outline"></i>Send Notification
 					</a>
@@ -48,7 +48,7 @@
 
 								<c:if test="${empty notifications}">
 									<tr>
-										<td colspan="5" class="text-center text-muted">No
+										<td colspan="5" class="text-center text-dark-emphasis">No
 											Notifications Found.</td>
 									</tr>
 								</c:if>
@@ -57,7 +57,7 @@
 									<tr>
 
 										<!-- Message -->
-										<td>${notification.message}</td>
+										<td class="text-dark-emphasis">${notification.message}</td>
 
 										<!-- Notification Type Badge -->
 										<td class="text-center"><c:choose>
@@ -74,7 +74,7 @@
 											</c:choose></td>
 
 										<!-- Sent Time -->
-										<td class="text-center">${notification.sentTime}</td>
+										<td class="text-center text-dark-emphasis">${notification.sentTime}</td>
 
 										<!-- Status Badge -->
 										<td class="text-center"><c:choose>

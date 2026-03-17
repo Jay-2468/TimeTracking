@@ -1,55 +1,90 @@
 package com.grownited.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "payroll")
+@Getter
+@Setter
 public class PayrollEntity {
+
+	public enum PayrollStatus {
+		GENERATED, PAID, HOLD, CANCELLED
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer payrollId;
-	private Integer userId; // FK // drop-down
+	private Long payrollId;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private UserEntity user; // FK // drop-down
+
 	private Double totalHours;
-	private Double salaryAmount;
+
+	@Column(precision = 10, scale = 2)
+	private BigDecimal hourlyRate;
+
+	@Column(precision = 10, scale = 2)
+	private BigDecimal bonus;
+
+	@Column(precision = 10, scale = 2)
+	private BigDecimal deductions;
+
+	@Column(precision = 10, scale = 2)
+	private BigDecimal netSalary;
+
 	private LocalDate paymentDate;
+
+	private LocalDate periodStartDate;
+
+	private LocalDate periodEndDate;
+
+	@Enumerated(EnumType.STRING)
+	private PayrollStatus status;
+
+	private LocalDateTime createdAt;
+
+	private LocalDateTime updatedAt;
+
 	
-	
-	public Integer getPayrollId() {
-		return payrollId;
+	@PrePersist
+	public void onCreate() {
+		this.createdAt = LocalDateTime.now();
+		this.status = PayrollStatus.GENERATED;
+		calculateNetSalary();
 	}
-	public void setPayrollId(Integer payrollId) {
-		this.payrollId = payrollId;
+
+	@PreUpdate
+	public void onUpdate() {
+		this.updatedAt = LocalDateTime.now();
+		calculateNetSalary();
 	}
-	public Integer getUserId() {
-		return userId;
+
+	public void calculateNetSalary() {
+		if (hourlyRate != null && totalHours != null) {
+			BigDecimal gross = hourlyRate.multiply(BigDecimal.valueOf(totalHours));
+			BigDecimal totalBonus = bonus != null ? bonus : BigDecimal.ZERO;
+			BigDecimal totalDeduction = deductions != null ? deductions : BigDecimal.ZERO;
+
+			this.netSalary = gross.add(totalBonus).subtract(totalDeduction);
+		}
 	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-	public Double getTotalHours() {
-		return totalHours;
-	}
-	public void setTotalHours(Double totalHours) {
-		this.totalHours = totalHours;
-	}
-	public Double getSalaryAmount() {
-		return salaryAmount;
-	}
-	public void setSalaryAmount(Double salaryAmount) {
-		this.salaryAmount = salaryAmount;
-	}
-	public LocalDate getPaymentDate() {
-		return paymentDate;
-	}
-	public void setPaymentDate(LocalDate paymentDate) {
-		this.paymentDate = paymentDate;
-	}
-	
 }

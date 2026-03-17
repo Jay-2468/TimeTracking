@@ -21,16 +21,17 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">Update User Role</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Update User Role</h3>
+					<h2 class="text-dark font-weight-bold mb-2">Update User Role</h2>
 					<a href="usersList" class="btn btn-secondary btn-sm"> Back to
 						Users </a>
 				</div>
 
 				<div class="card shadow-sm">
 					<div class="card-body">
+						<h3 class="mb-3 text-center text-dark-emphasis">Update User
+							Role</h3>
 
 						<form action="updateUserRole" method="post">
 
@@ -38,8 +39,8 @@
 
 								<!-- Select User -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Select User</label> <select
-										name="userId" id="userSelect" class="form-select" required>
+									<label class="form-label text-dark fw-semibold">Select User</label> <select
+										name="userId" id="userSelect" class="form-select text-dark border-secondary" required>
 
 										<option value="">-- Select User --</option>
 
@@ -53,14 +54,14 @@
 
 								<!-- Current Role (Readonly Display) -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Current Role</label> <input
-										type="text" id="currentRole" class="form-control" readonly>
+									<label class="form-label text-dark fw-semibold">Current Role</label> <input
+										type="text" id="currentRole" class="form-control text-dark border-secondary" readonly>
 								</div>
 
 								<!-- New Role -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">New Role</label> <select
-										name="newRole" class="form-select" required>
+									<label class="form-label text-dark fw-semibold">New Role</label> <select
+										name="newRole" class="form-select text-dark border-secondary" required>
 										<option value="">-- Select New Role --</option>
 										<!-- <option value="ADMIN">Admin</option>
 										<option value="PROJECT_MANAGER">Project Manager</option>

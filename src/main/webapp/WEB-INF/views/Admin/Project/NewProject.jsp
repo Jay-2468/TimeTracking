@@ -32,16 +32,17 @@
 					<a href="projectsList" class="btn btn-secondary btn-sm"> Back
 						to List </a>
 				</div>
+				
 				<div class="card shadow">
 					<div class="card-body p-4">
-						<h3 class="text-center mb-4">Create Project</h3>
+						<h3 class="text-center text-dark-emphasis mb-4">Create Project</h3>
 
 						<form action="createProject" method="post">
 
 							<!-- Assign Project -->
 							<div class="mb-3">
-								<label class="form-label">Assign To</label> <select
-									name="assignedTo" class="form-select" required>
+								<label class="form-label text-dark fw-semibold">Assign To</label> <select
+									name="assignedTo" class="form-select text-dark border-secondary" required>
 									<option value="">-- Select Project Manager --</option>
 
 									<c:forEach var="pm" items="${pmList}">
@@ -54,27 +55,27 @@
 							
 							<!-- Project Name -->
 							<div class="mb-3">
-								<label class="form-label">Project Name</label> <input
-									type="text" name="projectName" class="form-control" required>
+								<label class="form-label text-dark fw-semibold">Project Name</label> <input
+									type="text" name="projectName" class="form-control text-dark border-secondary" required>
 							</div>
 
 							<!-- Description -->
 							<div class="mb-3">
-								<label class="form-label">Description</label>
-								<textarea name="description" class="form-control" rows="4"
+								<label class="form-label text-dark fw-semibold">Description</label>
+								<textarea name="description" class="form-control text-dark border-secondary" rows="4"
 									required></textarea>
 							</div>
 
 							<!-- Start Date -->
 							<div class="mb-3">
-								<label class="form-label">Start Date</label> <input type="date"
-									name="startDate" class="form-control" required>
+								<label class="form-label text-dark fw-semibold">Start Date</label> <input type="date"
+									name="startDate" class="form-control text-dark border-secondary" required>
 							</div>
 
 							<!-- End Date -->
 							<div class="mb-3">
-								<label class="form-label">End Date</label> <input type="date"
-									name="endDate" class="form-control" required>
+								<label class="form-label text-dark fw-semibold">End Date</label> <input type="date"
+									name="endDate" class="form-control text-dark border-secondary" required>
 							</div>
 
 							<!-- Buttons -->

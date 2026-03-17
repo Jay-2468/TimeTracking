@@ -23,25 +23,32 @@ public class PMReportController {
 	
 	@GetMapping("/createReport")
 	public String createReport() {
+		
 		return "ProjectManager/Report/GenerateReport";
 	}
 	
 	@PostMapping("/generateReport")
 	public String generateReport(ReportEntity reportEntity, HttpSession session) {
+
 		reportRepository.save(reportEntity);
+
 		return "redirect:/pm/reportsList";
 	}
 	
 	@GetMapping("/reportsList")
 	public String reportstList(Model model) {
+		
 		List<ReportEntity> reports = reportRepository.findAll();
 		model.addAttribute("reports", reports); 
+		
 		return "ProjectManager/Report/ReportsList";
 	}
 	
-	@GetMapping("/deleteReport")
-	public String deleteReport(Integer reportId) {
-		reportRepository.deleteById(reportId);
+	@GetMapping("/archiveReport")
+	public String archiveReport(Integer reportId) {
+		
+		// reportRepository.deleteById(reportId);
+		
 		return "redirect:/pm/reportsList";
 	}
 	

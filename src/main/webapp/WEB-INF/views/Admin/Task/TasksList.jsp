@@ -25,7 +25,7 @@
 				<h2 class="text-dark font-weight-bold mb-2">Task List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Task List</h3>
+					<h3 class="mb-0 text-dark-emphasis">Task List</h3>
 					<a href="newTask" class="btn btn-primary btn-sm"> <i
 						class="mdi mdi-plus-circle-outline"></i> New Task
 					</a>
@@ -56,10 +56,10 @@
 							<tbody>
 								<c:forEach var="task" items="${tasksList}" varStatus="i">
 									<tr>
-										<td>${i.index + 1}</td>
+										<td class="text-dark-emphasis">${i.index + 1}</td>
 
-										<td>${task.taskName}</td>
-										<td>${task.description}</td>
+										<td class="text-dark-emphasis">${task.taskName}</td>
+										<td class="text-dark-emphasis">${task.description}</td>
 
 										<!-- Priority Badge -->
 										<td><c:choose>
@@ -74,7 +74,7 @@
 												</c:otherwise>
 											</c:choose></td>
 
-										<td>${task.deadline}</td>
+										<td class="text-dark-emphasis">${task.deadline}</td>
 
 										<!-- Status Badge -->
 										<td><c:choose>
@@ -90,11 +90,11 @@
 											</c:choose></td>
 
 										<!-- Assigned User -->
-										<%--<td>${task.assignedTo.firstName} ${task.assignedTo.lastName}</td>
+										<%--<td class="text-dark-emphasis">${task.assignedTo.firstName} ${task.assignedTo.lastName}</td>
 								 --%>
 										<%--<td>${user.firstName}
 									${user.lastName}</td> --%>
-										<td>${userMap[task.assignedTo]}</td>
+										<td class="text-dark-emphasis">${userMap[task.assignedTo]}</td>
 
 										<!-- Actions -->
 										<td class="text-center"><a

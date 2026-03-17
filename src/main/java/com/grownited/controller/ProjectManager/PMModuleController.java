@@ -31,7 +31,7 @@ public class PMModuleController {
 	@GetMapping("/newModule")
 	public String newModule(Model model, @SessionAttribute("user") UserEntity user) {
 		
-		List<ProjectEntity> projectsList = projectRepository.findByAssignedTo(user.getUserId());
+		List<ProjectEntity> projectsList = projectRepository.findByAssignedTo(user);
 		model.addAttribute("projectsList", projectsList);
 		
 		return "ProjectManager/Module/NewModule";

@@ -1,4 +1,4 @@
-package com.grownited.controller.Admin;
+package com.grownited.controller.Developer;
 
 import java.util.List;
 
@@ -6,47 +6,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grownited.entity.TimeLogEntity;
 import com.grownited.repository.TimeLogRepository;
 
 @Controller
-@RequestMapping("/admin")
-public class AdminTimeLogController {
+@RequestMapping("/developer")
+public class DeveloperTimeLogController {
 	
 	@Autowired
 	TimeLogRepository timeLogRepository;
 	
+	
 	@GetMapping("/createTimeLog")
 	public String createTimeLog() {
 		
-		return "Admin/TimeLog/NewTimeLog";
-	}
-	
-	@PostMapping("/saveTimeLog")
-	public String saveTimeLog(TimeLogEntity timeLogEntity) {
-		
-		timeLogRepository.save(timeLogEntity);
-		
-		return "redirect:/admin/timeLogsList";
+		return "Developer/TimeLog/NewTimeLog";
 	}
 	
 	@GetMapping("/timeLogsList")
 	public String timeLogsList(Model model) {
-		
 		List<TimeLogEntity> timeLogsList = timeLogRepository.findAll();
 		model.addAttribute("timeLogsList", timeLogsList);
-		
-		return "Admin/TimeLog/TimeLogsList";
+		return "Developer/TimeLog/TimeLogsList";
 	}
 	
-	@GetMapping(" archiveTimeLog")
-	public String archiveTimeLog(Integer logId) {
-		
-		timeLogRepository.deleteById(logId);
-		
-		return "redirect:/admin/timeLogsList";
-	}
 }

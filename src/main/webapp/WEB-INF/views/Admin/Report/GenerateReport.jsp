@@ -21,16 +21,17 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">Generate Report</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Generate Report</h3>
+					<h2 class="text-dark font-weight-bold mb-2">Generate Report</h2>
 					<a href="reportsList" class="btn btn-secondary btn-sm"> Back to
 						Reports </a>
 				</div>
 
 				<div class="card shadow-sm">
 					<div class="card-body">
+						<h3 class="mb-3 text-center text-dark-emphasis">Generate
+							Report</h3>
 
 						<form action="generateReport" method="post">
 
@@ -38,8 +39,9 @@
 
 								<!-- Report Type -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Report Type</label> <select
-										name="reportType" class="form-select" required>
+									<label class="form-label text-dark fw-semibold">Report
+										Type</label> <select name="reportType"
+										class="form-select text-dark border-secondary" required>
 										<option value="">-- Select Report Type --</option>
 										<option value="PROJECT">Project</option>
 										<option value="PRODUCTIVITY">Productivity</option>
@@ -49,16 +51,18 @@
 
 								<!-- Generated Date -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Generated Date</label> <input
-										type="datetime-local" name="generatedDate" id="generatedDate"
-										class="form-control" readonly>
+									<label class="form-label text-dark fw-semibold">Generated
+										Date</label> <input type="datetime-local" name="generatedDate"
+										id="generatedDate"
+										class="form-control text-dark border-secondary" readonly>
 								</div>
 
-								<!-- Report Data -->
+								<!-- Date From and To -->
 								<div class="col-12 mb-3">
-									<label class="form-label">Report Data</label>
-									<textarea name="reportData" class="form-control" rows="6"
-										placeholder="Enter report summary or details..." required></textarea>
+									<label class="form-label text-dark fw-semibold">From
+										Date</label> <input type="date" name="fromDate"> <label
+										class="form-label text-dark fw-semibold">To Date</label><input
+										type="date" name="toDate">
 								</div>
 
 							</div>

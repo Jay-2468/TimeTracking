@@ -25,7 +25,7 @@
 				<h2 class="text-dark font-weight-bold mb-2">Payroll Records</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Payroll Records</h3>
+					<h3 class="mb-0 text-dark-emphasis">Payroll Records</h3>
 					<a href="createPayroll" class="btn btn-primary btn-sm"> <i
 						class="mdi mdi-plus-circle-outline"></i> Generate Payroll
 					</a>
@@ -50,7 +50,7 @@
 
 								<c:if test="${empty payrolls}">
 									<tr>
-										<td colspan="5" class="text-muted">No Payroll Records
+										<td colspan="5" class="text-dark-emphasis">No Payroll Records
 											Found.</td>
 									</tr>
 								</c:if>
@@ -59,15 +59,15 @@
 									<tr>
 
 										<!-- Employee Name (Join or DTO mapping required) -->
-										<td>${userMap[payroll.userId]}</td>
+										<td class="text-dark-emphasis">${userMap[payroll.userId]}</td>
 
-										<td>${payroll.totalHours}</td>
+										<td class="text-dark-emphasis">${payroll.totalHours}</td>
 
-										<td><strong> <fmt:formatNumber
+										<td class="text-dark-emphasis"><strong> <fmt:formatNumber
 													value="${payroll.salaryAmount}" type="currency" />
 										</strong></td>
 
-										<td>${payroll.paymentDate}</td>
+										<td class="text-dark-emphasis">${payroll.paymentDate}</td>
 
 										<td><a href="viewPayroll?payrollId=${payroll.payrollId}"
 											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>

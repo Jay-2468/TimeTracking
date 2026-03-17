@@ -22,31 +22,25 @@ body {
 </head>
 <body>
 
-	<jsp:include page="../includes/PMHeader.jsp"></jsp:include>
+	<jsp:include page="../includes/DeveloperHeader.jsp"></jsp:include>
 
 	<div class="container-fluid page-body-wrapper">
 
-		<jsp:include page="../includes/PMLeftSidebar.jsp"></jsp:include>
+		<jsp:include page="../includes/DeveloperLeftSidebar.jsp"></jsp:include>
 
 		<div class="main-panel">
 			<div class="content-wrapper">
 
-				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h2 class="text-dark font-weight-bold mb-4">Add Team Member</h2>
-					<a href="viewTeamMembers" class="btn btn-secondary btn-sm"> Back to
-						View Members </a>
-				</div>
-
+				<h2 class="text-dark font-weight-bold mb-4">Add Team Member</h2>
 
 				<div class="card">
 					<div class="card-body">
-						<h3 class="mb-3 text-center text-dark-emphasis">Add New Team Member</h3>
 
 						<form action="saveTeamMember" method="post">
 
 							<div class="form-group">
-								<label class="text-dark fw-semibold">Select Project</label> <select name="projectId"
-									class="form-control text-dark border-secondary">
+								<label>Select Project</label> <select name="projectId"
+									class="form-control">
 									<option value="">-- Select Project --</option>
 
 									<c:forEach items="${projects}" var="p">
@@ -57,8 +51,8 @@ body {
 							</div>
 
 							<div class="form-group">
-								<label class="text-dark fw-semibold">Select Developer</label> <select name="userId"
-									class="form-control text-dark border-secondary">
+								<label>Select Developer</label> <select name="userId"
+									class="form-control">
 									<option value="">-- Select Developer --</option>
 
 									<c:forEach items="${developers}" var="d">

@@ -25,7 +25,7 @@
 				<h2 class="text-dark font-weight-bold mb-2">User List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">User List</h3>
+					<h3 class="mb-0 text-dark-emphasis">User List</h3>
 					<a href="newUser" class="btn btn-primary btn-sm"> <i
 						class="mdi mdi-plus-circle-outline"></i> New User
 					</a>
@@ -57,7 +57,7 @@
 							<tbody>
 								<c:forEach var="user" items="${usersList}" varStatus="i">
 									<tr>
-										<td>${i.index + 1}</td>
+										<td class="text-dark-emphasis">${i.index + 1}</td>
 
 										<!-- Profile Picture -->
 										<td class="text-center"><c:if
@@ -65,17 +65,17 @@
 												<img src="${user.profilePictureURL}"
 													class="rounded-circle" width="40" height="40" alt="Profile">
 											</c:if> <c:if test="${empty user.profilePictureURL}">
-												<span class="text-muted">N/A</span>
+												<span class="text-dark-emphasis">N/A</span>
 											</c:if></td>
 
 										<!-- Name -->
-										<td>${user.firstName} ${user.lastName}</td>
+										<td class="text-dark-emphasis">${user.firstName} ${user.lastName}</td>
 
 										<!-- Contact -->
-										<td>${user.contactNumber}</td>
+										<td class="text-dark-emphasis">${user.contactNumber}</td>
 
 										<!-- Email -->
-										<td>${user.email}</td>
+										<td class="text-dark-emphasis">${user.email}</td>
 
 										<!-- Role -->
 										<td><span class="badge bg-info">
@@ -92,7 +92,7 @@
 											</c:choose></td>
 
 										<!-- Created Date -->
-										<td>${user.createdAt}</td>
+										<td class="text-dark-emphasis">${user.createdAt}</td>
 
 										<!-- Actions -->
 										<td class="text-center"><a

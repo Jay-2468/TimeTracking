@@ -43,10 +43,9 @@ body {
 
 						<thead class="table-dark">
 							<tr>
-								<th>ID</th>
+								<th>#</th>
 								<th>Name</th>
 								<th>Email</th>
-								<th>Role</th>
 								<th>Project</th>
 								<th>Status</th>
 								<th>Action</th>
@@ -55,27 +54,30 @@ body {
 
 						<tbody>
 
-							<c:forEach items="${teamMembers}" var="member">
-
+							<c:if test="${empty teamMembers}">
 								<tr>
-
-									<td>${member.userId}</td>
-
-									<td>${member.firstName}${member.lastName}</td>
-
-									<td>${member.email}</td>
-
-									<td>${member.role}</td>
-
-									<td>${member.projectName}</td>
-
-									<td><span class="badge bg-success">
-											${member.status} </span></td>
-
-									<td><a href="view-user?userId=${member.userId}"
-										class="btn btn-sm btn-primary"> View </a></td>
-
+									<td colspan="5" class="text-dark-emphasis">No Team Members Found.</td>
 								</tr>
+							</c:if>
+							
+							<c:forEach items="${teamMembers}" var="member" varStatus="i">
+
+								<c:if test="${member.user != null}">
+
+									<tr>
+										<td>${i.index + 1}</td>
+										<td>${member.user.firstName}${member.user.lastName}</td>
+										<td>${member.user.email}</td>
+										<td>${member.project.projectName}</td>
+
+										<td><span class="badge bg-success">
+												${member.status} </span></td>
+
+										<td><a href="viewUser?user=${member.user.userId}"
+											class="btn btn-sm btn-primary"> View </a></td>
+									</tr>
+
+								</c:if>
 
 							</c:forEach>
 

@@ -38,7 +38,7 @@ body {
 				<h2 class="text-dark font-weight-bold mb-2">Project Manager
 					Dashboard</h2>
 
-				<h2 class="mb-4">Welcome, ${user.firstName}</h2>
+				<h2 class="mb-4 text-dark-emphasis">Welcome, ${user.firstName}</h2>
 
 				<div class="row">
 

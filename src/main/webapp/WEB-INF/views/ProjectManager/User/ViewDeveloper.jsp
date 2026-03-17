@@ -21,10 +21,10 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">User Details</h2>
+				<h2 class="text-dark font-weight-bold mb-2">Developer's Details</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">User Details</h3>
+					<h3 class="mb-0 text-dark-emphasis">Developer's Details</h3>
 					<a href="usersList" class="btn btn-secondary btn-sm"> Back to
 						List </a>
 				</div>

@@ -1,8 +1,6 @@
-package com.grownited.controller.ProjectManager;
+package com.grownited.controller.Developer;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +17,8 @@ import com.grownited.repository.TaskRepository;
 import com.grownited.repository.UserRepository;
 
 @Controller
-@RequestMapping("/pm")
-public class PMTaskController {
+@RequestMapping("/developer")
+public class DeveloperTaskController {
 
 	@Autowired
 	TaskRepository taskRepository;
@@ -33,38 +31,28 @@ public class PMTaskController {
 	
 	@GetMapping("/newTask")
 	public String newTask(Model model) {
+		
 		List<UserEntity> userList = userRepository.findAll();
 		model.addAttribute("userList", userList);
-		return "ProjectManager/Task/NewTask";
+		
+		return "Developer/Task/NewTask";
 	}
 	
 	@PostMapping("/createTask")
 	public String saveTask(TaskEntity taskEntity) {
+		
 		taskRepository.save(taskEntity);
-		return "redirect:/pm/tasksList";
+		
+		return "redirect:/developer/tasksList";
 	}
 	
 	@GetMapping("/tasksList")
-	public String tasksList(Model model, @SessionAttribute("user") UserEntity userEntity) {
+	public String tasksList(Model model, @SessionAttribute("user") UserEntity user) {
 		
-		List<TaskEntity> tasksList = taskRepository.findByCreatedBy(userEntity);
-		List<UserEntity> usersList = userRepository.findAll();
-		Map<Integer, String> userMap = new HashMap<>();
-		
-		for(UserEntity user : usersList) {
-			userMap.put(user.getUserId(), user.getFullUserName());
-		}
-		
+		List<TaskEntity> tasksList = taskRepository.findByAssignedTo(user);
 		model.addAttribute("tasksList", tasksList);
-		model.addAttribute("userMap", userMap);
 		
-		return "ProjectManager/Task/TasksList";
+		return "Developer/Task/TasksList";
 	}
 	
-	@GetMapping("/deleteTask")
-	public String deleteTask(Integer taskId) {
-		taskRepository.deleteById(taskId);
-		return "redirect:/pm/tasksList";
-	}
-
 }

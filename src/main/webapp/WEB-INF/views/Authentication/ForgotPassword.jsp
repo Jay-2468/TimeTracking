@@ -36,16 +36,16 @@
 							<div class="brand-logo">
 								<img src="">
 							</div>
-							<h4 class="text-center mb-3">Forgot Password</h4>
-							<p class="text-center text-muted mb-4">Enter your email
+							<h4 class="text-center text-dark fw-semibold mb-3">Forgot Password</h4>
+							<p class="text-center text-dark-emphasis mb-4">Enter your email
 								address to reset your password</p>
 
 							<form action="sendOTP" method="post">
 
 								<!-- Email -->
 								<div class="mb-3">
-									<label class="form-label">Email Address</label> <input
-										type="email" name="email" class="form-control" required>
+									<label class="form-label text-dark fw-semibold">Email Address</label> <input
+										type="email" name="email" class="form-control text-dark border-secondary" required>
 								</div>
 
 								<!-- Submit Button -->
@@ -57,7 +57,7 @@
 							</form>
 
 							<!-- Back to Login -->
-							<div class="text-center mt-3">
+							<div class="text-center text-dark-emphasis mt-3">
 								<small> Remember your password? <a href="login">Login</a>
 								</small>
 							</div>

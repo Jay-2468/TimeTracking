@@ -24,7 +24,7 @@
 				<h2 class="text-dark font-weight-bold mb-2">Project List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Project List</h3>
+					<h3 class="mb-0 text-dark-emphasis">Project List</h3>
 					<a href="newProject" class="btn btn-primary btn-sm"> <i
 						class="mdi mdi-plus-circle-outline"></i> New Project
 					</a>
@@ -54,12 +54,12 @@
 							<tbody>
 								<c:forEach var="project" items="${projectsList}" varStatus="i">
 									<tr>
-										<td>${i.index + 1}</td>
-										<td>${project.projectName}</td>
-										<td>${project.description}</td>
-										<td>${userMap[project.assignedTo]}</td>
-										<td>${project.startDate}</td>
-										<td>${project.endDate}</td>
+										<td class="text-dark-emphasis">${i.index + 1}</td>
+										<td class="text-dark-emphasis">${project.projectName}</td>
+										<td class="text-dark-emphasis">${project.description}</td>
+										<td class="text-dark-emphasis">${userMap[project.assignedTo]}</td>
+										<td class="text-dark-emphasis">${project.startDate}</td>
+										<td class="text-dark-emphasis">${project.endDate}</td>
 										<td class="text-center"><a
 											href="viewProject?projectId=${project.projectId}"
 											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i> View

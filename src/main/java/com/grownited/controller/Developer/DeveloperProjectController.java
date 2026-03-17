@@ -1,4 +1,4 @@
-package com.grownited.controller.ProjectManager;
+package com.grownited.controller.Developer;
 
 import java.util.List;
 
@@ -9,29 +9,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import com.grownited.entity.ProjectEntity;
+import com.grownited.entity.ProjectMembersEntity;
 import com.grownited.entity.UserEntity;
-import com.grownited.repository.ProjectRepository;
-import com.grownited.repository.UserRepository;
+import com.grownited.repository.ProjectMembersRepository;
 
 
 @Controller
-@RequestMapping("/pm")
-public class PMProjectController {
+@RequestMapping("/developer")
+public class DeveloperProjectController {
 
 	@Autowired
-	ProjectRepository projectRepository;
-	
-	@Autowired
-	UserRepository userRepository;
+	ProjectMembersRepository projectMembersRepository;
 	
 	@GetMapping("/projectsList")
 	public String projectsList(Model model, @SessionAttribute("user") UserEntity user) {
 		
-		List<ProjectEntity> projectsList = projectRepository.findByAssignedTo(user);
-		model.addAttribute("projectsList", projectsList);
-		
-		return "ProjectManager/Project/ProjectsList";
+		List<ProjectMembersEntity> userDetails = projectMembersRepository.findByUser(user);
+		model.addAttribute("userDetails", userDetails);
+		 
+		return "Developer/Project/ProjectsList";
 	}
 	
 }

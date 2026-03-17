@@ -21,16 +21,16 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">Generate Payroll</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Generate Payroll</h3>
+				<h2 class="text-dark font-weight-bold mb-2">Generate Payroll</h2>
 					<a href="payrollRecords" class="btn btn-secondary btn-sm"> Back to
 						Payroll List </a>
 				</div>
 
 				<div class="card shadow-sm">
 					<div class="card-body">
+					<h3 class="mb-3 text-center text-dark-emphasis">Generate Payroll</h3>
 
 						<form action="generatePayroll" method="post">
 
@@ -38,8 +38,8 @@
 
 								<!-- User Dropdown (FK) -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Select Employee</label> <select
-										name="userId" class="form-select" required>
+									<label class="form-label text-dark fw-semibold">Select Employee</label> <select
+										name="userId" class="form-select text-dark border-secondary" required>
 
 										<option value="">-- Select Employee --</option>
 
@@ -54,25 +54,25 @@
 
 								<!-- Total Hours -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Total Hours</label> <input
+									<label class="form-label text-dark fw-semibold">Total Hours</label> <input
 										type="number" step="0.01" name="totalHours"
-										class="form-control" placeholder="Enter total working hours"
+										class="form-control text-dark border-secondary" placeholder="Enter total working hours"
 										required>
 								</div>
 
 								<!-- Salary Amount -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Salary Amount</label> <input
+									<label class="form-label text-dark fw-semibold">Salary Amount</label> <input
 										type="number" step="0.01" name="salaryAmount"
-										class="form-control" placeholder="Enter salary amount"
+										class="form-control text-dark border-secondary" placeholder="Enter salary amount"
 										required>
 								</div>
 
 								<!-- Payment Date -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Payment Date</label> <input
+									<label class="form-label text-dark fw-semibold">Payment Date</label> <input
 										type="date" name="paymentDate" id="paymentDate"
-										class="form-control" required>
+										class="form-control text-dark border-secondary" required>
 								</div>
 
 							</div>

@@ -26,7 +26,7 @@
 				<h2 class="text-dark font-weight-bold mb-2">Time Log List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Time Log List</h3>
+					<h3 class="mb-0 text-dark-emphasis">Time Log List</h3>
 					<a href="createTimeLog" class="btn btn-primary btn-sm"> <i
 						class="mdi mdi-plus-circle-outline"></i> Add Time Log
 					</a>
@@ -52,9 +52,9 @@
 								<c:forEach items="${timeLogsList}" var="log">
 									<tr>
 
-										<td>${log.startTime}</td>
-										<td>${log.endTime}</td>
-										<td>${log.totalHours}</td>
+										<td class="text-dark-emphasis">${log.startTime}</td>
+										<td class="text-dark-emphasis">${log.endTime}</td>
+										<td class="text-dark-emphasis">${log.totalHours}</td>
 
 										<!-- Log Type Badge -->
 										<td class="text-center"><c:choose>

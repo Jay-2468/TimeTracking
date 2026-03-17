@@ -26,10 +26,7 @@
 				<h2 class="text-dark font-weight-bold mb-2">Time Log List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Time Log List</h3>
-					<a href="createTimeLog" class="btn btn-primary btn-sm"> <i
-						class="mdi mdi-plus-circle-outline"></i> Add Time Log
-					</a>
+					<h3 class="mb-0 text-dark-emphasis">Time Log List</h3>
 				</div>
 
 				<div class="card shadow-sm">
@@ -52,9 +49,9 @@
 								<c:forEach items="${timeLogsList}" var="log">
 									<tr>
 
-										<td>${log.startTime}</td>
-										<td>${log.endTime}</td>
-										<td>${log.totalHours}</td>
+										<td class="text-dark-emphasis">${log.startTime}</td>
+										<td class="text-dark-emphasis">${log.endTime}</td>
+										<td class="text-dark-emphasis">${log.totalHours}</td>
 
 										<!-- Log Type Badge -->
 										<td class="text-center"><c:choose>
@@ -87,10 +84,10 @@
 										</a> <a href="editTimeLog?logId=${log.logId}"
 											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
 												Edit
-										</a> <a href="deleteTimeLog?logId=${log.logId}"
+										</a> <a href="archiveTimeLog?logId=${log.logId}"
 											class="btn btn-sm btn-danger"
-											onclick="return confirm('Are you sure you want to delete this log?')">
-												<i class="mdi mdi-delete"></i> Delete
+											onclick="return confirm('Are you sure you want to archive this time log?')"><i class="mdi mdi-archive"></i>
+												Archive
 										</a></td>
 
 									</tr>

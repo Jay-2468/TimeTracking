@@ -16,8 +16,6 @@
 		</a>
 			<div class="collapse" id="manageProjects">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/newProject">Add
-							New Project</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/pm/projectsList">List Projects</a></li>
 				</ul>
@@ -48,8 +46,8 @@
 				<ul class="nav flex-column sub-menu">
 					<li class="nav-item"><a class="nav-link" href="/pm/newTask">Add
 							New Task</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/tasksList">List Tasks</a></li>
+					<li class="nav-item"><a class="nav-link" href="/pm/tasksList">List
+							Tasks</a></li>
 				</ul>
 			</div></li>
 
@@ -61,10 +59,23 @@
 		</a>
 			<div class="collapse" id="manageTeam">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/addTeamMember">Add
-							Team Members</a></li>
-					<li class="nav-item"><a class="nav-link" href="/pm/viewTeamMembers">View
-							Team Members</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="/pm/addTeamMember">Add Team Members</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="/pm/viewTeamMembers">View Team Members</a></li>
+				</ul>
+			</div></li>
+
+		<li class="nav-item"><a class="nav-link"
+			data-bs-toggle="collapse" href="#manageDevelopers"
+			aria-expanded="false" aria-controls="manageDevelopers"> <span
+				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+				<span class="menu-title">View Developers</span> <i class="menu-arrow"></i>
+		</a>
+			<div class="collapse" id="manageDevelopers">
+				<ul class="nav flex-column sub-menu">
+					<li class="nav-item"><a class="nav-link"
+						href="/pm/developersList">List Developers</a></li>
 				</ul>
 			</div></li>
 
@@ -76,8 +87,6 @@
 		</a>
 			<div class="collapse" id="manageTimeLogs">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/createTimeLog">Add New Time Log</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/pm/timeLogsList">List Time Logs</a></li>
 				</ul>
@@ -92,9 +101,7 @@
 			<div class="collapse" id="manageTimeSheets">
 				<ul class="nav flex-column sub-menu">
 					<li class="nav-item"><a class="nav-link"
-						href="createTimeSheet">Add New Time Sheet</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="/pm/timeSheetsList">List Time Sheets</a></li>
+						href="/pm/timesheetsList">List Time Sheets</a></li>
 				</ul>
 			</div></li>
 
@@ -126,19 +133,6 @@
 						href="/pm/createNotification">Send Notification</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="/pm/notificationsList">List Notifications</a></li>
-				</ul>
-			</div></li>
-
-		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageUsers" aria-expanded="false"
-			aria-controls="manageUsers"> <span class="icon-bg"><i
-					class="mdi mdi-crosshairs-gps menu-icon"></i></span> <span
-				class="menu-title">Manage Employees</span> <i class="menu-arrow"></i>
-		</a>
-			<div class="collapse" id="manageUsers">
-				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/pm/newUser">View
-							Employees</a></li>
 				</ul>
 			</div></li>
 

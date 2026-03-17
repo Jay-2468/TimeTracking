@@ -25,7 +25,7 @@
 				<h2 class="text-dark font-weight-bold mb-2">Timesheet List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Weekly Timesheets</h3>
+					<h3 class="mb-0 text-dark-emphasis">Weekly Timesheets</h3>
 					<a href="createTimesheet" class="btn btn-primary btn-sm"> <i
 						class="mdi mdi-plus-circle-outline"></i> Create Timesheet
 					</a>
@@ -57,9 +57,9 @@
 								<c:forEach items="${timesheetsList}" var="sheet">
 									<tr>
 
-										<td>${sheet.weekStart}</td>
-										<td>${sheet.weekEnd}</td>
-										<td>${sheet.totalHours}</td>
+										<td class="text-dark-emphasis">${sheet.weekStart}</td>
+										<td class="text-dark-emphasis">${sheet.weekEnd}</td>
+										<td class="text-dark-emphasis">${sheet.totalHours}</td>
 
 										<!-- Status Badge -->
 										<td><c:choose>

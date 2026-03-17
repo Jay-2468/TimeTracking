@@ -21,36 +21,36 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">Create New Task</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Create New Task</h3>
+					<h2 class="text-dark font-weight-bold mb-2">Create New Task</h2>
 					<a href="tasksList" class="btn btn-secondary btn-sm"> Back to
 						List </a>
 				</div>
 
 				<div class="card shadow-sm">
 					<div class="card-body">
+						<h3 class="mb-3 text-center text-dark-emphasis">Create New Task</h3>
 
 						<form action="createTask" method="post">
 
 							<!-- Task Name -->
 							<div class="mb-3">
-								<label class="form-label">Task Name</label> <input type="text"
-									name="taskName" class="form-control" required>
+								<label class="form-label text-dark fw-semibold">Task Name</label> <input type="text"
+									name="taskName" class="form-control text-dark border-secondary" required>
 							</div>
 
 							<!-- Description -->
 							<div class="mb-3">
-								<label class="form-label">Description</label>
-								<textarea name="description" class="form-control" rows="4"
+								<label class="form-label text-dark fw-semibold">Description</label>
+								<textarea name="description" class="form-control text-dark border-secondary" rows="4"
 									required></textarea>
 							</div>
 
 							<!-- Priority -->
 							<div class="mb-3">
-								<label class="form-label">Priority</label> <select
-									name="priority" class="form-select" required>
+								<label class="form-label text-dark fw-semibold">Priority</label> <select
+									name="priority" class="form-select text-dark border-secondary" required>
 									<option value="">-- Select Priority --</option>
 									<option value="HIGH">High</option>
 									<option value="MEDIUM">Medium</option>
@@ -60,14 +60,14 @@
 
 							<!-- Deadline -->
 							<div class="mb-3">
-								<label class="form-label">Deadline</label> <input type="date"
-									name="deadline" class="form-control" required>
+								<label class="form-label text-dark fw-semibold">Deadline</label> <input type="date"
+									name="deadline" class="form-control text-dark border-secondary" required>
 							</div>
 
 							<!-- Assigned To (User List) -->
 							<div class="mb-3">
-								<label class="form-label">Assign To</label> <select
-									name="assignedTo" class="form-select" required>
+								<label class="form-label text-dark fw-semibold">Assign To</label> <select
+									name="assignedTo" class="form-select text-dark border-secondary" required>
 									<option value="">-- Select User --</option>
 
 									<c:forEach var="user" items="${userList}">

@@ -46,33 +46,33 @@ body {
 							<div class="brand-logo">
 								<img src="">
 							</div>
-							<h3 class="text-center mb-4">Reset Password</h3>
+							<h3 class="text-center text-dark mb-4">Reset Password</h3>
 
 							<form action="verifyOtpAndChangePassword" method="post">
 
 								<!-- Email -->
 								<div class="mb-3">
-									<label class="form-label">Email Address</label> <input
-										type="email" name="email" class="form-control" required>
+									<label class="form-label text-dark fw-semibold">Email Address</label> <input
+										type="email" name="email" class="form-control text-dark fw-semibold" required>
 								</div>
 
 								<!-- Current Password -->
 								<div class="mb-3">
-									<label class="form-label">New Password</label> <input
-										type="password" name="password" class="form-control" required>
+									<label class="form-label text-dark fw-semibold">New Password</label> <input
+										type="password" name="password" class="form-control text-dark border-secondary" required>
 								</div>
 
 								<!-- New Password -->
 								<div class="mb-3">
-									<label class="form-label">Confirm Password</label> <input
-										type="password" name="newPassword" class="form-control"
+									<label class="form-label text-dark fw-semibold">Confirm Password</label> <input
+										type="password" name="newPassword" class="form-control text-dark border-secondary"
 										required>
 								</div>
 
 								<!-- OTP -->
 								<div class="mb-3">
-									<label class="form-label">Enter OTP</label> <input type="text"
-										name="otp" class="form-control" maxlength="6" required>
+									<label class="form-label text-dark fw-semibold">Enter OTP</label> <input type="text"
+										name="otp" class="form-control text-dark border-secondary" maxlength="6" required>
 								</div>
 
 								<!-- Submit Button -->

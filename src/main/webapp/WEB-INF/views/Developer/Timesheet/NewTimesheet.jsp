@@ -12,11 +12,11 @@
 </head>
 <body>
 	<!-- Header -->
-	<jsp:include page="../includes/AdminHeader.jsp"></jsp:include>
+	<jsp:include page="../includes/DeveloperHeader.jsp"></jsp:include>
 
 	<div class="container-fluid page-body-wrapper">
 		<!-- Sidebar -->
-		<jsp:include page="../includes/AdminLeftSidebar.jsp"></jsp:include>
+		<jsp:include page="../includes/DeveloperLeftSidebar.jsp"></jsp:include>
 
 		<!-- Main Content -->
 		<div class="main-panel">

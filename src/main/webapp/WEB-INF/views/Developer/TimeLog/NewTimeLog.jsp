@@ -21,16 +21,16 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">Create Time Log</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Create Time Log</h3>
+					<h2 class="text-dark font-weight-bold mb-2">Create Time Log</h2>
 					<a href="timeLogsList" class="btn btn-secondary btn-sm"> Back
 						to List </a>
 				</div>
 
 				<div class="card shadow-sm">
 					<div class="card-body">
+						<h3 class="mb-3 text-center text-dark-emphasis">Create Time Log</h3>
 
 						<form action="saveTimeLog" method="post">
 
@@ -38,29 +38,29 @@
 
 								<!-- Start Time -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Start Time</label> <input
+									<label class="form-label text-dark fw-semibold">Start Time</label> <input
 										type="datetime-local" name="startTime" id="startTime"
-										class="form-control" required>
+										class="form-control text-dark border-secondary" required>
 								</div>
 
 								<!-- End Time -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">End Time</label> <input
+									<label class="form-label text-dark fw-semibold">End Time</label> <input
 										type="datetime-local" name="endTime" id="endTime"
-										class="form-control" required>
+										class="form-control text-dark border-secondary" required>
 								</div>
 
 								<!-- Total Hours -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Total Hours</label> <input
+									<label class="form-label text-dark fw-semibold">Total Hours</label> <input
 										type="number" step="0.01" name="totalHours" id="totalHours"
-										class="form-control" readonly>
+										class="form-control text-dark border-secondary" readonly>
 								</div>
 
 								<!-- Log Type -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Log Type</label> <select
-										name="logType" class="form-select" required>
+									<label class="form-label text-dark fw-semibold">Log Type</label> <select
+										name="logType" class="form-select text-dark border-secondary" required>
 										<option value="">-- Select Log Type --</option>
 										<option value="AUTO">Auto</option>
 										<option value="MANUAL">Manual</option>

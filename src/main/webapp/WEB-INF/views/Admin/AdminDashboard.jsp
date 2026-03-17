@@ -35,14 +35,15 @@ body {
 			<!-- partial -->
 			<div class="main-panel">
 				<div class="content-wrapper">
-					<h2 class="text-dark font-weight-bold mb-2">Welcome
-						${user.firstName}!</h2>
 
 					<!-- Page Title -->
 					<div class="d-flex justify-content-between mb-4">
 						<h3>Admin Dashboard</h3>
 					</div>
 
+					<h2 class="text-dark-emphasis font-weight-bold mb-2">Welcome
+						${user.firstName}!</h2>
+						
 					<!-- 🔹 Statistics Cards -->
 					<div class="row g-4">
 

@@ -20,16 +20,16 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">Generate Invoice</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Generate Invoice</h3>
+				<h2 class="text-dark font-weight-bold mb-2">Generate Invoice</h2>
 					<a href="invoiceList" class="btn btn-secondary btn-sm"> Back to
 						Invoices </a>
 				</div>
 
 				<div class="card shadow-sm">
 					<div class="card-body">
+					<h3 class="mb-3 text-center text-dark-emphasis">Generate Invoice</h3>
 
 						<form action="generateInvoice" method="post">
 
@@ -37,36 +37,36 @@
 
 								<!-- Total Hours -->
 								<div class="col-md-4 mb-3">
-									<label class="form-label">Total Hours</label> <input
+									<label class="form-label text-dark fw-semibold">Total Hours</label> <input
 										type="number" step="0.01" name="totalHours" id="totalHours"
-										class="form-control" placeholder="Enter total hours" required>
+										class="form-control text-dark border-secondary" placeholder="Enter total hours" required>
 								</div>
 
 								<!-- Rate Per Hour -->
 								<div class="col-md-4 mb-3">
-									<label class="form-label">Rate Per Hour</label> <input
+									<label class="form-label text-dark fw-semibold">Rate Per Hour</label> <input
 										type="number" step="0.01" name="ratePerHour" id="ratePerHour"
-										class="form-control" placeholder="Enter hourly rate" required>
+										class="form-control text-dark border-secondary" placeholder="Enter hourly rate" required>
 								</div>
 
 								<!-- Total Amount -->
 								<div class="col-md-4 mb-3">
-									<label class="form-label">Total Amount</label> <input
+									<label class="form-label text-dark fw-semibold">Total Amount</label> <input
 										type="number" step="0.01" name="totalAmount" id="totalAmount"
-										class="form-control" readonly>
+										class="form-control text-dark border-secondary" readonly>
 								</div>
 
 								<!-- Invoice Date -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Invoice Date</label> <input
+									<label class="form-label text-dark fw-semibold">Invoice Date</label> <input
 										type="date" name="invoiceDate" id="invoiceDate"
-										class="form-control" required>
+										class="form-control text-dark border-secondary" required>
 								</div>
 
 								<!-- Payment Status -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Payment Status</label> <select
-										name="paymentStatus" class="form-select" required>
+									<label class="form-label text-dark fw-semibold">Payment Status</label> <select
+										name="paymentStatus" class="form-select text-dark border-secondary" required>
 										<option value="">-- Select Status --</option>
 										<option value="PAID">Paid</option>
 										<option value="UNPAID">Unpaid</option>

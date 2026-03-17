@@ -38,6 +38,8 @@
 							New Project</a></li>
 					<li class="nav-item"><a class="nav-link" href="/admin/projectsList">List
 							Projects</a></li>
+					<li class="nav-item"><a class="nav-link" href="/admin/assignProject">Assign
+							Projects</a></li>
 				</ul>
 			</div></li>
 

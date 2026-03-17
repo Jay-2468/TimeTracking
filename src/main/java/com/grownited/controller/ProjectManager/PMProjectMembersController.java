@@ -18,7 +18,7 @@ import com.grownited.repository.UserRepository;
 
 @Controller
 @RequestMapping("/pm")
-public class PMTeamController {
+public class PMProjectMembersController {
 
 	@Autowired
 	ProjectRepository projectRepository;
@@ -29,7 +29,7 @@ public class PMTeamController {
 	@GetMapping("/addTeamMember")
 	public String addTeamMember(Model model, @SessionAttribute("user") UserEntity user) {
 		
-		List<ProjectEntity> projects = projectRepository.findByAssignedTo(user.getUserId());
+		List<ProjectEntity> projects = projectRepository.findByAssignedTo(user);
 		List<UserEntity> developers = userRepository.findByRole(Role.DEVELOPER);
 		model.addAttribute("projects", projects);
 		model.addAttribute("developers", developers);

@@ -22,22 +22,19 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">User List</h2>
+				<h2 class="text-dark font-weight-bold mb-2">Developers List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">User List</h3>
-					<a href="newUser" class="btn btn-primary btn-sm"> <i
-						class="mdi mdi-plus-circle-outline"></i> New User
-					</a>
+					<h3 class="mb-0 text-dark-emphasis">Developers List</h3>
 				</div>
 
 				<!-- Empty State -->
-				<c:if test="${empty usersList}">
+				<c:if test="${empty developers}">
 					<div class="alert alert-warning">No users found.</div>
 				</c:if>
 
 				<!-- User Table -->
-				<c:if test="${not empty usersList}">
+				<c:if test="${not empty developers}">
 					<div class="table-responsive">
 						<table class="table table-bordered table-hover align-middle">
 							<thead class="table-dark">
@@ -47,7 +44,6 @@
 									<th>Full Name</th>
 									<th>Contact</th>
 									<th>Email</th>
-									<th>Role</th>
 									<th>Status</th>
 									<th>Created At</th>
 									<th class="text-center">Actions</th>
@@ -55,35 +51,32 @@
 							</thead>
 
 							<tbody>
-								<c:forEach var="user" items="${usersList}" varStatus="i">
+								<c:forEach var="developer" items="${developers}" varStatus="i">
 									<tr>
-										<td>${i.index + 1}</td>
+										<td class="text-dark-emphasis">${i.index + 1}</td>
 
 										<!-- Profile Picture -->
 										<td class="text-center"><c:if
-												test="${not empty user.profilePictureURL}">
-												<img src="${user.profilePictureURL}"
+												test="${not empty developer.profilePictureURL}">
+												<img src="${developer.profilePictureURL}"
 													class="rounded-circle" width="40" height="40" alt="Profile">
-											</c:if> <c:if test="${empty user.profilePictureURL}">
-												<span class="text-muted">N/A</span>
+											</c:if> <c:if test="${empty developer.profilePictureURL}">
+												<span class="text-dark-emphasis">N/A</span>
 											</c:if></td>
 
 										<!-- Name -->
-										<td>${user.firstName} ${user.lastName}</td>
+										<td class="text-dark-emphasis">${developer.firstName}
+											${developer.lastName}</td>
 
 										<!-- Contact -->
-										<td>${user.contactNumber}</td>
+										<td class="text-dark-emphasis">${developer.contactNumber}</td>
 
 										<!-- Email -->
-										<td>${user.email}</td>
-
-										<!-- Role -->
-										<td><span class="badge bg-info text-dark">
-												${user.role} </span></td>
+										<td class="text-dark-emphasis">${developer.email}</td>
 
 										<!-- Status -->
 										<td><c:choose>
-												<c:when test="${user.status == 'Active'}">
+												<c:when test="${developer.status == 'Active'}">
 													<span class="badge bg-success">Active</span>
 												</c:when>
 												<c:otherwise>
@@ -92,18 +85,11 @@
 											</c:choose></td>
 
 										<!-- Created Date -->
-										<td>${user.createdAt}</td>
+										<td class="text-dark-emphasis">${user.createdAt}</td>
 
 										<!-- Actions -->
 										<td class="text-center"><a
-											href="editUser?userId=${user.userId}"
-											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
-												Edit
-										</a> <a href="deleteUser?userId=${user.userId}"
-											class="btn btn-sm btn-danger"
-											onclick="return confirm('Are you sure you want to delete this user?')">
-												<i class="mdi mdi-delete"></i> Delete
-										</a> <a href="viewUser?userId=${user.userId}"
+											href="viewDeveloper?userId=${developer.userId}"
 											class="btn btn-sm btn-primary"> <i class="mdi mdi-eye"></i>
 												View
 										</a></td>

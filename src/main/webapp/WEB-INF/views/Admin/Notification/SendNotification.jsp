@@ -20,16 +20,16 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">Send Notification</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Send Notification</h3>
+				<h2 class="text-dark font-weight-bold mb-2">Send Notification</h2>
 					<a href="notificationsList" class="btn btn-secondary btn-sm">
 						Back to Notifications </a>
 				</div>
 
 				<div class="card shadow-sm">
 					<div class="card-body">
+					<h3 class="mb-3 text-dark-emphasis text-center">Send Notification</h3>
 
 						<form action="sendNotification" method="post">
 
@@ -37,8 +37,8 @@
 
 								<!-- Notification Type -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label">Notification Type</label> <select
-										name="notificationType" class="form-select" required>
+									<label class="form-label text-dark fw-semibold">Notification Type</label> <select
+										name="notificationType" class="form-select text-dark border-secondary" required>
 										<option value="">-- Select Type --</option>
 										<option value="DEADLINE">Deadline</option>
 										<option value="IDLE">Idle</option>
@@ -48,8 +48,8 @@
 
 								<!-- Message -->
 								<div class="col-12 mb-3">
-									<label class="form-label">Message</label>
-									<textarea name="message" class="form-control" rows="5"
+									<label class="form-label text-dark fw-semibold">Message</label>
+									<textarea name="message" class="form-control text-dark border-secondary" rows="5"
 										placeholder="Enter notification message..." required></textarea>
 								</div>
 

@@ -1,5 +1,6 @@
 package com.grownited.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -8,10 +9,18 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "time_logs")
+@Getter
+@Setter
 public class TimeLogEntity {
 
 	public enum LogType {
@@ -25,78 +34,63 @@ public class TimeLogEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer logId;
-	private Integer taskId; // FK
-	private Integer userId; // FK
+	
+	@ManyToOne
+	@JoinColumn(name = "task_id")
+	private TaskEntity task; // FK
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private UserEntity user; // FK
+	
 	private LocalDateTime startTime;
+	
 	private LocalDateTime endTime;
+
+	private LocalDate logDate;
+	
+	private Double breakHours;
+	
 	private Double totalHours;
+	
 	@Enumerated(EnumType.STRING)
 	private LogType logType; // log type : Auto / Manual
+	
 	@Enumerated(EnumType.STRING)
 	private ApprovalStatus approvalStatus; // approval status : Approved / Rejected / Pending
 
-	public Integer getLogId() {
-		return logId;
-	}
+	@ManyToOne
+	@JoinColumn(name = "approved_by")
+	private UserEntity approvedBy;
+	
+	private String approvalRemark;
+	
+	private LocalDateTime createdAt;
+	
+	private LocalDateTime updatedAt;
 
-	public void setLogId(Integer logId) {
-		this.logId = logId;
-	}
+	private Boolean isDeleted = false;
 
-	public Integer getTaskId() {
-		return taskId;
+	private Boolean isEditable = false;
+	
+	
+	@PrePersist
+	public void onCreate() {
+		this.logDate = startTime.toLocalDate();
+		this.createdAt = LocalDateTime.now();
+		calculateHours();
 	}
-
-	public void setTaskId(Integer taskId) {
-		this.taskId = taskId;
+	
+	@PreUpdate
+	public void onUpdate() {
+		this.updatedAt = LocalDateTime.now();
+		calculateHours();
 	}
-
-	public Integer getUserId() {
-		return userId;
+	
+	public void calculateHours() {
+	    if (startTime != null && endTime != null) {
+	        this.totalHours = (double) java.time.Duration.between(startTime, endTime).toMinutes() / 60;
+	    }
 	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
-	public LocalDateTime getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(LocalDateTime startTime) {
-		this.startTime = startTime;
-	}
-
-	public LocalDateTime getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(LocalDateTime endTime) {
-		this.endTime = endTime;
-	}
-
-	public Double getTotalHours() {
-		return totalHours;
-	}
-
-	public void setTotalHours(Double totalHours) {
-		this.totalHours = totalHours;
-	}
-
-	public LogType getLogType() {
-		return logType;
-	}
-
-	public void setLogType(LogType logType) {
-		this.logType = logType;
-	}
-
-	public ApprovalStatus getApprovalStatus() {
-		return approvalStatus;
-	}
-
-	public void setApprovalStatus(ApprovalStatus approvalStatus) {
-		this.approvalStatus = approvalStatus;
-	}
-
+	
 }

@@ -24,7 +24,7 @@
 				<h2 class="text-dark font-weight-bold mb-2">Module List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Module List</h3>
+					<h3 class="mb-0 text-dark-emphasis">Module List</h3>
 					<a href="/pm/newModule" class="btn btn-primary btn-sm"> <i
 						class="mdi mdi-plus-circle-outline"></i> New Module
 					</a>
@@ -52,10 +52,10 @@
 							<tbody>
 								<c:forEach var="module" items="${modulesList}" varStatus="i">
 									<tr>
-										<td>${i.index + 1}</td>
-										<td>${module.moduleName}</td>
-										<td>${module.description}</td>
-										<td>${projectMap[module.projectId]}</td>
+										<td class="text-dark-emphasis">${i.index + 1}</td>
+										<td class="text-dark-emphasis">${module.moduleName}</td>
+										<td class="text-dark-emphasis">${module.description}</td>
+										<td class="text-dark-emphasis">${projectMap[module.projectId]}</td>
 										<td class="text-center"><a
 											href="/pm/viewModule?moduleId=${module.moduleId}"
 											class="btn btn-sm btn-info text-white"> <i

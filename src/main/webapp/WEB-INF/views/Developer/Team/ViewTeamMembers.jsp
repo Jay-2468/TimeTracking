@@ -25,23 +25,17 @@ body {
 </head>
 <body>
 	<!-- Header -->
-	<jsp:include page="../includes/PMHeader.jsp"></jsp:include>
+	<jsp:include page="../includes/DeveloperHeader.jsp"></jsp:include>
 
 	<div class="container-fluid page-body-wrapper">
 		<!-- Sidebar -->
-		<jsp:include page="../includes/PMLeftSidebar.jsp"></jsp:include>
+		<jsp:include page="../includes/DeveloperLeftSidebar.jsp"></jsp:include>
 
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
 				<h2 class="text-dark font-weight-bold mb-2">My Team Members</h2>
-				
-				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0 text-dark-emphasis">Team Members</h3>
-					<a href="addTeamMember" class="btn btn-primary btn-sm"> <i
-						class="mdi mdi-plus-circle-outline"></i> Add Team Members
-					</a>
-				</div>
+
 
 				<div class="table-container">
 
@@ -65,15 +59,15 @@ body {
 
 								<tr>
 
-									<td class="text-dark-emphasis">${member.userId}</td>
+									<td>${member.userId}</td>
 
-									<td class="text-dark-emphasis">${member.firstName}${member.lastName}</td>
+									<td>${member.firstName}${member.lastName}</td>
 
-									<td class="text-dark-emphasis">${member.email}</td>
+									<td>${member.email}</td>
 
-									<td class="text-dark-emphasis">${member.role}</td>
+									<td>${member.role}</td>
 
-									<td class="text-dark-emphasis">${member.projectName}</td>
+									<td>${member.projectName}</td>
 
 									<td><span class="badge bg-success">
 											${member.status} </span></td>

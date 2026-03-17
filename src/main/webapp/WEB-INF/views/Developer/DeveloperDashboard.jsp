@@ -39,7 +39,7 @@ body {
 			<div class="content-wrapper">
 				<h2 class="text-dark font-weight-bold mb-2">Developer Dashboard</h2>
 
-				<h2 class="mb-4">Welcome ${sessionScope.userName}</h2>
+				<h2 class="mb-4 text-dark-emphasis">Welcome, ${user.firstName}</h2>
 
 				<div class="row">
 
@@ -91,7 +91,7 @@ body {
 
 				<hr class="my-4">
 
-				<h4>Quick Actions</h4>
+				<h4 class="text-dark-emphasis">Quick Actions</h4>
 
 				<div class="row text-center mt-3">
 

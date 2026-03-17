@@ -28,34 +28,35 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">Create New Module</h2>
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Create New Module</h3>
+				<h2 class="text-dark font-weight-bold mb-2">Create New Module</h2>
 					<a href="modulesList" class="btn btn-secondary btn-sm"> Back to
 						List </a>
 				</div>
 
 				<div class="card shadow-sm">
 					<div class="card-body">
+					<h3 class="mb-3 text-center text-dark-emphasis">Create New Module</h3>
+					
 						<form action="createModule" method="post">
 
 							<!-- Module Name -->
 							<div class="mb-3">
-								<label class="form-label">Module Name</label> <input type="text"
-									name="moduleName" class="form-control" required>
+								<label class="form-label text-dark fw-semibold">Module Name</label> <input type="text"
+									name="moduleName" class="form-control text-dark border-secondary" required>
 							</div>
 
 							<!-- Description -->
 							<div class="mb-3">
-								<label class="form-label">Description</label>
-								<textarea name="description" class="form-control" rows="4"
+								<label class="form-label text-dark fw-semibold">Description</label>
+								<textarea name="description" class="form-control text-dark border-secondary" rows="4"
 									required></textarea>
 							</div>
 
 							<!-- Porject -->
 							<div class="mb-3">
-								<label class="form-label">Project</label> <select
-									name="projectId" class="form-control">
+								<label class="form-label text-dark fw-semibold">Project</label> <select
+									name="projectId" class="form-control text-dark border-secondary">
 									<option value="-1">---Select Project---</option>
 
 									<c:forEach items="${projectsList}" var="pl">

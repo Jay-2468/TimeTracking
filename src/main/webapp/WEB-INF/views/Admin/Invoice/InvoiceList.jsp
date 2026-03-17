@@ -25,7 +25,7 @@
 				<h2 class="text-dark font-weight-bold mb-2">Invoice List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0">Invoices</h3>
+					<h3 class="mb-0 text-dark-emphasis">Invoices</h3>
 					<a href="createInvoice" class="btn btn-primary btn-sm"> <i
 						class="mdi mdi-plus-circle-outline"></i> Generate Invoice
 					</a>
@@ -51,23 +51,22 @@
 
 								<c:if test="${empty invoices}">
 									<tr>
-										<td colspan="6" class="text-muted">No Invoices Found.</td>
+										<td colspan="6" class="text-dark-emphasis">No Invoices Found.</td>
 									</tr>
 								</c:if>
 
 								<c:forEach items="${invoices}" var="invoice">
 									<tr>
 
-										<td>${invoice.totalHours}</td>
+										<td class="text-dark-emphasis">${invoice.totalHours}</td>
 
-										<td><fmt:formatNumber value="${invoice.ratePerHour}"
+										<td class="text-dark-emphasis"><fmt:formatNumber value="${invoice.ratePerHour}"
 												type="currency" /></td>
 
-										<td><strong> <fmt:formatNumber
-													value="${invoice.totalAmount}" type="currency" />
-										</strong></td>
+										<td class="text-dark-emphasis"> <fmt:formatNumber
+													value="${invoice.totalAmount}" type="currency" /></td>
 
-										<td>${invoice.invoiceDate}</td>
+										<td class="text-dark-emphasis">${invoice.invoiceDate}</td>
 
 										<!-- Payment Status Badge -->
 										<td><c:choose>

@@ -6,9 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.grownited.entity.TaskEntity;
+import com.grownited.entity.UserEntity;
 
 @Repository
 public interface TaskRepository extends JpaRepository<TaskEntity, Integer>{
 	
-	List<TaskEntity> findByCreatedBy(Integer createdBy);
+	List<TaskEntity> findByCreatedBy(UserEntity user);
+	
+	List<TaskEntity> findByAssignedTo(UserEntity assignedTo);
 }

@@ -26,9 +26,6 @@
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0">Task List</h3>
-					<a href="newTask" class="btn btn-primary btn-sm"> <i
-						class="mdi mdi-plus-circle-outline"></i> New Task
-					</a>
 				</div>
 
 				<!-- Empty State -->
@@ -56,10 +53,10 @@
 							<tbody>
 								<c:forEach var="task" items="${tasksList}" varStatus="i">
 									<tr>
-										<td>${i.index + 1}</td>
+										<td class="text-dark-emphasis">${i.index + 1}</td>
 
-										<td>${task.taskName}</td>
-										<td>${task.description}</td>
+										<td class="text-dark-emphasis">${task.taskName}</td>
+										<td class="text-dark-emphasis">${task.description}</td>
 
 										<!-- Priority Badge -->
 										<td><c:choose>
@@ -74,7 +71,7 @@
 												</c:otherwise>
 											</c:choose></td>
 
-										<td>${task.deadline}</td>
+										<td class="text-dark-emphasis">${task.deadline}</td>
 
 										<!-- Status Badge -->
 										<td><c:choose>
@@ -90,25 +87,14 @@
 											</c:choose></td>
 
 										<!-- Assigned User -->
-										<%--<td>${task.assignedTo.firstName} ${task.assignedTo.lastName}</td>
-								 --%>
-										<%--<td>${user.firstName}
-									${user.lastName}</td> --%>
-										<td>${userMap[task.assignedTo]}</td>
+										<td class="text-dark-emphasis">${task.assignedTo.firstName} ${task.assignedTo.lastName}</td>
 
 										<!-- Actions -->
 										<td class="text-center"><a
 											href="viewTask?taskId=${task.taskId}"
 											class="btn btn-sm btn-info text-white"> <i
 												class="mdi mdi-eye"></i> View
-										</a> <a href="editTask?taskId=${task.taskId}"
-											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
-												Edit
-										</a> <a href="deleteTask?taskId=${task.taskId}"
-											class="btn btn-sm btn-danger"
-											onclick="return confirm('Are you sure you want to delete this task?')">
-												<i class="mdi mdi-delete"></i> Delete
-										</a></td>
+										</a> </td>
 
 									</tr>
 								</c:forEach>

@@ -13,13 +13,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "reports")
-@Getter
-@Setter
 public class ReportEntity {
 
 	public enum ReportType {
@@ -61,6 +57,86 @@ public class ReportEntity {
 	public void onCreate() {
 		this.generatedDate = LocalDateTime.now();
 		this.reportStatus = ReportStatus.PROCESSING;
+	}
+
+	public Long getReportId() {
+		return reportId;
+	}
+
+	public void setReportId(Long reportId) {
+		this.reportId = reportId;
+	}
+
+	public String getReportTitle() {
+		return reportTitle;
+	}
+
+	public void setReportTitle(String reportTitle) {
+		this.reportTitle = reportTitle;
+	}
+
+	public ReportType getReportType() {
+		return reportType;
+	}
+
+	public void setReportType(ReportType reportType) {
+		this.reportType = reportType;
+	}
+
+	public UserEntity getGeneratedBy() {
+		return generatedBy;
+	}
+
+	public void setGeneratedBy(UserEntity generatedBy) {
+		this.generatedBy = generatedBy;
+	}
+
+	public LocalDateTime getGeneratedDate() {
+		return generatedDate;
+	}
+
+	public void setGeneratedDate(LocalDateTime generatedDate) {
+		this.generatedDate = generatedDate;
+	}
+
+	public LocalDateTime getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(LocalDateTime fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public LocalDateTime getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(LocalDateTime toDate) {
+		this.toDate = toDate;
+	}
+
+	public ReportStatus getReportStatus() {
+		return reportStatus;
+	}
+
+	public void setReportStatus(ReportStatus reportStatus) {
+		this.reportStatus = reportStatus;
+	}
+
+	public String getReportData() {
+		return reportData;
+	}
+
+	public void setReportData(String reportData) {
+		this.reportData = reportData;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

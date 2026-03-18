@@ -11,15 +11,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "projects")
-@Getter
-@Setter
 public class ProjectEntity {
-	
+
 	public enum Status {
 		PLANNED, ONGOING, COMPLETED
 	}
@@ -27,20 +23,76 @@ public class ProjectEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer projectId;
-	
+
 	private String projectName;
-	
+
 	private String description;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "assigned_to")
 	private UserEntity assignedTo; // FK - Drop Down
-	
+
 	private LocalDate startDate;
-	
+
 	private LocalDate endDate;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Status status; // status : Planned / Ongoing / Completed
+
+	public Integer getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
+	}
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public UserEntity getAssignedTo() {
+		return assignedTo;
+	}
+
+	public void setAssignedTo(UserEntity assignedTo) {
+		this.assignedTo = assignedTo;
+	}
+
+	public LocalDate getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(LocalDate startDate) {
+		this.startDate = startDate;
+	}
+
+	public LocalDate getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(LocalDate endDate) {
+		this.endDate = endDate;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 }

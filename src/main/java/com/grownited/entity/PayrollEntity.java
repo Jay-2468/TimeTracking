@@ -16,13 +16,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "payroll")
-@Getter
-@Setter
 public class PayrollEntity {
 
 	public enum PayrollStatus {
@@ -64,7 +60,6 @@ public class PayrollEntity {
 
 	private LocalDateTime updatedAt;
 
-	
 	@PrePersist
 	public void onCreate() {
 		this.createdAt = LocalDateTime.now();
@@ -87,4 +82,109 @@ public class PayrollEntity {
 			this.netSalary = gross.add(totalBonus).subtract(totalDeduction);
 		}
 	}
+
+	public Long getPayrollId() {
+		return payrollId;
+	}
+
+	public void setPayrollId(Long payrollId) {
+		this.payrollId = payrollId;
+	}
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+
+	public Double getTotalHours() {
+		return totalHours;
+	}
+
+	public void setTotalHours(Double totalHours) {
+		this.totalHours = totalHours;
+	}
+
+	public BigDecimal getHourlyRate() {
+		return hourlyRate;
+	}
+
+	public void setHourlyRate(BigDecimal hourlyRate) {
+		this.hourlyRate = hourlyRate;
+	}
+
+	public BigDecimal getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(BigDecimal bonus) {
+		this.bonus = bonus;
+	}
+
+	public BigDecimal getDeductions() {
+		return deductions;
+	}
+
+	public void setDeductions(BigDecimal deductions) {
+		this.deductions = deductions;
+	}
+
+	public BigDecimal getNetSalary() {
+		return netSalary;
+	}
+
+	public void setNetSalary(BigDecimal netSalary) {
+		this.netSalary = netSalary;
+	}
+
+	public LocalDate getPaymentDate() {
+		return paymentDate;
+	}
+
+	public void setPaymentDate(LocalDate paymentDate) {
+		this.paymentDate = paymentDate;
+	}
+
+	public LocalDate getPeriodStartDate() {
+		return periodStartDate;
+	}
+
+	public void setPeriodStartDate(LocalDate periodStartDate) {
+		this.periodStartDate = periodStartDate;
+	}
+
+	public LocalDate getPeriodEndDate() {
+		return periodEndDate;
+	}
+
+	public void setPeriodEndDate(LocalDate periodEndDate) {
+		this.periodEndDate = periodEndDate;
+	}
+
+	public PayrollStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(PayrollStatus status) {
+		this.status = status;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
 }

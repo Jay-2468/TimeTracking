@@ -2,8 +2,11 @@ package com.grownited.service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 
 import org.springframework.stereotype.Service;
+
+import com.grownited.entity.PaymentEntity;
 
 import net.authorize.Environment;
 import net.authorize.api.contract.v1.ANetApiResponse;
@@ -23,11 +26,10 @@ import net.authorize.api.controller.base.ApiOperationBase;
 @Service
 public class PaymentService {
 
-	//
-	// Run this sample from command line with:
-	// java -jar target/ChargeCreditCard-jar-with-dependencies.jar
-	//
-	public static ANetApiResponse run(String apiLoginId, String transactionKey, Double amount) {
+	private final String apiLoginId = "6EWa7u3t582U";
+	private final String transactionKey = "66e949yU9f7GmdE3";
+
+	public ANetApiResponse chargeCreditCard(String email, String creditCardNum, String expiredDate, Double amount) {
 
 		// Set the request to operate in either the sandbox or production environment
 		ApiOperationBase.setEnvironment(Environment.SANDBOX);
@@ -40,13 +42,13 @@ public class PaymentService {
 		// Populate the payment data
 		PaymentType paymentType = new PaymentType();
 		CreditCardType creditCard = new CreditCardType();
-		creditCard.setCardNumber("4242424242424242");
-		creditCard.setExpirationDate("0835");
+		creditCard.setCardNumber(creditCardNum);
+		creditCard.setExpirationDate(expiredDate);
 		paymentType.setCreditCard(creditCard);
 
 		// Set email address (optional)
 		CustomerDataType customer = new CustomerDataType();
-		customer.setEmail("test@test.test");
+		customer.setEmail(email);
 
 		// Create the payment transaction object
 		TransactionRequestType txnRequest = new TransactionRequestType();
@@ -79,6 +81,20 @@ public class PaymentService {
 					System.out.println("Message Code: " + result.getMessages().getMessage().get(0).getCode());
 					System.out.println("Description: " + result.getMessages().getMessage().get(0).getDescription());
 					System.out.println("Auth Code: " + result.getAuthCode());
+
+					// db insert payment
+					PaymentEntity payment = new PaymentEntity();
+					payment.setAmount(amount);
+					payment.setGateway("AUTHIRIZE.NET");
+					payment.setPaymentDate(LocalDate.now());
+					payment.setPaymentGatewayAuthCode(result.getAuthCode());
+					payment.setPaymentGatewayTransactionId(result.getTransId());
+					payment.setPaymentMode("CARD");
+//					payment.setOrderId(orderId);
+
+					// repo
+					// repo.save(payment);
+
 				} else {
 					System.out.println("Failed Transaction.");
 					if (response.getTransactionResponse().getErrors() != null) {
@@ -110,7 +126,6 @@ public class PaymentService {
 						+ errorResponse.getMessages().getMessage().get(0).getText());
 			}
 		}
-
 		return response;
 	}
 

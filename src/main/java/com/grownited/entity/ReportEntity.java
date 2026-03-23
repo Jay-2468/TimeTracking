@@ -2,6 +2,8 @@ package com.grownited.entity;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -39,6 +41,7 @@ public class ReportEntity {
 	@JoinColumn(name = "generated_by")
 	private UserEntity generatedBy; // FK
 
+	@CreationTimestamp
 	private LocalDateTime generatedDate;
 
 	private LocalDateTime fromDate;
@@ -55,7 +58,6 @@ public class ReportEntity {
 
 	@PrePersist
 	public void onCreate() {
-		this.generatedDate = LocalDateTime.now();
 		this.reportStatus = ReportStatus.PROCESSING;
 	}
 

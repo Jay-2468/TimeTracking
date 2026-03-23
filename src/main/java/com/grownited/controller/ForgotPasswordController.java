@@ -46,7 +46,7 @@ public class ForgotPasswordController {
 		if (opUser.isPresent()) {
 			UserEntity user = opUser.get();
 			String otp = otpService.generateOtp();
-			fp.setUserId(user.getUserId());
+			fp.setUser(user);
 			fp.setOtp(otp);
 			fp.setUsedStatus(false);
 

@@ -1,6 +1,8 @@
 package com.grownited.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,7 +27,7 @@ public class UserEntity {
 
 	@Id // This will create primary key
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // this will give auto_increment to the userId to MySQL query
-	private Integer userId;
+	private Long userId;
 
 	private String firstName;
 
@@ -39,7 +41,8 @@ public class UserEntity {
 
 	private String profilePictureURL;
 
-	private LocalDate createdAt;
+	@CreationTimestamp
+	private LocalDateTime createdAt;
 
 	@Enumerated(EnumType.STRING)
 	@Column(length = 50)
@@ -53,11 +56,11 @@ public class UserEntity {
 		return firstName + lastName;
 	}
 
-	public Integer getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
@@ -109,11 +112,11 @@ public class UserEntity {
 		this.profilePictureURL = profilePictureURL;
 	}
 
-	public LocalDate getCreatedAt() {
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(LocalDate createdAt) {
+	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 

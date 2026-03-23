@@ -40,7 +40,7 @@ public class PMModuleController {
 	@PostMapping("/createModule")
 	public String createModule(ModuleEntity moduleEntity, @SessionAttribute("user") UserEntity user) {
 		
-		moduleEntity.setCreatedBy(user.getUserId());
+		moduleEntity.setCreatedBy(user);
 		moduleRepository.save(moduleEntity);
 		
 		return "redirect:/pm/modulesList";

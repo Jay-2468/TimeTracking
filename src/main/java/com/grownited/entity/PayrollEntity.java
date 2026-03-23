@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -56,23 +59,19 @@ public class PayrollEntity {
 	@Enumerated(EnumType.STRING)
 	private PayrollStatus status;
 
+	@CreationTimestamp
 	private LocalDateTime createdAt;
 
+	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 
 	@PrePersist
 	public void onCreate() {
-		this.createdAt = LocalDateTime.now();
 		this.status = PayrollStatus.GENERATED;
 		calculateNetSalary();
 	}
 
 	@PreUpdate
-	public void onUpdate() {
-		this.updatedAt = LocalDateTime.now();
-		calculateNetSalary();
-	}
-
 	public void calculateNetSalary() {
 		if (hourlyRate != null && totalHours != null) {
 			BigDecimal gross = hourlyRate.multiply(BigDecimal.valueOf(totalHours));

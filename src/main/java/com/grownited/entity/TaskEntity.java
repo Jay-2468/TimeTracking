@@ -1,6 +1,10 @@
 package com.grownited.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -16,29 +20,29 @@ import jakarta.persistence.Table;
 @Table(name = "tasks")
 public class TaskEntity {
 
-	public enum Priority {
+	public enum TaskPriority {
 		HIGH, MEDIUM, LOW
 	}
 
-	public enum Status {
+	public enum TaskStatus {
 		PENDING, IN_PROGRESS, COMPLETED
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer taskId;
+	private Long taskId;
 
 	private String taskName;
 
 	private String description;
 
 	@Enumerated(EnumType.STRING)
-	private Priority priority; // priorities : High / Medium / Low
+	private TaskPriority priority; // priorities : High / Medium / Low
 
 	private LocalDate deadline;
 
 	@Enumerated(EnumType.STRING)
-	private Status status; // status : Pending / In Progress / Completed
+	private TaskStatus status; // status : Pending / In Progress / Completed
 
 	@ManyToOne
 	@JoinColumn(name = "module_id")
@@ -52,11 +56,19 @@ public class TaskEntity {
 	@JoinColumn(name = "created_by")
 	private UserEntity createdBy; // FK
 
-	public Integer getTaskId() {
+	private Integer progress; // 0-100%
+
+	@CreationTimestamp
+	private LocalDateTime createdAt;
+
+	@UpdateTimestamp
+	private LocalDateTime updatedAt;
+
+	public Long getTaskId() {
 		return taskId;
 	}
 
-	public void setTaskId(Integer taskId) {
+	public void setTaskId(Long taskId) {
 		this.taskId = taskId;
 	}
 
@@ -76,11 +88,11 @@ public class TaskEntity {
 		this.description = description;
 	}
 
-	public Priority getPriority() {
+	public TaskPriority getPriority() {
 		return priority;
 	}
 
-	public void setPriority(Priority priority) {
+	public void setPriority(TaskPriority priority) {
 		this.priority = priority;
 	}
 
@@ -92,11 +104,11 @@ public class TaskEntity {
 		this.deadline = deadline;
 	}
 
-	public Status getStatus() {
+	public TaskStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(TaskStatus status) {
 		this.status = status;
 	}
 
@@ -122,6 +134,30 @@ public class TaskEntity {
 
 	public void setCreatedBy(UserEntity createdBy) {
 		this.createdBy = createdBy;
+	}
+
+	public Integer getProgress() {
+		return progress;
+	}
+
+	public void setProgress(Integer progress) {
+		this.progress = progress;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 }

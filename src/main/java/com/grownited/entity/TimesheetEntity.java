@@ -1,6 +1,10 @@
 package com.grownited.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -8,6 +12,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,28 +26,47 @@ public class TimesheetEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer timesheetId;
-	private Integer userId; // FK
+	private Long timesheetId;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private UserEntity user; // FK
+
 	private LocalDate weekStart;
+
 	private LocalDate weekEnd;
+
 	private Double totalHours;
+
 	@Enumerated(EnumType.STRING)
 	private Status status; // status : Submitted / Approved / Rejected
 
-	public Integer getTimesheetId() {
+	@ManyToOne
+	@JoinColumn(name = "approved_by")
+	private UserEntity approvedBy; // FK
+
+	private LocalDateTime approvedAt;
+
+	@CreationTimestamp
+	private LocalDateTime createdAt;
+
+	@UpdateTimestamp
+	private LocalDateTime updatedAt;
+
+	public Long getTimesheetId() {
 		return timesheetId;
 	}
 
-	public void setTimesheetId(Integer timesheetId) {
+	public void setTimesheetId(Long timesheetId) {
 		this.timesheetId = timesheetId;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public UserEntity getUser() {
+		return user;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUser(UserEntity user) {
+		this.user = user;
 	}
 
 	public LocalDate getWeekStart() {
@@ -74,6 +99,38 @@ public class TimesheetEntity {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public UserEntity getApprovedBy() {
+		return approvedBy;
+	}
+
+	public void setApprovedBy(UserEntity approvedBy) {
+		this.approvedBy = approvedBy;
+	}
+
+	public LocalDateTime getApprovedAt() {
+		return approvedAt;
+	}
+
+	public void setApprovedAt(LocalDateTime approvedAt) {
+		this.approvedAt = approvedAt;
 	}
 
 }

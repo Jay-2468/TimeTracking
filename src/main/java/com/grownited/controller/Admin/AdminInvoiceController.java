@@ -1,6 +1,6 @@
 package com.grownited.controller.Admin;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,29 +19,36 @@ public class AdminInvoiceController {
 
 	@Autowired
 	InvoiceRepository invoiceRepository;
-	
+
 	@GetMapping("/createInvoice")
 	public String createInvoice() {
+		
 		return "Admin/Invoice/GenerateInvoice";
 	}
-	
+
 	@PostMapping("/generateInvoice")
 	public String generateInvoice(InvoiceEntity invoiceEntity) {
-		invoiceEntity.setInvoiceDate(LocalDate.now());
+		
+		invoiceEntity.setTotalAmount(invoiceEntity.getRatePerHour().multiply(BigDecimal.valueOf(invoiceEntity.getTotalHours())));
 		invoiceRepository.save(invoiceEntity);
+		
 		return "redirect:/admin/invoiceList";
 	}
-	
+
 	@GetMapping("/invoiceList")
 	public String invoiceList(Model model) {
+		
 		List<InvoiceEntity> invoices = invoiceRepository.findAll();
 		model.addAttribute("invoices", invoices);
+		
 		return "Admin/Invoice/InvoiceList";
 	}
-	
+
 	@GetMapping("/deleteInvoice")
 	public String deleteInvoice(Integer invoiceId) {
+		
 		invoiceRepository.deleteById(invoiceId);
+		
 		return "redirect:/admin/invoiceList";
 	}
 }

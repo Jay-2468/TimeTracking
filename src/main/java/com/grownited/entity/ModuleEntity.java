@@ -1,30 +1,62 @@
 package com.grownited.entity;
 
+import java.time.LocalDateTime;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "modules")
 public class ModuleEntity {
+
+	public enum ModuleStatus {
+		ACTIVE, INACTIVE, ARCHIVED
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer moduleId;
-	private String moduleName;
-	private Integer projectId; // FK // drop-down
-	private String description;
-	@Transient
-	private String projectName;
-	private Integer createdBy; // FK
+	private Long moduleId;
 
-	public Integer getModuleId() {
+	private String moduleName;
+
+	@ManyToOne
+	@JoinColumn(name = "project_id")
+	private ProjectEntity project; // FK // drop-down
+
+	private String description;
+
+	@ManyToOne
+	@JoinColumn(name = "created_by")
+	private UserEntity createdBy; // FK
+
+	@ManyToOne
+	@JoinColumn(name = "updated_by")
+	private UserEntity updatedBy; // FK
+
+	@Enumerated(EnumType.STRING)
+	private ModuleStatus status;
+
+	@CreationTimestamp
+	private LocalDateTime createdAt;
+
+	@UpdateTimestamp
+	private LocalDateTime updatedAt;
+
+	public Long getModuleId() {
 		return moduleId;
 	}
 
-	public void setModuleId(Integer moduleId) {
+	public void setModuleId(Long moduleId) {
 		this.moduleId = moduleId;
 	}
 
@@ -36,12 +68,12 @@ public class ModuleEntity {
 		this.moduleName = moduleName;
 	}
 
-	public Integer getProjectId() {
-		return projectId;
+	public ProjectEntity getProject() {
+		return project;
 	}
 
-	public void setProjectId(Integer projectId) {
-		this.projectId = projectId;
+	public void setProject(ProjectEntity project) {
+		this.project = project;
 	}
 
 	public String getDescription() {
@@ -52,20 +84,44 @@ public class ModuleEntity {
 		this.description = description;
 	}
 
-	public String getProjectName() {
-		return projectName;
-	}
-
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
-	}
-
-	public Integer getCreatedBy() {
+	public UserEntity getCreatedBy() {
 		return createdBy;
 	}
 
-	public void setCreatedBy(Integer createdBy) {
+	public void setCreatedBy(UserEntity createdBy) {
 		this.createdBy = createdBy;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public UserEntity getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(UserEntity updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public ModuleStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(ModuleStatus status) {
+		this.status = status;
 	}
 
 }

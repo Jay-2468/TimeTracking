@@ -2,6 +2,8 @@ package com.grownited.entity;
 
 import java.time.LocalDate;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -10,7 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -24,7 +25,7 @@ public class ProjectMembersEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer teamMemberId; // PK
+	private Long teamMemberId; // PK
 
 	@ManyToOne
 	@JoinColumn(name = "project_id")
@@ -41,21 +42,17 @@ public class ProjectMembersEntity {
 	@JoinColumn(name = "assigned_by")
 	private UserEntity assignedBy; // FK
 
+	@CreationTimestamp
 	private LocalDate assignedDate;
 
 	@Enumerated(EnumType.STRING)
-	private Status status;
+	private Status status; // status: active / removed / completed
 
-	@PrePersist
-	public void onCreate() {
-		this.assignedDate = LocalDate.now();
-	}
-
-	public Integer getTeamMemberId() {
+	public Long getTeamMemberId() {
 		return teamMemberId;
 	}
 
-	public void setTeamMemberId(Integer teamMemberId) {
+	public void setTeamMemberId(Long teamMemberId) {
 		this.teamMemberId = teamMemberId;
 	}
 

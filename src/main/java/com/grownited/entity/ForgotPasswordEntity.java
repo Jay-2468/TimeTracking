@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,27 +15,34 @@ import jakarta.persistence.Table;
 public class ForgotPasswordEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer resetId;
-	private Integer userId; // FK
+	private Long resetId;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private UserEntity user; // FK
+	
 	private String email;
+
 	private String otp;
+	
 	private LocalDateTime requestTime;
+	
 	private Boolean usedStatus;
 
-	public Integer getResetId() {
+	public Long getResetId() {
 		return resetId;
 	}
 
-	public void setResetId(Integer resetId) {
+	public void setResetId(Long resetId) {
 		this.resetId = resetId;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public UserEntity getUser() {
+		return user;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUser(UserEntity user) {
+		this.user = user;
 	}
 
 	public String getEmail() {

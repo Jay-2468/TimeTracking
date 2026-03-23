@@ -3,6 +3,9 @@ package com.grownited.entity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -29,7 +32,7 @@ public class TimeLogEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer logId;
+	private Long logId;
 
 	@ManyToOne
 	@JoinColumn(name = "task_id")
@@ -61,8 +64,10 @@ public class TimeLogEntity {
 
 	private String approvalRemark;
 
+	@CreationTimestamp
 	private LocalDateTime createdAt;
 
+	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 
 	private Boolean isDeleted = false;
@@ -72,27 +77,21 @@ public class TimeLogEntity {
 	@PrePersist
 	public void onCreate() {
 		this.logDate = startTime.toLocalDate();
-		this.createdAt = LocalDateTime.now();
 		calculateHours();
 	}
 
 	@PreUpdate
-	public void onUpdate() {
-		this.updatedAt = LocalDateTime.now();
-		calculateHours();
-	}
-
 	public void calculateHours() {
 		if (startTime != null && endTime != null) {
 			this.totalHours = (double) java.time.Duration.between(startTime, endTime).toMinutes() / 60;
 		}
 	}
 
-	public Integer getLogId() {
+	public Long getLogId() {
 		return logId;
 	}
 
-	public void setLogId(Integer logId) {
+	public void setLogId(Long logId) {
 		this.logId = logId;
 	}
 

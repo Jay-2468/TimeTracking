@@ -19,22 +19,20 @@ import com.grownited.repository.ProjectMembersRepository;
 public class DeveloperProjectMembersController {
 
 	@Autowired
-	ProjectMembersRepository projectMembersRepository;
-	
+	private ProjectMembersRepository projectMembersRepo;
+
 	@GetMapping("/viewTeamMembers")
 	public String viewTeamMembers(Model model, @SessionAttribute("user") UserEntity user) {
-		
-		List<ProjectMembersEntity> myAssignments = projectMembersRepository.findByUser(user);
-		List<ProjectEntity> myProjects = myAssignments
-				.stream()
-				.map(ProjectMembersEntity::getProject)
-				.toList();
-		
-		List<ProjectMembersEntity> teamMembers = projectMembersRepository.findByProjectIn(myProjects);
-		
+
+		List<ProjectMembersEntity> myAssignments = projectMembersRepo.findByUser(user);
+
+		List<ProjectEntity> myProjects = myAssignments.stream().map(ProjectMembersEntity::getProject).toList();
+
+		List<ProjectMembersEntity> teamMembers = projectMembersRepo.findByProjectIn(myProjects);
+
 		model.addAttribute("teamMembers", teamMembers);
-		
+
 		return "Developer/Team/ViewTeamMembers";
 	}
-	
+
 }

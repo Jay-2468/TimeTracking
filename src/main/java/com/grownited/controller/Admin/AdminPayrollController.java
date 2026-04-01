@@ -1,8 +1,6 @@
 package com.grownited.controller.Admin;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,33 +26,35 @@ public class AdminPayrollController {
 
 	@GetMapping("/createPayroll")
 	public String createPayroll(Model model) {
+		
 		List<UserEntity> users = userRepository.findAll();
 		model.addAttribute("users", users);
+		
 		return "Admin/Payroll/GeneratePayroll";
 	}
 
 	@PostMapping("/generatePayroll")
 	public String generatePayroll(PayrollEntity payrollEntity) {
+		
 		payrollRepository.save(payrollEntity);
+	
 		return "redirect:/admin/payrollRecords";
 	}
 
 	@GetMapping("/payrollRecords")
 	public String payrollRecords(Model model) {
+		
 		List<PayrollEntity> payrolls = payrollRepository.findAll();
 		model.addAttribute("payrolls", payrolls);
-		List<UserEntity> userList = userRepository.findAll();
-		Map<Integer, String> userMap = new HashMap<>();
-		for (UserEntity user : userList) {
-			userMap.put(user.getUserId(), user.getFullUserName());
-		}
-		model.addAttribute("userMap", userMap);
+		
 		return "Admin/Payroll/PayrollRecords";
 	}
 
 	@GetMapping("/deletePayroll")
 	public String deletePayroll(Integer payrollId) {
+		
 		payrollRepository.deleteById(payrollId);
+		
 		return "redirect:/admin/payrollRecords";
 	}
 }

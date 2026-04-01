@@ -57,7 +57,7 @@
 										<td class="text-dark-emphasis">${i.index + 1}</td>
 										<td class="text-dark-emphasis">${project.projectName}</td>
 										<td class="text-dark-emphasis">${project.description}</td>
-										<td class="text-dark-emphasis">${userMap[project.assignedTo]}</td>
+										<td class="text-dark-emphasis">${project.assignedTo.firstName} ${project.assignedTo.lastName}</td>
 										<td class="text-dark-emphasis">${project.startDate}</td>
 										<td class="text-dark-emphasis">${project.endDate}</td>
 										<td class="text-center"><a

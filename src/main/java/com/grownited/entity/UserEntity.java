@@ -33,7 +33,7 @@ public class UserEntity {
 
 	private String lastName;
 
-	private Integer contactNumber;
+	private String contactNumber;
 
 	private String email;
 
@@ -80,11 +80,11 @@ public class UserEntity {
 		this.lastName = lastName;
 	}
 
-	public Integer getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(Integer contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 

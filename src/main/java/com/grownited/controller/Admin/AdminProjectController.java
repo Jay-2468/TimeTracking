@@ -1,8 +1,6 @@
 package com.grownited.controller.Admin;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,13 +21,14 @@ import com.grownited.repository.UserRepository;
 public class AdminProjectController {
 
 	@Autowired
-	ProjectRepository projectRepository;
+	private ProjectRepository projectRepository;
 	
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 	
 	@GetMapping("/newProject")
 	public String newProject(Model model) {
+		
 		List<UserEntity> userList = userRepository.findByRole(Role.PROJECT_MANAGER);
 		model.addAttribute("pmList", userList);
 		
@@ -46,20 +45,16 @@ public class AdminProjectController {
 	
 	@GetMapping("/projectsList")
 	public String projectsList(Model model) {
+		
 		List<ProjectEntity> projectsList = projectRepository.findAll();
-		List<UserEntity> userList = userRepository.findByRole(Role.PROJECT_MANAGER);
-		Map<Integer, String> userMap = new HashMap<>();
-		for (UserEntity user : userList) {
-			userMap.put(user.getUserId(), user.getFullUserName());
-		}
 		model.addAttribute("projectsList", projectsList);
-		model.addAttribute("userMap", userMap);
 		
 		return "Admin/Project/ProjectsList";
 	}
 	
 	@GetMapping("/deleteProject")
 	public String deleteProject(Integer projectId) { 
+		
 		projectRepository.deleteById(projectId);
 		
 		return "redirect:/admin/projectsList";

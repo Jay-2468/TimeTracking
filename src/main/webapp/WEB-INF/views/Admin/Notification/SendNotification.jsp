@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -22,23 +23,40 @@
 			<div class="content-wrapper">
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-				<h2 class="text-dark font-weight-bold mb-2">Send Notification</h2>
+					<h2 class="text-dark font-weight-bold mb-2">Send Notification</h2>
 					<a href="notificationsList" class="btn btn-secondary btn-sm">
 						Back to Notifications </a>
 				</div>
 
 				<div class="card shadow-sm">
 					<div class="card-body">
-					<h3 class="mb-3 text-dark-emphasis text-center">Send Notification</h3>
+						<h3 class="mb-3 text-dark-emphasis text-center">Send
+							Notification</h3>
 
 						<form action="sendNotification" method="post">
 
 							<div class="row">
 
+								<!-- Users -->
+								<div class="mb-3">
+									<label class="form-label text-dark fw-semibold">Send to</label>
+									<select name="userId"
+										class="form-control text-dark border-secondary">
+										<option value="-1">---Select User to send---</option>
+
+										<c:forEach items="${users}" var="user">
+											<option value="${user.userId}">${user.firstName}
+												${user.lastName} : ${user.role}</option>
+										</c:forEach>
+
+									</select>
+								</div>
+
 								<!-- Notification Type -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label text-dark fw-semibold">Notification Type</label> <select
-										name="notificationType" class="form-select text-dark border-secondary" required>
+									<label class="form-label text-dark fw-semibold">Notification
+										Type</label> <select name="notificationType"
+										class="form-select text-dark border-secondary" required>
 										<option value="">-- Select Type --</option>
 										<option value="DEADLINE">Deadline</option>
 										<option value="IDLE">Idle</option>
@@ -46,10 +64,18 @@
 									</select>
 								</div>
 
+								<!-- Notification Title -->
+								<div class="mb-3">
+									<label class="form-label text-dark fw-semibold">Notification
+										Title</label> <input type="text" name="title"
+										class="form-control text-dark border-secondary" required>
+								</div>
+
 								<!-- Message -->
 								<div class="col-12 mb-3">
 									<label class="form-label text-dark fw-semibold">Message</label>
-									<textarea name="message" class="form-control text-dark border-secondary" rows="5"
+									<textarea name="message"
+										class="form-control text-dark border-secondary" rows="5"
 										placeholder="Enter notification message..." required></textarea>
 								</div>
 

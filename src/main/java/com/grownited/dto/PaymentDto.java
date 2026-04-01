@@ -1,22 +1,10 @@
-package com.grownited.entity;
+package com.grownited.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import org.hibernate.annotations.CreationTimestamp;
+public class PaymentDto {
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "payments")
-public class PaymentEntity {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long paymentId;
 
 	private Integer orderId;
@@ -29,12 +17,13 @@ public class PaymentEntity {
 
 	private String paymentStatus;
 
-	@CreationTimestamp
 	private LocalDate paymentDate;
 
 	private String transactionId;
 
 	private String authCode;
+
+	// Getters and Setters
 
 	public Long getPaymentId() {
 		return paymentId;

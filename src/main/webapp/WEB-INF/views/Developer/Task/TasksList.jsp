@@ -28,80 +28,89 @@
 					<h3 class="mb-0">Task List</h3>
 				</div>
 
-				<!-- Empty State -->
-				<c:if test="${empty tasksList}">
-					<div class="alert alert-warning">No tasks found.</div>
-				</c:if>
+				<div class="card shadow-sm">
+					<div class="card-body table-responsive">
 
-				<!-- Task Table -->
-				<c:if test="${not empty tasksList}">
-					<div class="table-responsive">
-						<table class="table table-bordered table-hover align-middle">
-							<thead class="table-dark">
-								<tr>
-									<th>#</th>
-									<th>Task Name</th>
-									<th>Description</th>
-									<th>Priority</th>
-									<th>Deadline</th>
-									<th>Status</th>
-									<th>Assigned To</th>
-									<th class="text-center">Actions</th>
-								</tr>
-							</thead>
+						<!-- Empty State -->
+						<c:if test="${empty tasksList}">
+							<div class="alert alert-warning">No tasks found.</div>
+						</c:if>
 
-							<tbody>
-								<c:forEach var="task" items="${tasksList}" varStatus="i">
-									<tr>
-										<td class="text-dark-emphasis">${i.index + 1}</td>
+						<!-- Task Table -->
+						<c:if test="${not empty tasksList}">
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover align-middle">
+									<thead class="table-dark">
+										<tr>
+											<th>#</th>
+											<th>Task Name</th>
+											<th>Description</th>
+											<th>Priority</th>
+											<th>Deadline</th>
+											<th>Status</th>
+											<th>Module Name</th>
+											<th>Project Name</th>
+											<th class="text-center">Actions</th>
+										</tr>
+									</thead>
 
-										<td class="text-dark-emphasis">${task.taskName}</td>
-										<td class="text-dark-emphasis">${task.description}</td>
+									<tbody>
+										<c:forEach var="task" items="${tasksList}" varStatus="i">
+											<tr>
+												<td class="text-dark-emphasis">${i.index + 1}</td>
 
-										<!-- Priority Badge -->
-										<td><c:choose>
-												<c:when test="${task.priority == 'HIGH'}">
-													<span class="badge bg-danger">High</span>
-												</c:when>
-												<c:when test="${task.priority == 'MEDIUM'}">
-													<span class="badge bg-warning text-dark">Medium</span>
-												</c:when>
-												<c:otherwise>
-													<span class="badge bg-success">Low</span>
-												</c:otherwise>
-											</c:choose></td>
+												<td class="text-dark-emphasis">${task.taskName}</td>
+												<td class="text-dark-emphasis">${task.description}</td>
 
-										<td class="text-dark-emphasis">${task.deadline}</td>
+												<!-- Priority Badge -->
+												<td><c:choose>
+														<c:when test="${task.priority == 'HIGH'}">
+															<span class="badge bg-danger">High</span>
+														</c:when>
+														<c:when test="${task.priority == 'MEDIUM'}">
+															<span class="badge bg-warning text-dark">Medium</span>
+														</c:when>
+														<c:otherwise>
+															<span class="badge bg-success">Low</span>
+														</c:otherwise>
+													</c:choose></td>
 
-										<!-- Status Badge -->
-										<td><c:choose>
-												<c:when test="${task.status == 'PENDING'}">
-													<span class="badge bg-secondary">Pending</span>
-												</c:when>
-												<c:when test="${task.status == 'IN_PROGRESS'}">
-													<span class="badge bg-primary">In Progress</span>
-												</c:when>
-												<c:otherwise>
-													<span class="badge bg-success">Completed</span>
-												</c:otherwise>
-											</c:choose></td>
+												<td class="text-dark-emphasis">${task.deadline}</td>
 
-										<!-- Assigned User -->
-										<td class="text-dark-emphasis">${task.assignedTo.firstName} ${task.assignedTo.lastName}</td>
+												<!-- Status Badge -->
+												<td><c:choose>
+														<c:when test="${task.status == 'PENDING'}">
+															<span class="badge bg-secondary">Pending</span>
+														</c:when>
+														<c:when test="${task.status == 'IN_PROGRESS'}">
+															<span class="badge bg-primary">In Progress</span>
+														</c:when>
+														<c:otherwise>
+															<span class="badge bg-success">Completed</span>
+														</c:otherwise>
+													</c:choose></td>
 
-										<!-- Actions -->
-										<td class="text-center"><a
-											href="viewTask?taskId=${task.taskId}"
-											class="btn btn-sm btn-info text-white"> <i
-												class="mdi mdi-eye"></i> View
-										</a> </td>
+												<!-- Module Name -->
+												<td class="text-dark-emphasis">${task.module.moduleName}</td>
 
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+												<!-- Project Name -->
+												<td class="text-dark-emphasis">${task.module.project.projectName}</td>
+
+												<!-- Actions -->
+												<td class="text-center"><a
+													href="viewTask?taskId=${task.taskId}"
+													class="btn btn-sm btn-info text-white"> <i
+														class="mdi mdi-eye"></i> View
+												</a></td>
+
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</c:if>
 					</div>
-				</c:if>
+				</div>
 			</div>
 			<!-- partial:partials/_footer.html -->
 			<jsp:include page="../../GlobalFooter.jsp"></jsp:include>

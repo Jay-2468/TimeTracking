@@ -59,7 +59,7 @@
 									<tr>
 
 										<!-- Employee Name (Join or DTO mapping required) -->
-										<td class="text-dark-emphasis">${userMap[payroll.userId]}</td>
+										<td class="text-dark-emphasis">${payroll.user.firstName} ${payroll.user.lastName}</td>
 
 										<td class="text-dark-emphasis">${payroll.totalHours}</td>
 

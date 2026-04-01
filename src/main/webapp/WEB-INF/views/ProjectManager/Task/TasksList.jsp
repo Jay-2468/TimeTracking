@@ -90,11 +90,7 @@
 											</c:choose></td>
 
 										<!-- Assigned User -->
-										<%--<td class="text-dark-emphasis">${task.assignedTo.firstName} ${task.assignedTo.lastName}</td>
-								 --%>
-										<%--<td>${user.firstName}
-									${user.lastName}</td> --%>
-										<td class="text-dark-emphasis">${userMap[task.assignedTo]}</td>
+										<td class="text-dark-emphasis">${task.assignedTo.firstName} ${task.assignedTo.lastName}</td>
 
 										<!-- Actions -->
 										<td class="text-center"><a

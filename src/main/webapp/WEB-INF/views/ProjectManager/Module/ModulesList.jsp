@@ -55,7 +55,7 @@
 										<td class="text-dark-emphasis">${i.index + 1}</td>
 										<td class="text-dark-emphasis">${module.moduleName}</td>
 										<td class="text-dark-emphasis">${module.description}</td>
-										<td class="text-dark-emphasis">${projectMap[module.projectId]}</td>
+										<td class="text-dark-emphasis">${module.project.projectName}</td>
 										<td class="text-center"><a
 											href="/pm/viewModule?moduleId=${module.moduleId}"
 											class="btn btn-sm btn-info text-white"> <i

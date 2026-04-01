@@ -1,8 +1,6 @@
 package com.grownited.controller.ProjectManager;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,10 +21,10 @@ import com.grownited.repository.ProjectRepository;
 public class PMModuleController {
 
 	@Autowired
-	ModuleRepository moduleRepository;
+	private ModuleRepository moduleRepository;
 
 	@Autowired
-	ProjectRepository projectRepository;
+	private ProjectRepository projectRepository;
 
 	@GetMapping("/newModule")
 	public String newModule(Model model, @SessionAttribute("user") UserEntity user) {
@@ -48,22 +46,18 @@ public class PMModuleController {
 
 	@GetMapping("/modulesList")
 	public String modulesList(Model model, @SessionAttribute("user") UserEntity user) {
-		List<ModuleEntity> modulesList = moduleRepository.findByCreatedBy(user.getUserId());
-		List<ProjectEntity> projectList = projectRepository.findAll();
-		Map<Integer, String> projectMap = new HashMap<>();
-
-		for (ProjectEntity project : projectList) {
-			projectMap.put(project.getProjectId(), project.getProjectName());
-		}
-
+		
+		List<ModuleEntity> modulesList = moduleRepository.findByCreatedBy(user);
 		model.addAttribute("modulesList", modulesList);
-		model.addAttribute("projectMap", projectMap);
+		
 		return "ProjectManager/Module/ModulesList";
 	}
 
 	@GetMapping("/deleteModule")
 	public String deleteModule(Integer moduleId) {
+		
 		moduleRepository.deleteById(moduleId);
+		
 		return "redirect:/pm/modulesList";
 	}
 

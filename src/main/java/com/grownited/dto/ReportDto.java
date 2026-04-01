@@ -1,72 +1,34 @@
-package com.grownited.entity;
+package com.grownited.dto;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.grownited.entity.ReportEntity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.Table;
+public class ReportDto {
 
-@Entity
-@Table(name = "reports")
-public class ReportEntity {
-
-	public enum ReportType {
-		PROJECT, PRODUCTIVITY, BILLING
-	}
-
-	public enum ReportStatus {
-		PROCESSING, COMPLETED, FAILED
-	}
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long reportId;
 
 	private String reportTitle;
 
-	@Enumerated(EnumType.STRING)
-	private ReportType reportType; // report types : Project / Productivity / Billing
+	private ReportEntity.ReportType reportType;
 
-	@ManyToOne
-	@JoinColumn(name = "generated_by")
-	private UserEntity generatedBy; // FK
+	private Long generatedByUserId;
 
-	@CreationTimestamp
 	private LocalDateTime generatedDate;
 
 	private LocalDateTime fromDate;
 
 	private LocalDateTime toDate;
 
-	@Enumerated(EnumType.STRING)
-	private ReportStatus reportStatus; // report status : Processing / Completed / Failed
+	private ReportEntity.ReportStatus reportStatus;
 
-	@Column(columnDefinition = "TEXT")
 	private String reportData;
 
-	private Boolean isDeleted = false; // archive // soft delete
+	private Boolean isDeleted;
 
-	@CreationTimestamp
 	private LocalDateTime createdAt;
 
-	@UpdateTimestamp
 	private LocalDateTime updatedAt;
-
-	@PrePersist
-	public void onCreate() {
-		this.reportStatus = ReportStatus.PROCESSING;
-	}
 
 	public Long getReportId() {
 		return reportId;
@@ -84,20 +46,20 @@ public class ReportEntity {
 		this.reportTitle = reportTitle;
 	}
 
-	public ReportType getReportType() {
+	public ReportEntity.ReportType getReportType() {
 		return reportType;
 	}
 
-	public void setReportType(ReportType reportType) {
+	public void setReportType(ReportEntity.ReportType reportType) {
 		this.reportType = reportType;
 	}
 
-	public UserEntity getGeneratedBy() {
-		return generatedBy;
+	public Long getGeneratedByUserId() {
+		return generatedByUserId;
 	}
 
-	public void setGeneratedBy(UserEntity generatedBy) {
-		this.generatedBy = generatedBy;
+	public void setGeneratedByUserId(Long generatedByUserId) {
+		this.generatedByUserId = generatedByUserId;
 	}
 
 	public LocalDateTime getGeneratedDate() {
@@ -124,11 +86,11 @@ public class ReportEntity {
 		this.toDate = toDate;
 	}
 
-	public ReportStatus getReportStatus() {
+	public ReportEntity.ReportStatus getReportStatus() {
 		return reportStatus;
 	}
 
-	public void setReportStatus(ReportStatus reportStatus) {
+	public void setReportStatus(ReportEntity.ReportStatus reportStatus) {
 		this.reportStatus = reportStatus;
 	}
 

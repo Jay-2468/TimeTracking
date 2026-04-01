@@ -43,7 +43,6 @@ body {
 
 						<thead class="table-dark">
 							<tr>
-								<th>ID</th>
 								<th>Name</th>
 								<th>Email</th>
 								<th>Role</th>
@@ -59,21 +58,21 @@ body {
 
 								<tr>
 
-									<td>${member.userId}</td>
+									<td class="text-dark-emphasis">${member.user.firstName}${member.user.lastName}</td>
 
-									<td>${member.firstName}${member.lastName}</td>
+									<td class="text-dark-emphasis">${member.user.email}</td>
 
-									<td>${member.email}</td>
+									<td class="text-dark-emphasis">${member.user.role}</td>
 
-									<td>${member.role}</td>
+									<td class="text-dark-emphasis">${member.project.projectName}</td>
 
-									<td>${member.projectName}</td>
-
-									<td><span class="badge bg-success">
+									<td class=><span class="badge bg-success">
 											${member.status} </span></td>
 
-									<td><a href="view-user?userId=${member.userId}"
-										class="btn btn-sm btn-primary"> View </a></td>
+									<td class="text-center"><a href="view-user?userId=${member.user.userId}"
+										class="btn btn-sm btn-info text-white"> <i
+											class="mdi mdi-eye"></i> View
+									</a></td>
 
 								</tr>
 

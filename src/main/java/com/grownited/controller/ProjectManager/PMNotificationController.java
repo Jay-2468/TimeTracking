@@ -23,32 +23,39 @@ public class PMNotificationController {
 
 	@GetMapping("/createNotification")
 	public String createNotification() {
+		
 		return "ProjectManager/Notification/SendNotification";
 	}
 
 	@PostMapping("/sendNotification")
 	public String sendNotification(NotificationEntity notificationEntity) {
+		
 		notificationEntity.setSentTime(LocalDateTime.now());
-		notificationEntity.setStatus(Status.UNREAD);
 		notificationRepository.save(notificationEntity);
+		
 		return "redirect:/pm/notificationsList";
 	}
 
 	@GetMapping("/notificationsList")
 	public String notificationsList(Model model) {
+		
 		List<NotificationEntity> notifications = notificationRepository.findAll();
 		model.addAttribute("notifications", notifications);
+		
 		return "ProjectManager/Notification/NotificationsList";
 	}
 
 	@GetMapping("/deleteNotification")
 	public String deleteNotification(Integer notificationId) {
+		
 		notificationRepository.deleteById(notificationId);
+		
 		return "redirect:/pm/notificationsList";
 	}
 
 	@GetMapping("/markAsRead")
 	public String markAsRead(Integer notificationId, Model model) {
+		
 		Optional<NotificationEntity> opNotification = notificationRepository.findById(notificationId);
 
 		if (opNotification.isPresent()) {
@@ -56,6 +63,7 @@ public class PMNotificationController {
 			notification.setStatus(NotificationEntity.Status.READ);
 			notificationRepository.save(notification);
 		}
+		
 		return "redirect:/pm/notificationsList";
 	}
 }

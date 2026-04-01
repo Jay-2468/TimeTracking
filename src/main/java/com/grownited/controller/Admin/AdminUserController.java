@@ -1,6 +1,5 @@
 package com.grownited.controller.Admin;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,13 +26,16 @@ public class AdminUserController {
 
 	@GetMapping("/usersList")
 	public String usersList(Model model) {
+		
 		List<UserEntity> usersList = userRepository.findAll();
 		model.addAttribute("usersList", usersList);
+		
 		return "Admin/User/UsersList";
 	}
 
 	@GetMapping("/viewUser")
 	public String viewUser(Integer userId, Model model) {
+		
 		Optional<UserEntity> opUser = userRepository.findById(userId);
 		if (opUser.isEmpty()) {
 			return "";
@@ -47,36 +49,43 @@ public class AdminUserController {
 
 	@GetMapping("/deleteUser")
 	public String deleteUser(Integer userId) {
+		
 		userRepository.deleteById(userId);
+		
 		return "redirect:/admin/usersList";
 	}
 
 	@GetMapping("/newUser")
 	public String newUser() {
+	
 		return "Admin/User/NewUser";
 	}
 
 	@PostMapping("/createUser")
 	public String createUser(UserEntity userEntity) {
+		
 		// Encrypting Password
 		String encodedPassword = passwordEncoder.encode(userEntity.getPassword());
 		userEntity.setPassword(encodedPassword);
 
-		userEntity.setCreatedAt(LocalDate.now());
 		userRepository.save(userEntity);
+		
 		return "redirect:/admin/usersList";
 	}
 
 	@GetMapping("/updateRole")
 	public String updateRole(Model model) {
+		
 		List<UserEntity> usersList = userRepository.findAll();
 		model.addAttribute("usersList", usersList);
 		model.addAttribute("userRole", UserEntity.Role.values());
+		
 		return "Admin/User/UpdateUserRole";
 	}
 
 	@PostMapping("/updateUserRole")
 	public String updateUserRole(UserEntity userEntity, Integer userId, UserEntity.Role newRole) {
+		
 		Optional<UserEntity> opUser = userRepository.findById(userId);
 
 		if (opUser.isPresent()) {
@@ -84,6 +93,7 @@ public class AdminUserController {
 			user.setRole(newRole);
 			userRepository.save(user);
 		}
+		
 		return "redirect:/admin/usersList";
 	}
 }

@@ -31,7 +31,8 @@
 				<div class="row flex-grow">
 					<div class="col-lg-4 mx-auto">
 						<div class="auth-form-light text-left p-5">
-							<h3 class="text-center text-dark fw-semibold mb-4">Create Account</h3>
+							<h3 class="text-center text-dark fw-semibold mb-4">Create
+								Account</h3>
 
 							<!-- multipart required for profile picture -->
 							<form action="register" method="post"
@@ -39,50 +40,46 @@
 
 								<!-- First Name -->
 								<div class="mb-3">
-									<label class="form-label text-dark fw-semibold">First Name</label> <input type="text"
-										name="firstName" class="form-control text-dark border-secondary" required>
+									<label class="form-label text-dark fw-semibold">First
+										Name</label> <input type="text" name="firstName"
+										class="form-control text-dark border-secondary" required>
 								</div>
 
 								<!-- Last Name -->
 								<div class="mb-3">
-									<label class="form-label text-dark fw-semibold">Last Name</label> <input type="text"
-										name="lastName" class="form-control text-dark border-secondary" required>
+									<label class="form-label text-dark fw-semibold">Last
+										Name</label> <input type="text" name="lastName"
+										class="form-control text-dark border-secondary" required>
 								</div>
 
 								<!-- Email -->
 								<div class="mb-3">
-									<label class="form-label text-dark fw-semibold">Email</label> <input type="email"
-										name="email" class="form-control text-dark border-secondary" required>
+									<label class="form-label text-dark fw-semibold">Email</label> <input
+										type="email" name="email"
+										class="form-control text-dark border-secondary" required>
 								</div>
 
 								<!-- Contact Number -->
 								<div class="mb-3">
-									<label class="form-label text-dark fw-semibold">Contact Number</label> <input
-										type="tel" name="contactNumber" class="form-control text-dark border-secondary"
+									<label class="form-label text-dark fw-semibold">Contact
+										Number</label> <input type="tel" name="contactNumber"
+										class="form-control text-dark border-secondary"
 										pattern="[0-9]{10}" placeholder="10-digit number" required>
 								</div>
 
 								<!-- Password -->
 								<div class="mb-3">
-									<label class="form-label text-dark fw-semibold">Password</label> <input
-										type="password" name="password" class="form-control text-dark border-secondary" required>
+									<label class="form-label text-dark fw-semibold">Password</label>
+									<input type="password" name="password"
+										class="form-control text-dark border-secondary" required>
 								</div>
 
 								<!-- Profile Picture -->
 								<div class="mb-3">
-									<label class="form-label text-dark fw-semibold">Profile Picture</label> <input
-										type="file" name="profilePicture" class="form-control text-dark border-secondary"
+									<label class="form-label text-dark fw-semibold">Profile
+										Picture</label> <input type="file" name="profilePicture"
+										class="form-control text-dark border-secondary"
 										accept="image/*">
-								</div>
-
-
-								<div class="mb-4">
-									<div class="form-check">
-										<label class="form-check-label text-dark-emphasis"> <input
-											type="checkbox" class="form-check-input"> I agree to
-											all Terms & Conditions
-										</label>
-									</div>
 								</div>
 
 								<!-- Submit Button -->

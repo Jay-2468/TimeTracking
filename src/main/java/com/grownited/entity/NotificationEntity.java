@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
@@ -32,15 +33,18 @@ public class NotificationEntity {
 	private Long notificationId;
 
 	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private UserEntity user; // FK // drop-down
+	@JoinColumn(name = "sent_to")
+	private UserEntity sentTo; // FK // drop-down
 
+	private String title;
+	
 	private String message;
 
 	@Enumerated(EnumType.STRING)
 
 	private NotificationType notificationType; // types : Deadline / Idle / Alert
 
+	@CreationTimestamp
 	private LocalDateTime sentTime;
 
 	@Enumerated(EnumType.STRING)
@@ -52,6 +56,11 @@ public class NotificationEntity {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 
+	@PrePersist
+	public void onCreate() {
+		this.status = Status.UNREAD;
+	}
+
 	public Long getNotificationId() {
 		return notificationId;
 	}
@@ -60,12 +69,12 @@ public class NotificationEntity {
 		this.notificationId = notificationId;
 	}
 
-	public UserEntity getUser() {
-		return user;
+	public UserEntity getSentTo() {
+		return sentTo;
 	}
 
-	public void setUser(UserEntity user) {
-		this.user = user;
+	public void setSentTo(UserEntity sentTo) {
+		this.sentTo = sentTo;
 	}
 
 	public String getMessage() {
@@ -116,5 +125,12 @@ public class NotificationEntity {
 		this.updatedAt = updatedAt;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 }

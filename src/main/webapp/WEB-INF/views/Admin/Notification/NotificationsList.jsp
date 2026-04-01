@@ -36,8 +36,10 @@
 						<table class="table table-bordered table-hover align-middle">
 							<thead class="table-dark text-center">
 								<tr>
+									<th>Title</th>
 									<th>Message</th>
 									<th>Type</th>
+									<th>Sent to</th>
 									<th>Sent Time</th>
 									<th>Status</th>
 									<th>Actions</th>
@@ -56,6 +58,9 @@
 								<c:forEach items="${notifications}" var="notification">
 									<tr>
 
+										<!-- Title -->
+										<td class="text-dark-emphasis">${notification.title}</td>
+										
 										<!-- Message -->
 										<td class="text-dark-emphasis">${notification.message}</td>
 
@@ -72,6 +77,10 @@
 													<span class="badge bg-info text-dark">Alert</span>
 												</c:otherwise>
 											</c:choose></td>
+											
+											
+										<!-- Sent to -->
+										<td class="text-dark-emphasis">${notification.sentTo.firstName} ${notification.sentTo.lastName }</td>
 
 										<!-- Sent Time -->
 										<td class="text-center text-dark-emphasis">${notification.sentTime}</td>
@@ -89,13 +98,18 @@
 										<!-- Actions -->
 										<td class="text-center"><a
 											href="viewNotification?notificationId=${notification.notificationId}"
-											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i> View </a> <a
+											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>
+												View
+										</a> <a
 											href="markAsRead?notificationId=${notification.notificationId}"
-											class="btn btn-sm btn-success"> <i class="mdi mdi-read"></i>Mark as Read </a> <a
+											class="btn btn-sm btn-success"> <i class="mdi mdi-read"></i>Mark
+												as Read
+										</a> <a
 											href="deleteNotification?notificationId=${notification.notificationId}"
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this notification?')">
-												<i class="mdi mdi-delete"></i> Delete </a></td>
+												<i class="mdi mdi-delete"></i> Delete
+										</a></td>
 
 									</tr>
 								</c:forEach>

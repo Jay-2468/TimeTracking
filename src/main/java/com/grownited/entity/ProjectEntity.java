@@ -66,6 +66,8 @@ public class ProjectEntity {
 
 	private Integer progress; // 0-100%
 
+	private Integer estimatedHours;
+
 	public Long getProjectId() {
 		return projectId;
 	}
@@ -168,6 +170,14 @@ public class ProjectEntity {
 
 	public void setProgress(Integer progress) {
 		this.progress = progress;
+	}
+
+	public Integer getEstimatedHours() {
+		return estimatedHours;
+	}
+
+	public void setEstimatedHours(Integer estimatedHours) {
+		this.estimatedHours = estimatedHours;
 	}
 
 }

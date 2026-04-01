@@ -29,7 +29,7 @@ public class PaymentService {
 	private final String apiLoginId = "6EWa7u3t582U";
 	private final String transactionKey = "66e949yU9f7GmdE3";
 
-	public ANetApiResponse chargeCreditCard(String email, String creditCardNum, String expiredDate, Double amount) {
+	public ANetApiResponse chargeCreditCard(String email, String creditCardNum, String expiredDate, BigDecimal amount) {
 
 		// Set the request to operate in either the sandbox or production environment
 		ApiOperationBase.setEnvironment(Environment.SANDBOX);
@@ -55,7 +55,7 @@ public class PaymentService {
 		txnRequest.setTransactionType(TransactionTypeEnum.AUTH_CAPTURE_TRANSACTION.value());
 		txnRequest.setPayment(paymentType);
 		txnRequest.setCustomer(customer);
-		txnRequest.setAmount(new BigDecimal(amount).setScale(2, RoundingMode.CEILING));
+		txnRequest.setAmount(amount.setScale(2, RoundingMode.CEILING));
 
 		// Create the API request and set the parameters for this specific request
 		CreateTransactionRequest apiRequest = new CreateTransactionRequest();
@@ -87,8 +87,8 @@ public class PaymentService {
 					payment.setAmount(amount);
 					payment.setGateway("AUTHIRIZE.NET");
 					payment.setPaymentDate(LocalDate.now());
-					payment.setPaymentGatewayAuthCode(result.getAuthCode());
-					payment.setPaymentGatewayTransactionId(result.getTransId());
+					payment.setAuthCode(result.getAuthCode());
+					payment.setTransactionId(result.getTransId());
 					payment.setPaymentMode("CARD");
 //					payment.setOrderId(orderId);
 

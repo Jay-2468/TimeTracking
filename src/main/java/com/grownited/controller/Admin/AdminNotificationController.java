@@ -1,6 +1,5 @@
 package com.grownited.controller.Admin;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,43 +11,56 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grownited.entity.NotificationEntity;
-import com.grownited.entity.NotificationEntity.Status;
+import com.grownited.entity.UserEntity;
 import com.grownited.repository.NotificationRepository;
+import com.grownited.repository.UserRepository;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminNotificationController {
 	@Autowired
-	NotificationRepository notificationRepository;
+	private NotificationRepository notificationRepository;
 
+	@Autowired
+	private UserRepository userRepo;
+	
 	@GetMapping("/createNotification")
-	public String createNotification() {
+	public String createNotification(Model model) {
+		
+		List<UserEntity> users = userRepo.findAll();
+		model.addAttribute("users", users);
+		
 		return "Admin/Notification/SendNotification";
 	}
 
 	@PostMapping("/sendNotification")
 	public String sendNotification(NotificationEntity notificationEntity) {
-		notificationEntity.setSentTime(LocalDateTime.now());
-		notificationEntity.setStatus(Status.UNREAD);
+		
 		notificationRepository.save(notificationEntity);
+		
 		return "redirect:/admin/notificationsList";
 	}
 
 	@GetMapping("/notificationsList")
 	public String notificationsList(Model model) {
+		
 		List<NotificationEntity> notifications = notificationRepository.findAll();
 		model.addAttribute("notifications", notifications);
+		
 		return "Admin/Notification/NotificationsList";
 	}
 
 	@GetMapping("/deleteNotification")
 	public String deleteNotification(Integer notificationId) {
+		
 		notificationRepository.deleteById(notificationId);
+		
 		return "redirect:/admin/notificationsList";
 	}
 
 	@GetMapping("/markAsRead")
 	public String markAsRead(Integer notificationId, Model model) {
+		
 		Optional<NotificationEntity> opNotification = notificationRepository.findById(notificationId);
 
 		if (opNotification.isPresent()) {
@@ -56,6 +68,7 @@ public class AdminNotificationController {
 			notification.setStatus(NotificationEntity.Status.READ);
 			notificationRepository.save(notification);
 		}
+		
 		return "redirect:/admin/notificationsList";
 	}
 }

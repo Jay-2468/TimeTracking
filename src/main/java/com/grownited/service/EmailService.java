@@ -42,7 +42,6 @@ public class EmailService {
 
 			javaMailSender.send(message);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -66,7 +65,6 @@ public class EmailService {
 
 			javaMailSender.send(message);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

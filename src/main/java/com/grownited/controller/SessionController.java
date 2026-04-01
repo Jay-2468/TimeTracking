@@ -1,7 +1,6 @@
 package com.grownited.controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.Map;
 import java.util.Optional;
 
@@ -29,34 +28,36 @@ public class SessionController {
 	// this will assign same object to all the users and will not create new object
 	// for every new user submits their data
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 	
 	@Autowired
-	EmailService emailService;
+	private EmailService emailService;
 
 	@Autowired
-	PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
-	Cloudinary cloudinary;
+	private Cloudinary cloudinary;
 	
 	@GetMapping("/signup")
 	public String openSignupPage() {
+		
 		return "Authentication/Signup"; // Signup jsp file name
 	}
 
 	@GetMapping("/login")
 	public String openLoginPage() {
+		
 		return "Authentication/Login"; // Login jsp file name
 	}
 
 	@PostMapping("/authenticate")
 	public String authenticate(String email, String password, Model model, HttpSession session) {
+		
 		Optional<UserEntity> opUser = userRepository.findByEmail(email);
 
 		if (opUser.isPresent()) {
 			UserEntity dbUser = opUser.get();
-//			if (dbUser.getPassword().equals(password)) {
 			if (passwordEncoder.matches(password, dbUser.getPassword())) {
 				session.setAttribute("user", dbUser);
 
@@ -85,7 +86,6 @@ public class SessionController {
 		System.out.println(userEntity.getPassword());
 
 		userEntity.setRole(Role.DEVELOPER);
-		userEntity.setCreatedAt(LocalDate.now());
 		
 		// Encrypting Password
 		String encodedPassword = passwordEncoder.encode(userEntity.getPassword());
@@ -99,7 +99,6 @@ public class SessionController {
 			userEntity.setProfilePictureURL(profilePictureURL);
 			System.out.println(profilePictureURL);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -107,6 +106,7 @@ public class SessionController {
 		// Database queries
 		// for every Entity/Database there has to be a Repository (interface) file
 		userRepository.save(userEntity); // this will insert the data into the table
+		
 		emailService.sendWelcomeMail(userEntity);
 
 		return "redirect:/login";
@@ -114,13 +114,17 @@ public class SessionController {
 	
 	@GetMapping("/admin/logout")
 	public String adminLogout(HttpSession session) {
+		
 		session.invalidate();
+		
 		return "redirect:/login";
 	}
 	
 	@GetMapping("/pm/logout")
 	public String pmLogout(HttpSession session) {
+		
 		session.invalidate();
+		
 		return "redirect:/login";
 	}
 	

@@ -66,7 +66,7 @@
 										class="text-primary">Create</a>
 								</div>
 								<br>
-								<span class="text-danger">${error}</span>
+								<p class="text-danger text-center">${error}</p>
 							</form>
 						</div>
 					</div>

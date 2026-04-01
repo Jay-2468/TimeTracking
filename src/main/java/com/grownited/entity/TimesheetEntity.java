@@ -1,11 +1,13 @@
 package com.grownited.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -14,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
@@ -36,7 +39,8 @@ public class TimesheetEntity {
 
 	private LocalDate weekEnd;
 
-	private Double totalHours;
+	@Column(precision = 5, scale = 2)
+	private BigDecimal totalHours;
 
 	@Enumerated(EnumType.STRING)
 	private Status status; // status : Submitted / Approved / Rejected
@@ -52,6 +56,11 @@ public class TimesheetEntity {
 
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
+	
+	@PrePersist
+	public void onCreate() {
+		this.status = Status.SUBMITTED;
+	}
 
 	public Long getTimesheetId() {
 		return timesheetId;
@@ -85,11 +94,11 @@ public class TimesheetEntity {
 		this.weekEnd = weekEnd;
 	}
 
-	public Double getTotalHours() {
+	public BigDecimal getTotalHours() {
 		return totalHours;
 	}
 
-	public void setTotalHours(Double totalHours) {
+	public void setTotalHours(BigDecimal totalHours) {
 		this.totalHours = totalHours;
 	}
 

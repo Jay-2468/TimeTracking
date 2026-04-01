@@ -21,7 +21,7 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "payroll")
+@Table(name = "payrolls")
 public class PayrollEntity {
 
 	public enum PayrollStatus {

@@ -36,11 +36,13 @@ public class ForgotPasswordController {
 
 	@GetMapping("/resetPassword")
 	public String resetPassword() {
+		
 		return "Authentication/ResetPassword";
 	}
 
 	@PostMapping("/sendOTP")
 	public String sendOTP(String email, ForgotPasswordEntity fp) {
+		
 		Optional<UserEntity> opUser = userRepository.findByEmail(email);
 
 		if (opUser.isPresent()) {
@@ -59,16 +61,18 @@ public class ForgotPasswordController {
 
 			return "redirect:/resetPassword";
 		}
+		
 		return "redirect:/signup";
 	}
 
 	@PostMapping("/verifyOtpAndChangePassword")
 	public String verifyOtpAndChangePassword(String email, String otp, String newPassword) {
+		
 		Optional<UserEntity> opUser = userRepository.findByEmail(email);
 
 		if (opUser.isPresent()) {
 			UserEntity user = opUser.get();
-			Optional<ForgotPasswordEntity> opfp = forgotPasswordRepository.findTopByUserIdAndUsedStatusFalseOrderByRequestTimeDesc(user.getUserId());
+			Optional<ForgotPasswordEntity> opfp = forgotPasswordRepository.findTopByUserAndUsedStatusFalseOrderByRequestTimeDesc(user);
 			if (opfp.isPresent()) {
 				ForgotPasswordEntity fp = opfp.get();
 				if (fp.getOtp().equals(otp)) {

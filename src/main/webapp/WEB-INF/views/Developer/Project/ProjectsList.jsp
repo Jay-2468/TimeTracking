@@ -27,44 +27,50 @@
 					<h3 class="mb-0 text-dark-emphasis">Project List</h3>
 				</div>
 
-				<!-- Empty State -->
-				<c:if test="${empty userDetails}">
-					<div class="alert alert-warning">No projects found.</div>
-				</c:if>
+				<div class="card shadow-sm">
+					<div class="card-body table-responsive">
 
-				<!-- Project Table -->
-				<c:if test="${not empty userDetails}">
-					<div class="table-responsive">
-						<table class="table table-bordered table-hover align-middle">
-							<thead class="table-dark">
-								<tr>
-									<th>#</th>
-									<th>Project Name</th>
-									<th>Description</th>
-									<th>Start Date</th>
-									<th>End Date</th>
-									<th class="text-center">Actions</th>
-								</tr>
-							</thead>
+						<!-- Empty State -->
+						<c:if test="${empty userDetails}">
+							<div class="alert alert-warning">No projects found.</div>
+						</c:if>
 
-							<tbody>
-								<c:forEach var="user" items="${userDetails}" varStatus="i">
-									<tr>
-										<td class="text-dark-emphasis">${i.index + 1}</td>
-										<td class="text-dark-emphasis">${user.project.projectName}</td>
-										<td class="text-dark-emphasis">${user.project.description}</td>
-										<td class="text-dark-emphasis">${user.project.startDate}</td>
-										<td class="text-dark-emphasis">${user.project.endDate}</td>
-										<td class="text-center"><a
-											href="viewProject?project=${user.project.projectId}"
-											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i> View
-										</a></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+						<!-- Project Table -->
+						<c:if test="${not empty userDetails}">
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover align-middle">
+									<thead class="table-dark">
+										<tr>
+											<th>#</th>
+											<th>Project Name</th>
+											<th>Description</th>
+											<th>Start Date</th>
+											<th>End Date</th>
+											<th class="text-center">Actions</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<c:forEach var="user" items="${userDetails}" varStatus="i">
+											<tr>
+												<td class="text-dark-emphasis">${i.index + 1}</td>
+												<td class="text-dark-emphasis">${user.project.projectName}</td>
+												<td class="text-dark-emphasis">${user.project.description}</td>
+												<td class="text-dark-emphasis">${user.project.startDate}</td>
+												<td class="text-dark-emphasis">${user.project.endDate}</td>
+												<td class="text-center"><a
+													href="viewProject?project=${user.project.projectId}"
+													class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>
+														View
+												</a></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</c:if>
 					</div>
-				</c:if>
+				</div>
 			</div>
 			<!-- partial:partials/_footer.html -->
 			<jsp:include page="../../GlobalFooter.jsp"></jsp:include>

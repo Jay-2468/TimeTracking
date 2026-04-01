@@ -38,8 +38,10 @@
 						<table class="table table-bordered table-hover align-middle">
 							<thead class="table-dark text-center">
 								<tr>
+									<th>Task Name</th>
 									<th>Start Time</th>
 									<th>End Time</th>
+									<th>Break Duration</th>
 									<th>Total Hours</th>
 									<th>Log Type</th>
 									<th>Approval Status</th>
@@ -52,8 +54,18 @@
 								<c:forEach items="${timeLogsList}" var="log">
 									<tr>
 
+										<td class="text-dark-emphasis">${log.task.taskName}</td>
 										<td class="text-dark-emphasis">${log.startTime}</td>
 										<td class="text-dark-emphasis">${log.endTime}</td>
+										<c:choose>
+											<c:when
+												test="${empty log.breakStartTime or empty log.breakEndTime}">
+												<td class="text-dark-emphasis">0 min</td>
+											</c:when>
+											<c:otherwise>
+												<td class="text-dark-emphasis">${log.breakDuration} min</td>
+											</c:otherwise>
+										</c:choose>
 										<td class="text-dark-emphasis">${log.totalHours}</td>
 
 										<!-- Log Type Badge -->

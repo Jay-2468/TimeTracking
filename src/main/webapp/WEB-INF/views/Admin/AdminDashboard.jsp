@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="com.grownited.dto.ProjectDto"%>
+<%@ page import="java.util.List"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +45,7 @@ body {
 
 					<h2 class="text-dark-emphasis font-weight-bold mb-2">Welcome
 						${user.firstName}!</h2>
-						
+
 					<!-- 🔹 Statistics Cards -->
 					<div class="row g-4">
 
@@ -80,17 +82,9 @@ body {
 					<!-- 🔹 Charts Section -->
 					<div class="row mt-5">
 
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<div class="card p-3">
-								<h6>Weekly Hours Overview</h6>
-								<canvas id="hoursChart"></canvas>
-							</div>
-						</div>
-
-						<div class="col-md-6">
-							<div class="card p-3">
-								<h6>Monthly Revenue</h6>
-								<canvas id="revenueChart"></canvas>
+								<canvas id="myChart"></canvas>
 							</div>
 						</div>
 
@@ -124,31 +118,51 @@ body {
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 	<script>
-    // Weekly Hours Chart
-    new Chart(document.getElementById('hoursChart'), {
-        type: 'bar',
-        data: {
-            labels: JSON.parse('${weekLabels}'),
-            datasets: [{
-                label: 'Hours',
-                data: JSON.parse('${weekHours}'),
-                borderWidth: 1
-            }]
-        }
-    });
-
-    // Monthly Revenue Chart
-    new Chart(document.getElementById('revenueChart'), {
-        type: 'line',
-        data: {
-            labels: JSON.parse('${monthLabels}'),
-            datasets: [{
-                label: 'Revenue',
-                data: JSON.parse('${monthlyRevenue}'),
-                borderWidth: 2
-            }]
-        }
-    });
+	 const ctx = document.getElementById('myChart');
+	    const myChart = new Chart(ctx, {
+	        type: 'bar',
+	        data: {
+	            
+	        	labels: [ 
+				<c:forEach items="${projects}" var="p" varStatus="loop">
+    					"${p.projectName}"${!loop.last ? ',' : ''}
+				</c:forEach>
+	        	],
+	            
+	            datasets: [{
+	                label: 'Projects-Hours',
+	                data: [ 
+	    				<c:forEach items="${projects}" var="p" varStatus="loop">
+    						${p.estimatedHours}${!loop.last ? ',' : ''}
+					</c:forEach>
+	                ],
+	                backgroundColor: [
+	                    'rgba(255, 99, 132, 0.2)',
+	                    'rgba(54, 162, 235, 0.2)',
+	                    'rgba(255, 206, 86, 0.2)',
+	                    'rgba(75, 192, 192, 0.2)',
+	                    'rgba(153, 102, 255, 0.2)',
+	                    'rgba(255, 159, 64, 0.2)'
+	                ],
+	                borderColor: [
+	                    'rgba(255, 99, 132, 1)',
+	                    'rgba(54, 162, 235, 1)',
+	                    'rgba(255, 206, 86, 1)',
+	                    'rgba(75, 192, 192, 1)',
+	                    'rgba(153, 102, 255, 1)',
+	                    'rgba(255, 159, 64, 1)'
+	                ],
+	                borderWidth: 1
+	            }]
+	        },
+	        options: {
+	            scales: {
+	                y: {
+	                    beginAtZero: true
+	                }
+	            }
+	        }
+	    });
 	</script>
 
 </body>

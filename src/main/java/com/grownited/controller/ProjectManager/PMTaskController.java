@@ -1,8 +1,6 @@
 package com.grownited.controller.ProjectManager;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,37 +31,35 @@ public class PMTaskController {
 	
 	@GetMapping("/newTask")
 	public String newTask(Model model) {
+		
 		List<UserEntity> userList = userRepository.findAll();
 		model.addAttribute("userList", userList);
+		
 		return "ProjectManager/Task/NewTask";
 	}
 	
 	@PostMapping("/createTask")
 	public String saveTask(TaskEntity taskEntity) {
+		
 		taskRepository.save(taskEntity);
+		
 		return "redirect:/pm/tasksList";
 	}
 	
 	@GetMapping("/tasksList")
-	public String tasksList(Model model, @SessionAttribute("user") UserEntity userEntity) {
+	public String tasksList(Model model, @SessionAttribute("user") UserEntity user) {
 		
-		List<TaskEntity> tasksList = taskRepository.findByCreatedBy(userEntity);
-		List<UserEntity> usersList = userRepository.findAll();
-		Map<Integer, String> userMap = new HashMap<>();
-		
-		for(UserEntity user : usersList) {
-			userMap.put(user.getUserId(), user.getFullUserName());
-		}
-		
+		List<TaskEntity> tasksList = taskRepository.findByCreatedBy(user);
 		model.addAttribute("tasksList", tasksList);
-		model.addAttribute("userMap", userMap);
 		
 		return "ProjectManager/Task/TasksList";
 	}
 	
 	@GetMapping("/deleteTask")
 	public String deleteTask(Integer taskId) {
+		
 		taskRepository.deleteById(taskId);
+		
 		return "redirect:/pm/tasksList";
 	}
 

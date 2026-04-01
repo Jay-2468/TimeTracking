@@ -34,6 +34,7 @@ public class AuthFilter implements Filter {
 
 		publicUrl.add("/login");
 		publicUrl.add("/signup");
+		publicUrl.add("/register");
 		publicUrl.add("/forgotPassword");
 		publicUrl.add("/authenticate");
 

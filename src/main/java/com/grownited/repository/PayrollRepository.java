@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.grownited.entity.PayrollEntity;
 
 @Repository
-public interface PayrollRepository extends JpaRepository<PayrollEntity, Integer> {
+public interface PayrollRepository extends JpaRepository<PayrollEntity, Long> {
 
 }

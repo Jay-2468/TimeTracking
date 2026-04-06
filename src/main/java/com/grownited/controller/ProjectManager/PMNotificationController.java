@@ -19,7 +19,7 @@ import com.grownited.repository.NotificationRepository;
 @RequestMapping("/pm")
 public class PMNotificationController {
 	@Autowired
-	NotificationRepository notificationRepository;
+	private NotificationRepository notificationRepository;
 
 	@GetMapping("/createNotification")
 	public String createNotification() {
@@ -46,7 +46,7 @@ public class PMNotificationController {
 	}
 
 	@GetMapping("/deleteNotification")
-	public String deleteNotification(Integer notificationId) {
+	public String deleteNotification(Long notificationId) {
 		
 		notificationRepository.deleteById(notificationId);
 		
@@ -54,7 +54,7 @@ public class PMNotificationController {
 	}
 
 	@GetMapping("/markAsRead")
-	public String markAsRead(Integer notificationId, Model model) {
+	public String markAsRead(Long notificationId, Model model) {
 		
 		Optional<NotificationEntity> opNotification = notificationRepository.findById(notificationId);
 

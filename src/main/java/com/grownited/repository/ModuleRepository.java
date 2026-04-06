@@ -9,7 +9,7 @@ import com.grownited.entity.ModuleEntity;
 import com.grownited.entity.UserEntity;
 
 @Repository
-public interface ModuleRepository extends JpaRepository<ModuleEntity, Integer> {
+public interface ModuleRepository extends JpaRepository<ModuleEntity, Long> {
 
 	List<ModuleEntity> findByCreatedBy(UserEntity createdBy);
 }

@@ -16,14 +16,14 @@ import com.grownited.service.PaymentService;
 public class PaymentController {
 
 	@Autowired
-	PaymentService paymentService;
+	private PaymentService paymentService;
 
 	@GetMapping("/charge")
 	public String charge() {
 		return "ChargeCreditCard";
 	}
 
-	@PostMapping("charge")
+	@PostMapping("/charge")
 	public String chargeCreditCard(String cardNumber, String expMonth, String expYear, 
 			BigDecimal amount, @SessionAttribute("user") UserEntity user) {
 

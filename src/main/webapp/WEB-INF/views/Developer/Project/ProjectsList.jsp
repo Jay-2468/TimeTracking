@@ -21,22 +21,22 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">Project List</h2>
+				<h2 class="text-dark font-weight-bold mb-2">Projects List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0 text-dark-emphasis">Project List</h3>
+					<h3 class="mb-0 text-dark-emphasis">Projects List</h3>
 				</div>
 
 				<div class="card shadow-sm">
 					<div class="card-body table-responsive">
 
 						<!-- Empty State -->
-						<c:if test="${empty userDetails}">
+						<c:if test="${empty projectsList}">
 							<div class="alert alert-warning">No projects found.</div>
 						</c:if>
 
 						<!-- Project Table -->
-						<c:if test="${not empty userDetails}">
+						<c:if test="${not empty projectsList}">
 							<div class="table-responsive">
 								<table class="table table-bordered table-hover align-middle">
 									<thead class="table-dark">
@@ -51,15 +51,20 @@
 									</thead>
 
 									<tbody>
-										<c:forEach var="user" items="${userDetails}" varStatus="i">
+										<c:forEach var="project" items="${projectsList}" varStatus="i">
 											<tr>
-												<td class="text-dark-emphasis">${i.index + 1}</td>
-												<td class="text-dark-emphasis">${user.project.projectName}</td>
-												<td class="text-dark-emphasis">${user.project.description}</td>
-												<td class="text-dark-emphasis">${user.project.startDate}</td>
-												<td class="text-dark-emphasis">${user.project.endDate}</td>
+												<td class="text-dark-emphasis">${i.count}</td>
+
+												<td class="text-dark-emphasis">${project.project.projectName}</td>
+
+												<td class="text-dark-emphasis">${project.project.description}</td>
+
+												<td class="text-dark-emphasis">${project.project.startDate}</td>
+
+												<td class="text-dark-emphasis">${project.project.endDate}</td>
+
 												<td class="text-center"><a
-													href="viewProject?project=${user.project.projectId}"
+													href="viewProject?projectId=${project.project.projectId}"
 													class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>
 														View
 												</a></td>

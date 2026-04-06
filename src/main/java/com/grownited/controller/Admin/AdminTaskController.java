@@ -51,7 +51,7 @@ public class AdminTaskController {
 	}
 	
 	@GetMapping("/deleteTask")
-	public String deleteTask(Integer taskId) {
+	public String deleteTask(Long taskId) {
 		
 		taskRepository.deleteById(taskId);
 		

@@ -19,13 +19,13 @@ import com.grownited.repository.ProjectMembersRepository;
 public class DeveloperProjectController {
 
 	@Autowired
-	ProjectMembersRepository projectMembersRepository;
+	private ProjectMembersRepository projectMembersRepository;
 	
 	@GetMapping("/projectsList")
 	public String projectsList(Model model, @SessionAttribute("user") UserEntity user) {
 		
-		List<ProjectMembersEntity> userDetails = projectMembersRepository.findByUser(user);
-		model.addAttribute("userDetails", userDetails);
+		List<ProjectMembersEntity> projectsList = projectMembersRepository.findByUser(user);
+		model.addAttribute("projectsList", projectsList);
 		 
 		return "Developer/Project/ProjectsList";
 	}

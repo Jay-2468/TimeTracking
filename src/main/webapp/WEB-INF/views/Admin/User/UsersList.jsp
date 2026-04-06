@@ -31,88 +31,93 @@
 					</a>
 				</div>
 
-				<!-- Empty State -->
-				<c:if test="${empty usersList}">
-					<div class="alert alert-warning">No users found.</div>
-				</c:if>
+				<div class="card shadow-sm">
+					<div class="card-body table-responsive">
+						<!-- Empty State -->
+						<c:if test="${empty usersList}">
+							<div class="alert alert-warning">No users found.</div>
+						</c:if>
 
-				<!-- User Table -->
-				<c:if test="${not empty usersList}">
-					<div class="table-responsive">
-						<table class="table table-bordered table-hover align-middle">
-							<thead class="table-dark">
-								<tr>
-									<th>#</th>
-									<th>Profile</th>
-									<th>Full Name</th>
-									<th>Contact</th>
-									<th>Email</th>
-									<th>Role</th>
-									<th>Status</th>
-									<th>Created At</th>
-									<th class="text-center">Actions</th>
-								</tr>
-							</thead>
+						<!-- User Table -->
+						<c:if test="${not empty usersList}">
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover align-middle">
+									<thead class="table-dark">
+										<tr>
+											<th>#</th>
+											<th>Profile</th>
+											<th>Full Name</th>
+											<th>Contact</th>
+											<th>Email</th>
+											<th>Role</th>
+											<th>Status</th>
+											<th>Created At</th>
+											<th class="text-center">Actions</th>
+										</tr>
+									</thead>
 
-							<tbody>
-								<c:forEach var="user" items="${usersList}" varStatus="i">
-									<tr>
-										<td class="text-dark-emphasis">${i.index + 1}</td>
+									<tbody>
+										<c:forEach var="user" items="${usersList}" varStatus="i">
+											<tr>
+												<td class="text-dark-emphasis">${i.index + 1}</td>
 
-										<!-- Profile Picture -->
-										<td class="text-center"><c:if
-												test="${not empty user.profilePictureURL}">
-												<img src="${user.profilePictureURL}"
-													class="rounded-circle" width="40" height="40" alt="Profile">
-											</c:if> <c:if test="${empty user.profilePictureURL}">
-												<span class="text-dark-emphasis">N/A</span>
-											</c:if></td>
+												<!-- Profile Picture -->
+												<td class="text-center"><c:if
+														test="${not empty user.profilePictureURL}">
+														<img src="${user.profilePictureURL}"
+															class="rounded-circle" width="40" height="40"
+															alt="Profile">
+													</c:if> <c:if test="${empty user.profilePictureURL}">
+														<span class="text-dark-emphasis">N/A</span>
+													</c:if></td>
 
-										<!-- Name -->
-										<td class="text-dark-emphasis">${user.firstName} ${user.lastName}</td>
+												<!-- Name -->
+												<td class="text-dark-emphasis">${user.firstName}
+													${user.lastName}</td>
 
-										<!-- Contact -->
-										<td class="text-dark-emphasis">${user.contactNumber}</td>
+												<!-- Contact -->
+												<td class="text-dark-emphasis">${user.contactNumber}</td>
 
-										<!-- Email -->
-										<td class="text-dark-emphasis">${user.email}</td>
+												<!-- Email -->
+												<td class="text-dark-emphasis">${user.email}</td>
 
-										<!-- Role -->
-										<td><span class="badge bg-info">
-												${user.role} </span></td>
+												<!-- Role -->
+												<td><span class="badge bg-info"> ${user.role} </span></td>
 
-										<!-- Status -->
-										<td><c:choose>
-												<c:when test="${user.status == 'Active'}">
-													<span class="badge bg-success">Active</span>
-												</c:when>
-												<c:otherwise>
-													<span class="badge bg-secondary">Inactive</span>
-												</c:otherwise>
-											</c:choose></td>
+												<!-- Status -->
+												<td><c:choose>
+														<c:when test="${user.status == 'Active'}">
+															<span class="badge bg-success">Active</span>
+														</c:when>
+														<c:otherwise>
+															<span class="badge bg-secondary">Inactive</span>
+														</c:otherwise>
+													</c:choose></td>
 
-										<!-- Created Date -->
-										<td class="text-dark-emphasis">${user.createdAt}</td>
+												<!-- Created Date -->
+												<td class="text-dark-emphasis">${user.createdAt}</td>
 
-										<!-- Actions -->
-										<td class="text-center"><a
-											href="editUser?userId=${user.userId}"
-											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
-												Edit
-										</a> <a href="deleteUser?userId=${user.userId}"
-											class="btn btn-sm btn-danger"
-											onclick="return confirm('Are you sure you want to delete this user?')">
-												<i class="mdi mdi-delete"></i> Delete
-										</a> <a href="viewUser?userId=${user.userId}"
-											class="btn btn-sm btn-primary"> <i class="mdi mdi-eye"></i>
-												View
-										</a></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+												<!-- Actions -->
+												<td class="text-center"><a
+													href="editUser?userId=${user.userId}"
+													class="btn btn-sm btn-warning"> <i
+														class="mdi mdi-pencil"></i> Edit
+												</a> <a href="deleteUser?userId=${user.userId}"
+													class="btn btn-sm btn-danger"
+													onclick="return confirm('Are you sure you want to delete this user?')">
+														<i class="mdi mdi-delete"></i> Delete
+												</a> <a href="viewUser?userId=${user.userId}"
+													class="btn btn-sm btn-primary"> <i class="mdi mdi-eye"></i>
+														View
+												</a></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</c:if>
 					</div>
-				</c:if>
+				</div>
 				<!-- partial:partials/_footer.html -->
 				<jsp:include page="../../GlobalFooter.jsp"></jsp:include>
 			</div>

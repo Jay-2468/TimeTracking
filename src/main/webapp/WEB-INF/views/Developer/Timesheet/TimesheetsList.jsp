@@ -38,6 +38,7 @@
 							class="table table-bordered table-hover align-middle text-center">
 							<thead class="table-dark">
 								<tr>
+									<th>#</th>
 									<th>Week Start</th>
 									<th>Week End</th>
 									<th>Total Hours</th>
@@ -54,9 +55,9 @@
 									</tr>
 								</c:if>
 
-								<c:forEach items="${timesheetsList}" var="sheet">
+								<c:forEach items="${timesheetsList}" var="sheet" varStatus="i">
 									<tr>
-
+										<td class="text-dark-emphasis">${i.index +1}</td>
 										<td class="text-dark-emphasis">${sheet.weekStart}</td>
 										<td class="text-dark-emphasis">${sheet.weekEnd}</td>
 										<td class="text-dark-emphasis">${sheet.totalHours}</td>

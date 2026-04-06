@@ -71,6 +71,7 @@ public class TimeLogEntity {
 	@JoinColumn(name = "approved_by")
 	private UserEntity approvedBy;
 
+	@Column(length = 500)
 	private String approvalRemark;
 
 	@CreationTimestamp

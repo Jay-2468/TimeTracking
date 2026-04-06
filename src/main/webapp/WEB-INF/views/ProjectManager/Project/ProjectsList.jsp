@@ -21,10 +21,10 @@
 		<!-- Main Content -->
 		<div class="main-panel">
 			<div class="content-wrapper">
-				<h2 class="text-dark font-weight-bold mb-2">Project List</h2>
+				<h2 class="text-dark font-weight-bold mb-2">Projects List</h2>
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-					<h3 class="mb-0 text-dark-emphasis">Project List</h3>
+					<h3 class="mb-0 text-dark-emphasis">Projects List</h3>
 				</div>
 
 				<!-- Empty State -->
@@ -51,20 +51,16 @@
 								<c:forEach var="project" items="${projectsList}" varStatus="i">
 									<tr>
 										<td class="text-dark-emphasis">${i.index + 1}</td>
-										<td class="text-dark-emphasis">${project.projectName}</td>
-										<td class="text-dark-emphasis">${project.description}</td>
-										<td class="text-dark-emphasis">${project.startDate}</td>
-										<td class="text-dark-emphasis">${project.endDate}</td>
+										<td class="text-dark-emphasis">${project.project.projectName}</td>
+										<td class="text-dark-emphasis">${project.project.description}</td>
+										<td class="text-dark-emphasis">${project.project.startDate}</td>
+										<td class="text-dark-emphasis">${project.project.endDate}</td>
 										<td class="text-center"><a
-											href="viewProject?projectId=${project.projectId}"
+											href="viewProject?projectId=${project.project.projectId}"
 											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i> View
-										</a><a href="editProject?projectId=${project.projectId}"
+										</a><a href="editProject?projectId=${project.project.projectId}"
 											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
 												Edit
-										</a> <a href="deleteProject?projectId=${project.projectId}"
-											class="btn btn-sm btn-danger"
-											onclick="return confirm('Are you sure you want to delete this project?')">
-												<i class="mdi mdi-delete"></i> Delete
 										</a></td>
 									</tr>
 								</c:forEach>

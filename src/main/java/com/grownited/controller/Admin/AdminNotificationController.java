@@ -51,7 +51,7 @@ public class AdminNotificationController {
 	}
 
 	@GetMapping("/deleteNotification")
-	public String deleteNotification(Integer notificationId) {
+	public String deleteNotification(Long notificationId) {
 		
 		notificationRepository.deleteById(notificationId);
 		
@@ -59,7 +59,7 @@ public class AdminNotificationController {
 	}
 
 	@GetMapping("/markAsRead")
-	public String markAsRead(Integer notificationId, Model model) {
+	public String markAsRead(Long notificationId) {
 		
 		Optional<NotificationEntity> opNotification = notificationRepository.findById(notificationId);
 

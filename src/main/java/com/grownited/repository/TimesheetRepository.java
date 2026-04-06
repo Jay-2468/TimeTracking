@@ -10,7 +10,7 @@ import com.grownited.entity.TimesheetEntity;
 import com.grownited.entity.UserEntity;
 
 @Repository
-public interface TimesheetRepository extends JpaRepository<TimesheetEntity, Integer>{
+public interface TimesheetRepository extends JpaRepository<TimesheetEntity, Long>{
 
 	List<TimesheetEntity> findByUser(UserEntity user);
 	

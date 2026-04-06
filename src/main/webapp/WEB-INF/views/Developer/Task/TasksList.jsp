@@ -50,6 +50,7 @@
 											<th>Status</th>
 											<th>Module Name</th>
 											<th>Project Name</th>
+											<th>Assigned By</th>
 											<th class="text-center">Actions</th>
 										</tr>
 									</thead>
@@ -95,6 +96,10 @@
 
 												<!-- Project Name -->
 												<td class="text-dark-emphasis">${task.module.project.projectName}</td>
+
+												<!-- Assigned By -->
+												<td class="text-dark-emphasis">${task.createdBy.firstName}
+													${task.createdBy.lastName}</td>
 
 												<!-- Actions -->
 												<td class="text-center"><a

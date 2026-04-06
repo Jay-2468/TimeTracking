@@ -19,10 +19,10 @@ import com.grownited.repository.UserRepository;
 public class AdminPayrollController {
 
 	@Autowired
-	PayrollRepository payrollRepository;
+	private PayrollRepository payrollRepository;
 
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 
 	@GetMapping("/createPayroll")
 	public String createPayroll(Model model) {
@@ -51,7 +51,7 @@ public class AdminPayrollController {
 	}
 
 	@GetMapping("/deletePayroll")
-	public String deletePayroll(Integer payrollId) {
+	public String deletePayroll(Long payrollId) {
 		
 		payrollRepository.deleteById(payrollId);
 		

@@ -34,7 +34,7 @@ public class PMUserController {
 	}
 
 	@GetMapping("/viewDeveloper")
-	public String viewDeveloper(Integer userId, Model model) {
+	public String viewDeveloper(Long userId, Model model) {
 		
 		Optional<UserEntity> opUser = userRepository.findById(userId);
 		if (opUser.isEmpty()) {

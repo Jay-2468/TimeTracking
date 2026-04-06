@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.grownited.entity.InvoiceEntity;
 
 @Repository
-public interface InvoiceRepository extends JpaRepository<InvoiceEntity, Integer> {
+public interface InvoiceRepository extends JpaRepository<InvoiceEntity, Long> {
 
 	List<InvoiceEntity> findByPaymentStatus(InvoiceEntity.PaymentStatus paymentStatus);
 }

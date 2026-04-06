@@ -38,6 +38,7 @@
 						<table class="table table-bordered table-hover align-middle">
 							<thead class="table-dark text-center">
 								<tr>
+									<th>#</th>
 									<th>Task Name</th>
 									<th>Start Time</th>
 									<th>End Time</th>
@@ -51,9 +52,9 @@
 
 							<tbody>
 
-								<c:forEach items="${timeLogsList}" var="log">
+								<c:forEach items="${timeLogsList}" var="log" varStatus="i">
 									<tr>
-
+										<td class="text-dark-emphasis">${i.index +1}</td>
 										<td class="text-dark-emphasis">${log.task.taskName}</td>
 										<td class="text-dark-emphasis">${log.startTime}</td>
 										<td class="text-dark-emphasis">${log.endTime}</td>
@@ -63,7 +64,7 @@
 												<td class="text-dark-emphasis">0 min</td>
 											</c:when>
 											<c:otherwise>
-												<td class="text-dark-emphasis">${log.breakDuration} min</td>
+												<td class="text-dark-emphasis">${log.breakDuration}min</td>
 											</c:otherwise>
 										</c:choose>
 										<td class="text-dark-emphasis">${log.totalHours}</td>

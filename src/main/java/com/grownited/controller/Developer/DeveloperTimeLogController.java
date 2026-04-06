@@ -37,7 +37,7 @@ public class DeveloperTimeLogController {
 	}
 	
 	@PostMapping("/saveTimeLog")
-	public String saveTimeLog(TimeLogEntity timeLogEntity, Integer taskId, @SessionAttribute("user") UserEntity user) {
+	public String saveTimeLog(TimeLogEntity timeLogEntity, Long taskId, @SessionAttribute("user") UserEntity user) {
 		
 		TaskEntity task = taskRepo.findById(taskId).orElse(null);
 		timeLogEntity.setTask(task);
@@ -51,7 +51,7 @@ public class DeveloperTimeLogController {
 	@GetMapping("/timeLogsList")
 	public String timeLogsList(Model model, @SessionAttribute("user") UserEntity user) {
 		
-		List<TimeLogEntity> timeLogsList = timeLogRepo.findAll();
+		List<TimeLogEntity> timeLogsList = timeLogRepo.findByUser(user);
 		model.addAttribute("timeLogsList", timeLogsList);
 		
 		return "Developer/TimeLog/TimeLogsList";

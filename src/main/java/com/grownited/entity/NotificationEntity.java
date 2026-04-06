@@ -41,14 +41,13 @@ public class NotificationEntity {
 	private String message;
 
 	@Enumerated(EnumType.STRING)
-
 	private NotificationType notificationType; // types : Deadline / Idle / Alert
 
 	@CreationTimestamp
 	private LocalDateTime sentTime;
 
 	@Enumerated(EnumType.STRING)
-	private Status status; // status : Read / Unread
+	private Status status = Status.UNREAD; // status : Read / Unread
 
 	@CreationTimestamp
 	private LocalDateTime createdAt;

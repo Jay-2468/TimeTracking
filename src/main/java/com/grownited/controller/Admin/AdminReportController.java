@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
 public class AdminReportController {
 
 	@Autowired
-	ReportRepository reportRepository;
+	private ReportRepository reportRepository;
 	
 	@GetMapping("/createReport")
 	public String createReport() {
@@ -45,7 +45,7 @@ public class AdminReportController {
 	}
 	
 	@GetMapping("/archiveReport")
-	public String archiveReport(Integer reportId) {
+	public String archiveReport(Long reportId) {
 		
 		// reportRepository.deleteById(reportId);
 		

@@ -43,6 +43,7 @@ body {
 
 						<thead class="table-dark">
 							<tr>
+								<th>#</th>
 								<th>Name</th>
 								<th>Email</th>
 								<th>Role</th>
@@ -54,22 +55,24 @@ body {
 
 						<tbody>
 
-							<c:forEach items="${teamMembers}" var="member">
+							<c:forEach items="${teamMembers}" var="member" varStatus="i">
 
 								<tr>
+									<td class="text-dark-emphasis">${i.index + 1}</td>
 
 									<td class="text-dark-emphasis">${member.user.firstName}${member.user.lastName}</td>
 
 									<td class="text-dark-emphasis">${member.user.email}</td>
 
-									<td class="text-dark-emphasis">${member.user.role}</td>
+									<td class="text-dark-emphasis">${member.roleInProject}</td>
 
 									<td class="text-dark-emphasis">${member.project.projectName}</td>
 
 									<td class=><span class="badge bg-success">
 											${member.status} </span></td>
 
-									<td class="text-center"><a href="view-user?userId=${member.user.userId}"
+									<td class="text-center"><a
+										href="view-user?userId=${member.user.userId}"
 										class="btn btn-sm btn-info text-white"> <i
 											class="mdi mdi-eye"></i> View
 									</a></td>

@@ -12,8 +12,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "project_members")
@@ -35,7 +35,6 @@ public class ProjectMembersEntity {
 	@JoinColumn(name = "user_id")
 	private UserEntity user; // FK - Drop down
 
-	@Transient
 	private String roleInProject; // Developer, Tester(QA), Designer(UX/UI), etc.
 
 	@ManyToOne
@@ -47,6 +46,11 @@ public class ProjectMembersEntity {
 
 	@Enumerated(EnumType.STRING)
 	private Status status; // status: active / removed / completed
+	
+	@PrePersist
+	public void onCreate() {
+		this.status = Status.ACTIVE;
+	}
 
 	public Long getTeamMemberId() {
 		return teamMemberId;

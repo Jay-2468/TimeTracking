@@ -17,7 +17,7 @@ import com.grownited.repository.TimeLogRepository;
 public class AdminTimeLogController {
 	
 	@Autowired
-	TimeLogRepository timeLogRepository;
+	private TimeLogRepository timeLogRepository;
 	
 	@GetMapping("/createTimeLog")
 	public String createTimeLog() {
@@ -43,7 +43,7 @@ public class AdminTimeLogController {
 	}
 	
 	@GetMapping(" archiveTimeLog")
-	public String archiveTimeLog(Integer logId) {
+	public String archiveTimeLog(Long logId) {
 		
 		timeLogRepository.deleteById(logId);
 		

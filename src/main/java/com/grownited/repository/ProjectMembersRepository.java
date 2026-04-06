@@ -12,7 +12,7 @@ import com.grownited.entity.ProjectEntity;
 
 
 @Repository
-public interface ProjectMembersRepository extends JpaRepository<ProjectMembersEntity, Integer>{
+public interface ProjectMembersRepository extends JpaRepository<ProjectMembersEntity, Long>{
 
 	List<ProjectMembersEntity> findByUser(UserEntity user);
 

@@ -19,10 +19,10 @@ import com.grownited.repository.ProjectRepository;
 public class AdminModuleController {
 
 	@Autowired
-	ModuleRepository moduleRepository;
+	private ModuleRepository moduleRepository;
 
 	@Autowired
-	ProjectRepository projectRepository;
+	private ProjectRepository projectRepository;
 
 	@GetMapping("/newModule")
 	public String newModule(Model model) {
@@ -51,7 +51,7 @@ public class AdminModuleController {
 	}
 
 	@GetMapping("/deleteModule")
-	public String deleteModule(Integer moduleId) {
+	public String deleteModule(Long moduleId) {
 		
 		moduleRepository.deleteById(moduleId);
 		

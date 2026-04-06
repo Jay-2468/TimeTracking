@@ -9,7 +9,7 @@ import com.grownited.entity.TaskEntity;
 import com.grownited.entity.UserEntity;
 
 @Repository
-public interface TaskRepository extends JpaRepository<TaskEntity, Integer>{
+public interface TaskRepository extends JpaRepository<TaskEntity, Long>{
 	
 	List<TaskEntity> findByCreatedBy(UserEntity user);
 	

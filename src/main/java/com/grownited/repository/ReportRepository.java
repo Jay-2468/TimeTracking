@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.grownited.entity.ReportEntity;
 
 @Repository
-public interface ReportRepository extends JpaRepository<ReportEntity, Integer>{
+public interface ReportRepository extends JpaRepository<ReportEntity, Long>{
 
 }

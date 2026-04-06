@@ -79,7 +79,7 @@ public class DeveloperTimesheetController {
 	}
 
 	@GetMapping("/deleteTimesheet")
-	public String deleteTimesheet(Integer timesheetId) {
+	public String deleteTimesheet(Long timesheetId) {
 
 		timesheetRepo.deleteById(timesheetId);
 

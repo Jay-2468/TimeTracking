@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import com.grownited.entity.ProjectEntity;
+import com.grownited.entity.ProjectMembersEntity;
 import com.grownited.entity.UserEntity;
-import com.grownited.repository.ProjectRepository;
-import com.grownited.repository.UserRepository;
+import com.grownited.repository.ProjectMembersRepository;
 
 
 @Controller
@@ -20,15 +19,12 @@ import com.grownited.repository.UserRepository;
 public class PMProjectController {
 
 	@Autowired
-	ProjectRepository projectRepository;
-	
-	@Autowired
-	UserRepository userRepository;
+	private ProjectMembersRepository pmsRepo;
 	
 	@GetMapping("/projectsList")
 	public String projectsList(Model model, @SessionAttribute("user") UserEntity user) {
 		
-		List<ProjectEntity> projectsList = projectRepository.findByAssignedTo(user);
+		List<ProjectMembersEntity> projectsList = pmsRepo.findByUser(user);
 		model.addAttribute("projectsList", projectsList);
 		
 		return "ProjectManager/Project/ProjectsList";

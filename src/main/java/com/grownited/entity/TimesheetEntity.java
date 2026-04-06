@@ -45,6 +45,9 @@ public class TimesheetEntity {
 	@Enumerated(EnumType.STRING)
 	private Status status; // status : Submitted / Approved / Rejected
 
+	@Column(length = 500)
+	private String approvalRemark;
+
 	@ManyToOne
 	@JoinColumn(name = "approved_by")
 	private UserEntity approvedBy; // FK
@@ -56,7 +59,11 @@ public class TimesheetEntity {
 
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
-	
+
+	private Boolean isDeleted = false;
+
+	private Boolean isEditable = false;
+
 	@PrePersist
 	public void onCreate() {
 		this.status = Status.SUBMITTED;
@@ -110,6 +117,14 @@ public class TimesheetEntity {
 		this.status = status;
 	}
 
+	public String getApprovalRemark() {
+		return approvalRemark;
+	}
+
+	public void setApprovalRemark(String approvalRemark) {
+		this.approvalRemark = approvalRemark;
+	}
+
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
@@ -140,6 +155,22 @@ public class TimesheetEntity {
 
 	public void setApprovedAt(LocalDateTime approvedAt) {
 		this.approvedAt = approvedAt;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	public Boolean getIsEditable() {
+		return isEditable;
+	}
+
+	public void setIsEditable(Boolean isEditable) {
+		this.isEditable = isEditable;
 	}
 
 }

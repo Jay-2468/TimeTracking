@@ -36,10 +36,12 @@
 
 							<!-- Select Project -->
 							<div class="form-group">
-								<label class="text-dark fw-semibold">Select Project</label> <select name="projectId"
-									class="form-control text-dark border-secondary" required>
+								<label class="text-dark fw-semibold">Select Project</label> <select
+									name="projectId"
+									class="form-control text-dark border-secondary"
+									onchange="loadUsers(this.value)" required>
 
-									<option value="">Select Project</option>
+									<option value="">-- Select Project --</option>
 
 									<c:forEach items="${projects}" var="p">
 										<option value="${p.projectId}">${p.projectName}</option>
@@ -52,15 +54,11 @@
 
 							<!-- Select Employee -->
 							<div class="form-group">
-								<label class="text-dark fw-semibold">Select Project Manager</label> <select name="userId"
+								<label class="text-dark fw-semibold">Select Project
+									Manager</label> <select name="userId" id="userDropdown"
 									class="form-control text-dark border-secondary" required>
 
 									<option value="">-- Select Project Manager --</option>
-
-									<c:forEach items="${projectManagers}" var="pm">
-										<option value="${pm.userId}">${pm.firstName}
-											${pm.lastName}</option>
-									</c:forEach>
 
 								</select>
 							</div>
@@ -83,5 +81,28 @@
 		</div>
 	</div>
 
+<script>
+function loadUsers(projectId) {
+
+    if (!projectId) return;
+
+    fetch('/admin/getUsersByProject?projectId=' + projectId)
+        .then(response => response.json())
+        .then(data => {
+
+            let userDropdown = document.getElementById("userDropdown");
+            userDropdown.innerHTML = '<option value="">-- Select Project Manager --</option>';
+
+            data.forEach(user => {
+                let option = document.createElement("option");
+                option.value = user.userId;
+                option.text = user.firstName + " " + user.lastName;
+                userDropdown.appendChild(option);
+            });
+
+        })
+        .catch(error => console.error("Error:", error));
+}
+</script>
 </body>
 </html>

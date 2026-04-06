@@ -5,7 +5,6 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Connect Plus</title>
 <!-- plugins:css -->
 <link rel="stylesheet"
 	href="${path}/assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -22,6 +21,15 @@
 <!-- inject:css -->
 <!-- endinject -->
 <!-- Layout styles -->
-<link rel="stylesheet" href="${path}/assets/css/vertical-light-layout/style.css">
+<link id="theme-style" rel="stylesheet" href="${path}/assets/css/vertical-light-layout/style.css">
 <!-- End layout styles -->
 <link rel="shortcut icon" href="${path}/assets/images/favicon.png" />
+
+<link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.2.6/css/buttons.dataTables.css"/>
+
+<style>
+body {
+    transition: all 0.3s ease;
+}
+</style>

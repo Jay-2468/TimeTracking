@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Repository
-public interface ProjectRepository extends JpaRepository<ProjectEntity, Integer>{
+public interface ProjectRepository extends JpaRepository<ProjectEntity, Long>{
 
 	List<ProjectEntity> findByAssignedTo(UserEntity assignedTo);
 	

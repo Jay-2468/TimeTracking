@@ -24,9 +24,9 @@ public class DeveloperProjectMembersController {
 	@GetMapping("/viewTeamMembers")
 	public String viewTeamMembers(Model model, @SessionAttribute("user") UserEntity user) {
 
-		List<ProjectMembersEntity> myAssignments = projectMembersRepo.findByUser(user);
+		List<ProjectMembersEntity> myProjectAssignments = projectMembersRepo.findByUser(user);
 
-		List<ProjectEntity> myProjects = myAssignments.stream().map(ProjectMembersEntity::getProject).toList();
+		List<ProjectEntity> myProjects = myProjectAssignments.stream().map(ProjectMembersEntity::getProject).toList();
 
 		List<ProjectMembersEntity> teamMembers = projectMembersRepo.findByProjectIn(myProjects);
 

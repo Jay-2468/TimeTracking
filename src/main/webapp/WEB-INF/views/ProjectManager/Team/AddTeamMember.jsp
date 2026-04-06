@@ -33,38 +33,39 @@ body {
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h2 class="text-dark font-weight-bold mb-4">Add Team Member</h2>
-					<a href="viewTeamMembers" class="btn btn-secondary btn-sm"> Back to
-						View Members </a>
+					<a href="viewTeamMembers" class="btn btn-secondary btn-sm">
+						Back to View Members </a>
 				</div>
 
 
 				<div class="card">
 					<div class="card-body">
-						<h3 class="mb-3 text-center text-dark-emphasis">Add New Team Member</h3>
+						<h3 class="mb-3 text-center text-dark-emphasis">Add New Team
+							Member</h3>
 
 						<form action="saveTeamMember" method="post">
 
 							<div class="form-group">
-								<label class="text-dark fw-semibold">Select Project</label> <select name="projectId"
-									class="form-control text-dark border-secondary">
+								<label class="text-dark fw-semibold">Select Project</label> <select
+									name="projectId"
+									class="form-control text-dark border-secondary"
+									onchange="loadUsers(this.value)">
+									
 									<option value="">-- Select Project --</option>
 
 									<c:forEach items="${projects}" var="p">
-										<option value="${p.projectId}">${p.projectName}</option>
+										<option value="${p.project.projectId}">${p.project.projectName}</option>
 									</c:forEach>
 
 								</select>
 							</div>
 
 							<div class="form-group">
-								<label class="text-dark fw-semibold">Select Developer</label> <select name="userId"
-									class="form-control text-dark border-secondary">
+								<label class="text-dark fw-semibold">Select Developer</label> <select
+									name="userId" id="userDropdown"
+									class="form-control text-dark border-secondary" required>
+									
 									<option value="">-- Select Developer --</option>
-
-									<c:forEach items="${developers}" var="d">
-										<option value="${d.userId}">${d.firstName}
-											${d.lastName}</option>
-									</c:forEach>
 
 								</select>
 							</div>
@@ -86,5 +87,28 @@ body {
 		</div>
 	</div>
 
+	<script>
+function loadUsers(projectId) {
+
+    if (!projectId) return;
+
+    fetch('/pm/getUsersByProject?projectId=' + projectId)
+        .then(response => response.json())
+        .then(data => {
+
+            let userDropdown = document.getElementById("userDropdown");
+            userDropdown.innerHTML = '<option value="">-- Select Developer --</option>';
+
+            data.forEach(user => {
+                let option = document.createElement("option");
+                option.value = user.userId;
+                option.text = user.firstName + " " + user.lastName;
+                userDropdown.appendChild(option);
+            });
+
+        })
+        .catch(error => console.error("Error:", error));
+}
+</script>
 </body>
 </html>

@@ -18,7 +18,7 @@ import com.grownited.repository.InvoiceRepository;
 public class AdminInvoiceController {
 
 	@Autowired
-	InvoiceRepository invoiceRepository;
+	private InvoiceRepository invoiceRepository;
 
 	@GetMapping("/createInvoice")
 	public String createInvoice() {
@@ -45,7 +45,7 @@ public class AdminInvoiceController {
 	}
 
 	@GetMapping("/deleteInvoice")
-	public String deleteInvoice(Integer invoiceId) {
+	public String deleteInvoice(Long invoiceId) {
 		
 		invoiceRepository.deleteById(invoiceId);
 		

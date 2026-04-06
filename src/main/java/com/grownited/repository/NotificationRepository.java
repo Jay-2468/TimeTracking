@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.grownited.entity.NotificationEntity;
 
 @Repository
-public interface NotificationRepository extends JpaRepository<NotificationEntity, Integer>{
+public interface NotificationRepository extends JpaRepository<NotificationEntity, Long>{
 
 }

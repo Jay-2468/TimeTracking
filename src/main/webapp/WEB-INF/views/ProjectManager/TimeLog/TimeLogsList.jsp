@@ -35,6 +35,8 @@
 						<table class="table table-bordered table-hover align-middle">
 							<thead class="table-dark text-center">
 								<tr>
+									<th>Task</th>
+									<th>Developer</th>
 									<th>Start Time</th>
 									<th>End Time</th>
 									<th>Total Hours</th>
@@ -48,7 +50,9 @@
 
 								<c:forEach items="${timeLogsList}" var="log">
 									<tr>
-
+										<td class="text-dark-emphasis">${log.task.taskName}</td>
+										<td class="text-dark-emphasis">${log.user.firstName}
+											${log.user.lastName}</td>
 										<td class="text-dark-emphasis">${log.startTime}</td>
 										<td class="text-dark-emphasis">${log.endTime}</td>
 										<td class="text-dark-emphasis">${log.totalHours}</td>
@@ -76,19 +80,36 @@
 												</c:otherwise>
 											</c:choose></td>
 
-										<!-- Actions -->
-										<td class="text-center"><a
-											href="viewTimeLog?logId=${log.logId}"
+										<td class="text-center">
+											<!-- View Button --> <a href="viewTimeLog?logId=${log.logId}"
 											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>
 												View
-										</a> <a href="editTimeLog?logId=${log.logId}"
-											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
-												Edit
-										</a> <a href="archiveTimeLog?logId=${log.logId}"
-											class="btn btn-sm btn-danger"
-											onclick="return confirm('Are you sure you want to archive this time log?')"><i class="mdi mdi-archive"></i>
-												Archive
-										</a></td>
+										</a> <!-- Approval Actions --> <c:choose>
+
+												<c:when test="${log.approvalStatus == 'PENDING'}">
+
+													<a href="approveTimeLog?logId=${log.logId}"
+														class="btn btn-sm btn-success"
+														onclick="return confirm('Approve this time log?')"> <i
+														class="mdi mdi-check"></i> Approve
+													</a>
+
+													<button class="btn btn-sm btn-warning"
+														onclick="rejectLog(${log.logId})">
+														<i class="mdi mdi-close"></i> Reject
+													</button>
+
+												</c:when>
+
+											</c:choose> <c:if test="${log.approvalStatus != 'APPROVED'}">
+												<a href="archiveTimeLog?logId=${log.logId}"
+													class="btn btn-sm btn-danger"
+													onclick="return confirm('Are you sure you want to archive this time log?')">
+													<i class="mdi mdi-archive"></i> Archive
+												</a>
+											</c:if>
+
+										</td>
 
 									</tr>
 								</c:forEach>
@@ -105,5 +126,19 @@
 		<!-- main-panel ends -->
 	</div>
 	<!-- page-body-wrapper ends -->
+
+	<script>
+	function rejectLog(logId) {
+	    let reason = prompt("Enter rejection reason:");
+
+	    if (reason == null || reason.trim() === "") {
+	        alert("Rejection reason is required!");
+	        return;
+	    }
+
+	    window.location.href = "rejectTimeLog?logId=" + logId
+	        + "&reason=" + encodeURIComponent(reason);
+	}
+	</script>
 </body>
 </html>

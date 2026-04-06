@@ -53,22 +53,11 @@ public class AdminProjectController {
 	}
 	
 	@GetMapping("/deleteProject")
-	public String deleteProject(Integer projectId) { 
+	public String deleteProject(Long projectId) { 
 		
 		projectRepository.deleteById(projectId);
 		
 		return "redirect:/admin/projectsList";
 	}
 	
-	@GetMapping("/assignProject")
-	public String assignProject(Model model) {
-		
-		List<ProjectEntity> projects = projectRepository.findAll();
-		List<UserEntity> projectManagers = userRepository.findByRole(Role.PROJECT_MANAGER);
-		
-		model.addAttribute("projects", projects);
-		model.addAttribute("projectManagers", projectManagers);
-		
-		return "Admin/Project/AssignProject";
-	}
 }

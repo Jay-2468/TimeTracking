@@ -7,19 +7,6 @@
 <head>
 <title>Team Members</title>
 
-<style>
-body {
-	background: #f4f6f9;
-}
-
-.table-container {
-	background: white;
-	padding: 25px;
-	border-radius: 8px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-</style>
-
 <jsp:include page="../../GlobalCSS.jsp"></jsp:include>
 
 </head>
@@ -35,7 +22,7 @@ body {
 		<div class="main-panel">
 			<div class="content-wrapper">
 				<h2 class="text-dark font-weight-bold mb-2">My Team Members</h2>
-				
+
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0 text-dark-emphasis">Team Members</h3>
 					<a href="addTeamMember" class="btn btn-primary btn-sm"> <i
@@ -43,54 +30,63 @@ body {
 					</a>
 				</div>
 
-				<div class="table-container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table table-bordered table-hover hackathon-table"
+										id="myTable">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Name</th>
+												<th>Email</th>
+												<th>Role</th>
+												<th>Project</th>
+												<th>Status</th>
+												<th>Action</th>
+											</tr>
+										</thead>
 
-					<table class="table table-bordered table-hover">
+										<tbody>
+											<c:choose>
+												<c:when test="${empty teamMembers}">
+													<tr>
+														<td colspan="7">No team members found</td>
+													</tr>
+												</c:when>
 
-						<thead class="table-dark">
-							<tr>
-								<th>ID</th>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Role</th>
-								<th>Project</th>
-								<th>Status</th>
-								<th>Action</th>
-							</tr>
-						</thead>
+												<c:otherwise>
+													<c:forEach var="member" items="${teamMembers}" varStatus="i">
+														<tr>
+															<td class="text-dark-emphasis">${i.count}</td>
 
-						<tbody>
+															<td class="text-dark-emphasis">${member.user.firstName}
+																${member.user.lastName}</td>
 
-							<c:forEach items="${teamMembers}" var="member">
+															<td class="text-dark-emphasis">${member.user.email}</td>
 
-								<tr>
+															<td class="text-dark-emphasis">${member.roleInProject}</td>
 
-									<td class="text-dark-emphasis">${member.userId}</td>
+															<td class="text-dark-emphasis">${member.project.projectName}</td>
 
-									<td class="text-dark-emphasis">${member.firstName}${member.lastName}</td>
+															<td><span class="badge bg-success">
+																	${member.status} </span></td>
 
-									<td class="text-dark-emphasis">${member.email}</td>
-
-									<td class="text-dark-emphasis">${member.role}</td>
-
-									<td class="text-dark-emphasis">${member.projectName}</td>
-
-									<td><span class="badge bg-success">
-											${member.status} </span></td>
-
-									<td><a href="view-user?userId=${member.userId}"
-										class="btn btn-sm btn-primary"> View </a></td>
-
-								</tr>
-
-							</c:forEach>
-
-						</tbody>
-
-					</table>
-
+															<td><a href="view-user?userId=${member.user.userId}"
+																class="btn btn-sm btn-primary"> View </a></td>
+														</tr>
+													</c:forEach>
+												</c:otherwise>
+											</c:choose>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-
 			</div>
 			<!-- partial:partials/_footer.html -->
 			<jsp:include page="../../GlobalFooter.jsp"></jsp:include>
@@ -98,5 +94,16 @@ body {
 		<!-- main-panel ends -->
 	</div>
 	<!-- page-body-wrapper ends -->
+
+	<script type="text/javascript">
+		let table = new DataTable('#myTable', {
+			responsive : true,
+			layout : {
+				topStart : {
+					buttons : [ 'copy', 'csv', 'excel', 'pdf', 'print' ]
+				}
+			}
+		});
+	</script>
 </body>
 </html>

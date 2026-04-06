@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <footer class="footer">
@@ -7,8 +7,7 @@
 			class="d-sm-flex justify-content-center justify-content-sm-between">
 			<span
 				class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright
-				� 2026 All rights reserved.
-			</span> <span
+				© 2026 All rights reserved. </span> <span
 				class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted
 				& made with <i class="mdi mdi-heart text-danger"></i>
 			</span>
@@ -35,4 +34,72 @@
 <!-- endinject -->
 <!-- Custom js for this page -->
 <script src="${path}/assets/js/dashboard.js"></script>
-<!-- End custom js for this page -->
+
+<script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
+<script
+	src="https://cdn.datatables.net/buttons/3.2.6/js/dataTables.buttons.js"></script>
+<script
+	src="https://cdn.datatables.net/buttons/3.2.6/js/buttons.dataTables.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script
+	src="https://cdn.datatables.net/buttons/3.2.6/js/buttons.html5.min.js"></script>
+<script
+	src="https://cdn.datatables.net/buttons/3.2.6/js/buttons.print.min.js"></script>
+
+<script>
+    const themeStyle = document.getElementById("theme-style");
+    const themeIcon = document.getElementById("themeIcon");
+    const toggleBtn = document.getElementById("themeToggle");
+
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Apply theme function
+    function applyTheme(theme) {
+        if (theme === "dark") {
+            themeStyle.href = "${path}/assets/css/vertical-dark-layout/style.css";
+            themeIcon.classList.remove("mdi-brightness-7");
+            themeIcon.classList.add("mdi-brightness-2");
+        } else {
+            themeStyle.href = "${path}/assets/css/vertical-light-layout/style.css";
+            themeIcon.classList.remove("mdi-brightness-2");
+            themeIcon.classList.add("mdi-brightness-7");
+        }
+    }
+
+    // Detect system theme
+    function getSystemTheme() {
+        return darkQuery.matches ? "dark" : "light";
+    }
+
+    // Initial load logic
+    let savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+        applyTheme(savedTheme); // user preference
+    } else {
+        applyTheme(getSystemTheme()); // system preference
+    }
+
+    // Toggle click (manual override)
+    toggleBtn.addEventListener("click", () => {
+        let currentTheme = localStorage.getItem("theme") || getSystemTheme();
+        let newTheme = currentTheme === "dark" ? "light" : "dark";
+
+        localStorage.setItem("theme", newTheme);
+        applyTheme(newTheme);
+    });
+
+    // 🔥 Auto-update when system theme changes
+    darkQuery.addEventListener("change", (e) => {
+        // Only apply if user has NOT overridden
+        if (!localStorage.getItem("theme")) {
+            applyTheme(e.matches ? "dark" : "light");
+        }
+    });
+</script>

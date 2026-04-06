@@ -54,7 +54,7 @@ public class PMModuleController {
 	}
 
 	@GetMapping("/deleteModule")
-	public String deleteModule(Integer moduleId) {
+	public String deleteModule(Long moduleId) {
 		
 		moduleRepository.deleteById(moduleId);
 		

@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Service;
 
+import com.grownited.config.PaymentGatewayConfig;
 import com.grownited.entity.PaymentEntity;
 
 import net.authorize.Environment;
@@ -26,18 +27,26 @@ import net.authorize.api.controller.base.ApiOperationBase;
 @Service
 public class PaymentService {
 
-	private final String apiLoginId = "6EWa7u3t582U";
-	private final String transactionKey = "66e949yU9f7GmdE3";
+	private final PaymentGatewayConfig config;
+
+	public PaymentService(PaymentGatewayConfig config) {
+		this.config = config;
+	}
 
 	public ANetApiResponse chargeCreditCard(String email, String creditCardNum, String expiredDate, BigDecimal amount) {
 
 		// Set the request to operate in either the sandbox or production environment
-		ApiOperationBase.setEnvironment(Environment.SANDBOX);
+		// Set environment from config class
+		if ("PRODUCTION".equalsIgnoreCase(config.getEnvironment())) {
+			ApiOperationBase.setEnvironment(Environment.PRODUCTION);
+		} else {
+			ApiOperationBase.setEnvironment(Environment.SANDBOX);
+		}
 
 		// Create object with merchant authentication details
 		MerchantAuthenticationType merchantAuthenticationType = new MerchantAuthenticationType();
-		merchantAuthenticationType.setName(apiLoginId);
-		merchantAuthenticationType.setTransactionKey(transactionKey);
+		merchantAuthenticationType.setName(config.getLoginId());
+		merchantAuthenticationType.setTransactionKey(config.getTransactionKey());
 
 		// Populate the payment data
 		PaymentType paymentType = new PaymentType();
@@ -67,8 +76,7 @@ public class PaymentService {
 		controller.execute();
 
 		// Get the response
-		CreateTransactionResponse response = new CreateTransactionResponse();
-		response = controller.getApiResponse();
+		CreateTransactionResponse response = controller.getApiResponse();
 
 		// Parse the response to determine results
 		if (response != null) {
@@ -85,7 +93,7 @@ public class PaymentService {
 					// db insert payment
 					PaymentEntity payment = new PaymentEntity();
 					payment.setAmount(amount);
-					payment.setGateway("AUTHIRIZE.NET");
+					payment.setGateway("AUTHORIZE.NET");
 					payment.setPaymentDate(LocalDate.now());
 					payment.setAuthCode(result.getAuthCode());
 					payment.setTransactionId(result.getTransId());

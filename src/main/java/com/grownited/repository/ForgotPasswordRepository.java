@@ -10,7 +10,7 @@ import com.grownited.entity.UserEntity;
 
 
 @Repository
-public interface ForgotPasswordRepository extends JpaRepository<ForgotPasswordEntity, Integer> {
+public interface ForgotPasswordRepository extends JpaRepository<ForgotPasswordEntity, Long> {
 
 	Optional<ForgotPasswordEntity> findTopByUserAndUsedStatusFalseOrderByRequestTimeDesc(UserEntity userId);
 }

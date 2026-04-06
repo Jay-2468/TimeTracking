@@ -74,13 +74,31 @@
 										<!-- Actions -->
 										<td><a href="viewTimesheet?id=${sheet.timesheetId}"
 											class="btn btn-sm btn-info"><i class="mdi mdi-eye"></i>
-												View </a> <a href="editTimesheet?id=${sheet.timesheetId}"
-											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>Edit
-										</a> <a href="deleteTimesheet?id=${sheet.timesheetId}"
-											class="btn btn-sm btn-danger"
-											onclick="return confirm('Are you sure you want to delete this timesheet?')">
-												<i class="mdi mdi-delete"></i>Delete
-										</a></td>
+												View </a>
+										<!-- Approval Actions --> <c:choose>
+
+												<c:when test="${sheet.status == 'SUBMITTED'}">
+
+													<a href="approveTimesheet?timesheetId=${sheet.timesheetId}"
+														class="btn btn-sm btn-success"
+														onclick="return confirm('Approve this timesheet?')"> <i
+														class="mdi mdi-check"></i> Approve
+													</a>
+
+													<button class="btn btn-sm btn-warning"
+														onclick="rejectTimesheet(${sheet.timesheetId})">
+														<i class="mdi mdi-close"></i> Reject
+													</button>
+
+												</c:when>
+
+											</c:choose> <c:if test="${log.approvalStatus != 'APPROVED'}">
+												<a href="archiveTimesheet?timesheetId=${sheet.timesheetId}"
+													class="btn btn-sm btn-danger"
+													onclick="return confirm('Are you sure you want to archive this timesheet?')">
+													<i class="mdi mdi-archive"></i> Archive
+												</a>
+											</c:if></td>
 
 									</tr>
 								</c:forEach>
@@ -99,5 +117,18 @@
 		<!-- main-panel ends -->
 	</div>
 	<!-- page-body-wrapper ends -->
+	<script>
+		function rejectTimesheet(timesheetId) {
+			let reason = prompt("Enter rejection reason:");
+
+			if (reason == null || reason.trim() === "") {
+				alert("Rejection reason is required!");
+				return;
+			}
+
+			window.location.href = "rejectTimesheet?timesheetId=" + timesheetId + "&reason="
+					+ encodeURIComponent(reason);
+		}
+	</script>
 </body>
 </html>

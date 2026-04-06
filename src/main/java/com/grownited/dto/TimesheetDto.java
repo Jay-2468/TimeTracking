@@ -19,6 +19,8 @@ public class TimesheetDto {
 
 	private TimesheetEntity.Status status; // SUBMITTED / APPROVED / REJECTED
 
+	private String approvalRemark;
+
 	private Long approvedByUserId; // FK reference to UserEntity
 
 	private LocalDateTime approvedAt;
@@ -26,6 +28,10 @@ public class TimesheetDto {
 	private LocalDateTime createdAt;
 
 	private LocalDateTime updatedAt;
+
+	private Boolean isDeleted;
+
+	private Boolean isEditable;
 
 	public Long getTimesheetId() {
 		return timesheetId;
@@ -75,6 +81,14 @@ public class TimesheetDto {
 		this.status = status;
 	}
 
+	public String getApprovalRemark() {
+		return approvalRemark;
+	}
+
+	public void setApprovalRemark(String approvalRemark) {
+		this.approvalRemark = approvalRemark;
+	}
+
 	public Long getApprovedByUserId() {
 		return approvedByUserId;
 	}
@@ -105,6 +119,22 @@ public class TimesheetDto {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
+	public Boolean getIsEditable() {
+		return isEditable;
+	}
+
+	public void setIsEditable(Boolean isEditable) {
+		this.isEditable = isEditable;
 	}
 
 }

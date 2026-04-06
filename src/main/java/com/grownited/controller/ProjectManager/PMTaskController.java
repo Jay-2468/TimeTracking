@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.grownited.entity.TaskEntity;
 import com.grownited.entity.UserEntity;
-import com.grownited.repository.ModuleRepository;
 import com.grownited.repository.TaskRepository;
 import com.grownited.repository.UserRepository;
 
@@ -21,14 +20,11 @@ import com.grownited.repository.UserRepository;
 public class PMTaskController {
 
 	@Autowired
-	TaskRepository taskRepository;
+	private TaskRepository taskRepository;
 	
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 
-	@Autowired
-	ModuleRepository moduleRepository;
-	
 	@GetMapping("/newTask")
 	public String newTask(Model model) {
 		
@@ -56,7 +52,7 @@ public class PMTaskController {
 	}
 	
 	@GetMapping("/deleteTask")
-	public String deleteTask(Integer taskId) {
+	public String deleteTask(Long taskId) {
 		
 		taskRepository.deleteById(taskId);
 		

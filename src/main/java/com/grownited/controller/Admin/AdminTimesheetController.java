@@ -18,7 +18,7 @@ import com.grownited.repository.TimesheetRepository;
 public class AdminTimesheetController {
 
 	@Autowired
-	TimesheetRepository timesheetRepository;
+	private TimesheetRepository timesheetRepository;
 	
 	@GetMapping("/createTimesheet")
 	public String createTimesheet() {
@@ -40,7 +40,7 @@ public class AdminTimesheetController {
 	}
 	
 	@GetMapping("/deleteTimesheet")
-	public String deleteTimesheet(Integer timesheetId) {
+	public String deleteTimesheet(Long timesheetId) {
 		timesheetRepository.deleteById(timesheetId);
 		return "redirect:/admin/timesheetsList";
 	}

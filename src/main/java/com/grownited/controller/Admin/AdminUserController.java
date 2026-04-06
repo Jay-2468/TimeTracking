@@ -19,10 +19,10 @@ import com.grownited.repository.UserRepository;
 public class AdminUserController {
 
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 
 	@Autowired
-	PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;
 
 	@GetMapping("/usersList")
 	public String usersList(Model model) {
@@ -34,7 +34,7 @@ public class AdminUserController {
 	}
 
 	@GetMapping("/viewUser")
-	public String viewUser(Integer userId, Model model) {
+	public String viewUser(Long userId, Model model) {
 		
 		Optional<UserEntity> opUser = userRepository.findById(userId);
 		if (opUser.isEmpty()) {
@@ -48,7 +48,7 @@ public class AdminUserController {
 	}
 
 	@GetMapping("/deleteUser")
-	public String deleteUser(Integer userId) {
+	public String deleteUser(Long userId) {
 		
 		userRepository.deleteById(userId);
 		
@@ -84,7 +84,7 @@ public class AdminUserController {
 	}
 
 	@PostMapping("/updateUserRole")
-	public String updateUserRole(UserEntity userEntity, Integer userId, UserEntity.Role newRole) {
+	public String updateUserRole(UserEntity userEntity, Long userId, UserEntity.Role newRole) {
 		
 		Optional<UserEntity> opUser = userRepository.findById(userId);
 

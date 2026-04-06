@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
 public class PMReportController {
 
 	@Autowired
-	ReportRepository reportRepository;
+	private ReportRepository reportRepository;
 	
 	@GetMapping("/createReport")
 	public String createReport() {

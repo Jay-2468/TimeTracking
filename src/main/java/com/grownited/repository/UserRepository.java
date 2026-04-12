@@ -28,4 +28,19 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> // has t
 			    AND u.role NOT IN (:roles)
 			""", nativeQuery = true)
 	List<UserEntity> findAvailableUsers(@Param("projectId") Long projectId, @Param("roles") List<String> roles);
+
+	@Query(value = """
+			SELECT * FROM users u
+			WHERE u.user_id <> :userId
+			""", nativeQuery = true)
+	List<UserEntity> findAllExceptUser(@Param("userId") Long userId);
+	
+	@Query(value = """
+			SELECT * FROM users u
+			WHERE NOT EXISTS (
+				SELECT * FROM payrolls p
+				WHERE p.user_id = u.user_id
+			) AND u.user_id <> :excludedUserId
+			""", nativeQuery = true)
+	List<UserEntity> findUnpaidUsersByUserIdNot(@Param("excludedUserId") Long excludedUserId);
 }

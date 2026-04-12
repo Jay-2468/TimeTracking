@@ -1,5 +1,6 @@
 package com.grownited.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -51,6 +52,9 @@ public class UserEntity {
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
 	private Status status; // status : Active / Inactive
+
+	@Column(precision = 10, scale = 2)
+	private BigDecimal hourlyRate;
 
 	public String getFullUserName() {
 		return firstName + lastName;
@@ -134,6 +138,14 @@ public class UserEntity {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public BigDecimal getHourlyRate() {
+		return hourlyRate;
+	}
+
+	public void setHourlyRate(BigDecimal hourlyRate) {
+		this.hourlyRate = hourlyRate;
 	}
 
 }

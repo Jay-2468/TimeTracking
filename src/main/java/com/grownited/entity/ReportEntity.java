@@ -1,5 +1,6 @@
 package com.grownited.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -36,26 +37,39 @@ public class ReportEntity {
 	private String reportTitle;
 
 	@Enumerated(EnumType.STRING)
-	private ReportType reportType; // report types : Project / Productivity / Billing
+	private ReportType reportType;
 
 	@ManyToOne
 	@JoinColumn(name = "generated_by")
-	private UserEntity generatedBy; // FK
+	private UserEntity generatedBy;
 
-	@CreationTimestamp
-	private LocalDateTime generatedDate;
+	@ManyToOne
+	@JoinColumn(name = "project_id")
+	private ProjectEntity project;
 
-	private LocalDateTime fromDate;
-
-	private LocalDateTime toDate;
+	private LocalDate fromDate;
+	
+	private LocalDate toDate;
 
 	@Enumerated(EnumType.STRING)
-	private ReportStatus reportStatus; // report status : Processing / Completed / Failed
+	private ReportStatus reportStatus;
+
+	private Double totalHours;
+	
+	private Integer totalTasks;
+	
+	private Integer completedTasks;
+	
+	private Integer pendingTasks;
+
+	private Double productivityScore;
+
+	private String filePath;
 
 	@Column(columnDefinition = "TEXT")
-	private String reportData;
+	private String chartData;
 
-	private Boolean isDeleted = false; // archive // soft delete
+	private Boolean isDeleted = false;
 
 	@CreationTimestamp
 	private LocalDateTime createdAt;
@@ -68,6 +82,7 @@ public class ReportEntity {
 		this.reportStatus = ReportStatus.PROCESSING;
 	}
 
+	// getters & setters
 	public Long getReportId() {
 		return reportId;
 	}
@@ -100,27 +115,27 @@ public class ReportEntity {
 		this.generatedBy = generatedBy;
 	}
 
-	public LocalDateTime getGeneratedDate() {
-		return generatedDate;
+	public ProjectEntity getProject() {
+		return project;
 	}
 
-	public void setGeneratedDate(LocalDateTime generatedDate) {
-		this.generatedDate = generatedDate;
+	public void setProject(ProjectEntity project) {
+		this.project = project;
 	}
 
-	public LocalDateTime getFromDate() {
+	public LocalDate getFromDate() {
 		return fromDate;
 	}
 
-	public void setFromDate(LocalDateTime fromDate) {
+	public void setFromDate(LocalDate fromDate) {
 		this.fromDate = fromDate;
 	}
 
-	public LocalDateTime getToDate() {
+	public LocalDate getToDate() {
 		return toDate;
 	}
 
-	public void setToDate(LocalDateTime toDate) {
+	public void setToDate(LocalDate toDate) {
 		this.toDate = toDate;
 	}
 
@@ -132,12 +147,60 @@ public class ReportEntity {
 		this.reportStatus = reportStatus;
 	}
 
-	public String getReportData() {
-		return reportData;
+	public Double getTotalHours() {
+		return totalHours;
 	}
 
-	public void setReportData(String reportData) {
-		this.reportData = reportData;
+	public void setTotalHours(Double totalHours) {
+		this.totalHours = totalHours;
+	}
+
+	public Integer getTotalTasks() {
+		return totalTasks;
+	}
+
+	public void setTotalTasks(Integer totalTasks) {
+		this.totalTasks = totalTasks;
+	}
+
+	public Integer getCompletedTasks() {
+		return completedTasks;
+	}
+
+	public void setCompletedTasks(Integer completedTasks) {
+		this.completedTasks = completedTasks;
+	}
+
+	public Integer getPendingTasks() {
+		return pendingTasks;
+	}
+
+	public void setPendingTasks(Integer pendingTasks) {
+		this.pendingTasks = pendingTasks;
+	}
+
+	public Double getProductivityScore() {
+		return productivityScore;
+	}
+
+	public void setProductivityScore(Double productivityScore) {
+		this.productivityScore = productivityScore;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public String getChartData() {
+		return chartData;
+	}
+
+	public void setChartData(String chartData) {
+		this.chartData = chartData;
 	}
 
 	public Boolean getIsDeleted() {

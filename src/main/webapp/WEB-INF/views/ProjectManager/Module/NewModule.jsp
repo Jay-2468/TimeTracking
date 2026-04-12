@@ -57,7 +57,7 @@
 							<div class="mb-3">
 								<label class="form-label text-dark fw-semibold">Project</label> <select
 									name="projectId" class="form-control text-dark border-secondary">
-									<option value="-1">---Select Project---</option>
+									<option value="">---Select Project---</option>
 
 									<c:forEach items="${projectsList}" var="pl">
 										<option value="${pl.projectId}">${pl.projectName}</option>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.grownited.entity.ModuleEntity;
 import com.grownited.entity.TaskEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.ModuleRepository;
@@ -21,13 +22,13 @@ import com.grownited.repository.UserRepository;
 public class DeveloperTaskController {
 
 	@Autowired
-	TaskRepository taskRepository;
+	private TaskRepository taskRepository;
 	
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 
 	@Autowired
-	ModuleRepository moduleRepository;
+	private ModuleRepository moduleRepository;
 	
 	@GetMapping("/newTask")
 	public String newTask(Model model) {
@@ -39,8 +40,10 @@ public class DeveloperTaskController {
 	}
 	
 	@PostMapping("/createTask")
-	public String saveTask(TaskEntity taskEntity) {
+	public String saveTask(TaskEntity taskEntity, Long moduleId) {
 		
+		ModuleEntity module = moduleRepository.findById(moduleId).get();
+		taskEntity.setProject(module.getProject());
 		taskRepository.save(taskEntity);
 		
 		return "redirect:/developer/tasksList";

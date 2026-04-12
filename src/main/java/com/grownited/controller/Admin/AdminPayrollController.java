@@ -1,6 +1,6 @@
 package com.grownited.controller.Admin;
 
-import java.util.List;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,53 +8,73 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
-import com.grownited.entity.PayrollEntity;
 import com.grownited.entity.UserEntity;
-import com.grownited.repository.PayrollRepository;
-import com.grownited.repository.UserRepository;
+import com.grownited.service.PayrollService;
+import com.grownited.service.UserService;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminPayrollController {
 
 	@Autowired
-	private PayrollRepository payrollRepository;
+	private PayrollService payrollService;
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserService userService;
 
-	@GetMapping("/createPayroll")
-	public String createPayroll(Model model) {
-		
-		List<UserEntity> users = userRepository.findAll();
-		model.addAttribute("users", users);
-		
+	@GetMapping("/generatePayroll")
+	public String showGeneratePayrollPage(Model model, @SessionAttribute("user") UserEntity user) {
+
+		Long excludedUserId = user.getUserId();
+
+		LocalDate today = LocalDate.now();
+
+		// Previous month
+		LocalDate previousMonth = today.minusMonths(1);
+
+		// Start of previous month
+		LocalDate startDate = previousMonth.withDayOfMonth(1);
+
+		// End of previous month
+		LocalDate endDate = previousMonth.withDayOfMonth(previousMonth.lengthOfMonth());
+
+		model.addAttribute("startDate", startDate);
+		model.addAttribute("endDate", endDate);
+
+		// employees list already sending
+		model.addAttribute("employees", userService.getAllUnpaidUsersByUserIdNot(excludedUserId));
+
 		return "Admin/Payroll/GeneratePayroll";
 	}
 
 	@PostMapping("/generatePayroll")
-	public String generatePayroll(PayrollEntity payrollEntity) {
+	public String generatePayroll(Long userId, String periodStartDate, String periodEndDate,
+			@SessionAttribute("user") UserEntity user) {
 		
-		payrollRepository.save(payrollEntity);
-	
+		System.out.println(userId);
+		System.out.println(periodStartDate);
+		System.out.println(periodEndDate);
+		
+		payrollService.generatePayroll(userId, periodStartDate, periodEndDate, user);
+
 		return "redirect:/admin/payrollRecords";
 	}
 
 	@GetMapping("/payrollRecords")
 	public String payrollRecords(Model model) {
-		
-		List<PayrollEntity> payrolls = payrollRepository.findAll();
-		model.addAttribute("payrolls", payrolls);
-		
+
+		model.addAttribute("payrolls", payrollService.getAllPayrollEntries());
+
 		return "Admin/Payroll/PayrollRecords";
 	}
 
-	@GetMapping("/deletePayroll")
-	public String deletePayroll(Long payrollId) {
-		
-		payrollRepository.deleteById(payrollId);
-		
+	@GetMapping("/archivePayroll")
+	public String archivePayroll(Long payrollId) {
+
+		payrollService.archivePayroll(payrollId);
+
 		return "redirect:/admin/payrollRecords";
 	}
 }

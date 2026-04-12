@@ -45,6 +45,10 @@ public class TimeLogEntity {
 	@JoinColumn(name = "user_id")
 	private UserEntity user; // FK
 
+	@ManyToOne
+	@JoinColumn(name = "project_id")
+	private ProjectEntity project;
+
 	private LocalDateTime startTime;
 
 	private LocalDateTime endTime;
@@ -98,25 +102,24 @@ public class TimeLogEntity {
 
 	public void calculateHours() {
 
-	    double workHours = 0;
-	    double breakHours = 0;
+		double workHours = 0;
+		double breakHours = 0;
 
-	    if (startTime != null && endTime != null) {
-	        workHours = (double) java.time.Duration.between(startTime, endTime).toMinutes() / 60;
-	    }
+		if (startTime != null && endTime != null) {
+			workHours = (double) java.time.Duration.between(startTime, endTime).toMinutes() / 60;
+		}
 
-	    if (breakStartTime != null && breakEndTime != null) {
-	        breakHours = (double) java.time.Duration.between(breakStartTime, breakEndTime).toMinutes() / 60;
+		if (breakStartTime != null && breakEndTime != null) {
+			breakHours = (double) java.time.Duration.between(breakStartTime, breakEndTime).toMinutes() / 60;
 
-	        this.breakDuration = BigDecimal.valueOf(breakHours)
-	                .setScale(2, RoundingMode.HALF_UP);
-	    }
+			this.breakDuration = BigDecimal.valueOf(breakHours).setScale(2, RoundingMode.HALF_UP);
+		}
 
-	    double finalHours = workHours - breakHours;
-	    if (finalHours < 0) finalHours = 0;
+		double finalHours = workHours - breakHours;
+		if (finalHours < 0)
+			finalHours = 0;
 
-	    this.totalHours = BigDecimal.valueOf(finalHours)
-	            .setScale(2, RoundingMode.HALF_UP);
+		this.totalHours = BigDecimal.valueOf(finalHours).setScale(2, RoundingMode.HALF_UP);
 	}
 
 	public Long getLogId() {
@@ -141,6 +144,14 @@ public class TimeLogEntity {
 
 	public void setUser(UserEntity user) {
 		this.user = user;
+	}
+
+	public ProjectEntity getProject() {
+		return project;
+	}
+
+	public void setProject(ProjectEntity project) {
+		this.project = project;
 	}
 
 	public LocalDateTime getStartTime() {

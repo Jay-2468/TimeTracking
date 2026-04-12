@@ -58,7 +58,8 @@
 												</c:when>
 
 												<c:otherwise>
-													<c:forEach var="member" items="${teamMembers}" varStatus="i">
+													<c:forEach var="member" items="${teamMembers}"
+														varStatus="i">
 														<tr>
 															<td class="text-dark-emphasis">${i.count}</td>
 
@@ -95,15 +96,6 @@
 	</div>
 	<!-- page-body-wrapper ends -->
 
-	<script type="text/javascript">
-		let table = new DataTable('#myTable', {
-			responsive : true,
-			layout : {
-				topStart : {
-					buttons : [ 'copy', 'csv', 'excel', 'pdf', 'print' ]
-				}
-			}
-		});
-	</script>
+	
 </body>
 </html>

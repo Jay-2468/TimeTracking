@@ -2,12 +2,16 @@ package com.grownited.service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.grownited.config.PaymentGatewayConfig;
 import com.grownited.entity.PaymentEntity;
+import com.grownited.entity.PayrollEntity;
+import com.grownited.repository.PaymentRepository;
+import com.grownited.repository.PayrollRepository;
 
 import net.authorize.Environment;
 import net.authorize.api.contract.v1.ANetApiResponse;
@@ -29,11 +33,24 @@ public class PaymentService {
 
 	private final PaymentGatewayConfig config;
 
+	@Autowired
+	private PaymentRepository paymentRepo;
+
+	@Autowired
+	private PayrollRepository payrollRepo;
+
 	public PaymentService(PaymentGatewayConfig config) {
 		this.config = config;
 	}
 
-	public ANetApiResponse chargeCreditCard(String email, String creditCardNum, String expiredDate, BigDecimal amount) {
+	public ANetApiResponse chargeCreditCard(String email, String creditCardNum, String expiredDate, BigDecimal amount,
+			Long payrollId) {
+
+		System.out.println("Transaction Key: " + config.getTransactionKey());
+		System.out.println("Length: " + config.getTransactionKey().length());
+		
+		PayrollEntity payroll = payrollRepo.findById(payrollId)
+				.orElseThrow(() -> new RuntimeException("Payroll not found"));
 
 		// Set the request to operate in either the sandbox or production environment
 		// Set environment from config class
@@ -84,25 +101,23 @@ public class PaymentService {
 			if (response.getMessages().getResultCode() == MessageTypeEnum.OK) {
 				TransactionResponse result = response.getTransactionResponse();
 				if (result.getMessages() != null) {
-					System.out.println("Successfully created transaction with Transaction ID: " + result.getTransId());
-					System.out.println("Response Code: " + result.getResponseCode());
-					System.out.println("Message Code: " + result.getMessages().getMessage().get(0).getCode());
-					System.out.println("Description: " + result.getMessages().getMessage().get(0).getDescription());
-					System.out.println("Auth Code: " + result.getAuthCode());
 
-					// db insert payment
 					PaymentEntity payment = new PaymentEntity();
 					payment.setAmount(amount);
 					payment.setGateway("AUTHORIZE.NET");
-					payment.setPaymentDate(LocalDate.now());
+					payment.setPaymentDate(LocalDateTime.now());
 					payment.setAuthCode(result.getAuthCode());
 					payment.setTransactionId(result.getTransId());
-					payment.setPaymentMode("CARD");
-//					payment.setOrderId(orderId);
+					payment.setPayrollId(payroll);
+					payment.setPaymentStatus(PaymentEntity.PaymentStatus.SUCCESS);
 
-					// repo
-					// repo.save(payment);
+					paymentRepo.save(payment);
 
+					// UPDATE PAYROLL
+					payroll.setStatus(PayrollEntity.PayrollStatus.PAID);
+					payroll.setPaymentDate(LocalDateTime.now());
+
+					payrollRepo.save(payroll);
 				} else {
 					System.out.println("Failed Transaction.");
 					if (response.getTransactionResponse().getErrors() != null) {

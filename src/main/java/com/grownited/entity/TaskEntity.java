@@ -49,6 +49,10 @@ public class TaskEntity {
 	private ModuleEntity module; // FK // drop-down
 
 	@ManyToOne
+	@JoinColumn(name = "project_id")
+	private ProjectEntity project;
+
+	@ManyToOne
 	@JoinColumn(name = "assigned_to")
 	private UserEntity assignedTo; // FK // drop-down
 
@@ -118,6 +122,14 @@ public class TaskEntity {
 
 	public void setModule(ModuleEntity module) {
 		this.module = module;
+	}
+
+	public ProjectEntity getProject() {
+		return project;
+	}
+
+	public void setProject(ProjectEntity project) {
+		this.project = project;
 	}
 
 	public UserEntity getAssignedTo() {

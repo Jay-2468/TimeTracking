@@ -26,67 +26,78 @@
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0 text-dark-emphasis">Payroll Records</h3>
-					<a href="createPayroll" class="btn btn-primary btn-sm"> <i
+					<a href="generatePayroll" class="btn btn-primary btn-sm"> <i
 						class="mdi mdi-plus-circle-outline"></i> Generate Payroll
 					</a>
 				</div>
 
 				<div class="card shadow-sm">
-					<div class="card-body table-responsive">
 
-						<table
-							class="table table-bordered table-hover align-middle text-center">
-							<thead class="table-dark">
-								<tr>
-									<th>Employee Name</th>
-									<th>Total Hours</th>
-									<th>Salary Amount</th>
-									<th>Payment Date</th>
-									<th>Actions</th>
-								</tr>
-							</thead>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table
+											class="table table-bordered table-hover hackathon-table"
+											id="myTable">
+											<thead class="table-secondary">
+												<tr>
+													<th>#</th>
+													<th>Name</th>
+													<th>Total Hours</th>
+													<th>Rate Per Hour</th>
+													<th>Base Salary</th>
+													<th>Bonus</th>
+													<th>Deductions</th>
+													<th>Final Salary</th>
+													<th>Role</th>
+													<th>Status</th>
+													<th>Action</th>
+												</tr>
+											</thead>
 
-							<tbody>
+											<tbody>
+												<c:choose>
+													<c:when test="${empty payrolls}">
+														<tr>
+															<td colspan="8">No data found</td>
+														</tr>
+													</c:when>
 
-								<c:if test="${empty payrolls}">
-									<tr>
-										<td colspan="5" class="text-dark-emphasis">No Payroll Records
-											Found.</td>
-									</tr>
-								</c:if>
-
-								<c:forEach items="${payrolls}" var="payroll">
-									<tr>
-
-										<!-- Employee Name (Join or DTO mapping required) -->
-										<td class="text-dark-emphasis">${payroll.user.firstName} ${payroll.user.lastName}</td>
-
-										<td class="text-dark-emphasis">${payroll.totalHours}</td>
-
-										<td class="text-dark-emphasis"><strong> <fmt:formatNumber
-													value="${payroll.salaryAmount}" type="currency" />
-										</strong></td>
-
-										<td class="text-dark-emphasis">${payroll.paymentDate}</td>
-
-										<td><a href="viewPayroll?payrollId=${payroll.payrollId}"
-											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>
-												View
-										</a> <a href="editPayroll?payrollId=${payroll.payrollId}"
-											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
-												Edit
-										</a> <a href="deletePayroll?payrollId=${payroll.payrollId}"
-											class="btn btn-sm btn-danger"
-											onclick="return confirm('Are you sure you want to delete this payroll record?')">
-												<i class="mdi mdi-delete"></i> Delete
-										</a></td>
-
-									</tr>
-								</c:forEach>
-
-							</tbody>
-
-						</table>
+													<c:otherwise>
+														<c:forEach var="payroll" items="${payrolls}" varStatus="i">
+															<tr>
+																<td class="text-dark-emphasis">${i.count}</td>
+																<td class="text-dark-emphasis">${payroll.user.firstName}
+																	${payroll.user.lastName}</td>
+																<td class="text-dark-emphasis">${payroll.totalHours}</td>
+																<td class="text-dark-emphasis"><i class="mdi mdi-currency-usd"></i>${payroll.hourlyRate}</td>
+																<td class="text-dark-emphasis"><i class="mdi mdi-currency-usd"></i>${payroll.hourlyRate * payroll.totalHours}</td>
+																<td class="text-dark-emphasis"><i class="mdi mdi-currency-usd"></i>${empty payroll.bonus ? 0 : payroll.bonus}
+																</td>
+																<td class="text-dark-emphasis"><i class="mdi mdi-currency-usd"></i>${empty payroll.deductions ? 0 : payroll.deductions}
+																</td>
+																<td class="text-dark-emphasis"><i class="mdi mdi-currency-usd"></i>${payroll.netSalary}</td>
+																<td class="text-dark-emphasis">${payroll.user.role}</td>
+																<td><span class="badge bg-info">${payroll.status}</span>
+																</td>
+																<td><a
+																	href="editPayroll?payrollId=${payroll.payrollId}"
+																	class="btn btn-sm btn-info"><i
+																		class="mdi mdi-pencil"></i>Edit </a> <a
+																	href="paySalary?payrollId=${payroll.payrollId}"
+																	class="btn btn-sm btn-info"><i class="mdi mdi-currency-usd"></i>Pay </a></td>
+															</tr>
+														</c:forEach>
+													</c:otherwise>
+												</c:choose>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
 
 					</div>
 

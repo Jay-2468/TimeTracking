@@ -28,6 +28,10 @@ public class NotificationEntity {
 		READ, UNREAD
 	}
 
+	public enum ReferenceType {
+		TASK, PROJECT, TIMESHEET, USER, COMMENT, SYSTEM
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long notificationId;
@@ -37,7 +41,7 @@ public class NotificationEntity {
 	private UserEntity sentTo; // FK // drop-down
 
 	private String title;
-	
+
 	private String message;
 
 	@Enumerated(EnumType.STRING)
@@ -55,11 +59,27 @@ public class NotificationEntity {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 
+	private Long referenceId;
+
+	@Enumerated(EnumType.STRING)
+	private ReferenceType referenceType;
+
+	private String actionUrl;
+
+	private LocalDateTime expiryTime;
+
+	@ManyToOne
+	@JoinColumn(name = "sent_by")
+	private UserEntity sentBy;
+
+	private Boolean is_deleted;
+
 	@PrePersist
 	public void onCreate() {
 		this.status = Status.UNREAD;
 	}
 
+	// getters & setters
 	public Long getNotificationId() {
 		return notificationId;
 	}
@@ -130,6 +150,54 @@ public class NotificationEntity {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public Long getReferenceId() {
+		return referenceId;
+	}
+
+	public void setReferenceId(Long referenceId) {
+		this.referenceId = referenceId;
+	}
+
+	public ReferenceType getReferenceType() {
+		return referenceType;
+	}
+
+	public void setReferenceType(ReferenceType referenceType) {
+		this.referenceType = referenceType;
+	}
+
+	public String getActionUrl() {
+		return actionUrl;
+	}
+
+	public void setActionUrl(String actionUrl) {
+		this.actionUrl = actionUrl;
+	}
+
+	public LocalDateTime getExpiryTime() {
+		return expiryTime;
+	}
+
+	public void setExpiryTime(LocalDateTime expiryTime) {
+		this.expiryTime = expiryTime;
+	}
+
+	public UserEntity getSentBy() {
+		return sentBy;
+	}
+
+	public void setSentBy(UserEntity sentBy) {
+		this.sentBy = sentBy;
+	}
+
+	public Boolean getIs_deleted() {
+		return is_deleted;
+	}
+
+	public void setIs_deleted(Boolean is_deleted) {
+		this.is_deleted = is_deleted;
 	}
 
 }

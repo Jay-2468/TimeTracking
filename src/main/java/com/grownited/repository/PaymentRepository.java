@@ -3,10 +3,9 @@ package com.grownited.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.grownited.entity.PayrollEntity;
+import com.grownited.entity.PaymentEntity;
 
 @Repository
-public interface PayrollRepository extends JpaRepository<PayrollEntity, Long> {
+public interface PaymentRepository extends JpaRepository<PaymentEntity, Long>{
 
-	
 }

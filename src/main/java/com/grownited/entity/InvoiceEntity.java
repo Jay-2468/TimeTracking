@@ -30,6 +30,11 @@ public class InvoiceEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long invoiceId;
 
+	private String invoiceNumber;
+
+	private String pdfPath;
+
+	private String description;
 	@ManyToOne
 	@JoinColumn(name = "project_id")
 	private ProjectEntity project; // FK // drop-down
@@ -56,7 +61,7 @@ public class InvoiceEntity {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 
-	
+	// getters & setters
 	public Long getInvoiceId() {
 		return invoiceId;
 	}
@@ -135,6 +140,30 @@ public class InvoiceEntity {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public String getInvoiceNumber() {
+		return invoiceNumber;
+	}
+
+	public void setInvoiceNumber(String invoiceNumber) {
+		this.invoiceNumber = invoiceNumber;
+	}
+
+	public String getPdfPath() {
+		return pdfPath;
+	}
+
+	public void setPdfPath(String pdfPath) {
+		this.pdfPath = pdfPath;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

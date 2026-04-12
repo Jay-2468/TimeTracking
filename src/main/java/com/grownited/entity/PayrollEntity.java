@@ -36,7 +36,8 @@ public class PayrollEntity {
 	@JoinColumn(name = "user_id")
 	private UserEntity user; // FK // drop-down
 
-	private Double totalHours;
+	@Column(precision = 5, scale = 2)
+	private BigDecimal totalHours;
 
 	@Column(precision = 10, scale = 2)
 	private BigDecimal hourlyRate;
@@ -50,7 +51,7 @@ public class PayrollEntity {
 	@Column(precision = 10, scale = 2)
 	private BigDecimal netSalary;
 
-	private LocalDate paymentDate;
+	private LocalDateTime paymentDate;
 
 	private LocalDate periodStartDate;
 
@@ -65,6 +66,14 @@ public class PayrollEntity {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 
+	@ManyToOne
+	@JoinColumn(name = "paid_by")
+	private UserEntity paidBy;
+
+	@ManyToOne
+	@JoinColumn(name = "generated_by")
+	private UserEntity generatedBy;
+
 	@PrePersist
 	public void onCreate() {
 		this.status = PayrollStatus.GENERATED;
@@ -72,9 +81,13 @@ public class PayrollEntity {
 	}
 
 	@PreUpdate
+	public void onUpdate() {
+		calculateNetSalary();
+	}
+
 	public void calculateNetSalary() {
 		if (hourlyRate != null && totalHours != null) {
-			BigDecimal gross = hourlyRate.multiply(BigDecimal.valueOf(totalHours));
+			BigDecimal gross = hourlyRate.multiply(totalHours);
 			BigDecimal totalBonus = bonus != null ? bonus : BigDecimal.ZERO;
 			BigDecimal totalDeduction = deductions != null ? deductions : BigDecimal.ZERO;
 
@@ -98,11 +111,11 @@ public class PayrollEntity {
 		this.user = user;
 	}
 
-	public Double getTotalHours() {
+	public BigDecimal getTotalHours() {
 		return totalHours;
 	}
 
-	public void setTotalHours(Double totalHours) {
+	public void setTotalHours(BigDecimal totalHours) {
 		this.totalHours = totalHours;
 	}
 
@@ -138,11 +151,11 @@ public class PayrollEntity {
 		this.netSalary = netSalary;
 	}
 
-	public LocalDate getPaymentDate() {
+	public LocalDateTime getPaymentDate() {
 		return paymentDate;
 	}
 
-	public void setPaymentDate(LocalDate paymentDate) {
+	public void setPaymentDate(LocalDateTime paymentDate) {
 		this.paymentDate = paymentDate;
 	}
 
@@ -184,6 +197,22 @@ public class PayrollEntity {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public UserEntity getPaidBy() {
+		return paidBy;
+	}
+
+	public void setPaidBy(UserEntity paidBy) {
+		this.paidBy = paidBy;
+	}
+
+	public UserEntity getGeneratedBy() {
+		return generatedBy;
+	}
+
+	public void setGeneratedBy(UserEntity generatedBy) {
+		this.generatedBy = generatedBy;
 	}
 
 }

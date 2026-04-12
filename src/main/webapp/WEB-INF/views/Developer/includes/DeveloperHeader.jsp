@@ -54,7 +54,7 @@
 						class="mdi mdi-pencil-outline me-2"></i>Edit Project
 					</a>
 				</div></li>
-			
+
 			<li class="nav-item nav-profile dropdown"><a
 				class="nav-link dropdown-toggle" id="profileDropdown" href="#"
 				data-bs-toggle="dropdown" aria-expanded="false">

@@ -23,56 +23,50 @@
 			<div class="content-wrapper">
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-				<h2 class="text-dark font-weight-bold mb-2">Generate Payroll</h2>
-					<a href="payrollRecords" class="btn btn-secondary btn-sm"> Back to
-						Payroll List </a>
+					<h2 class="text-dark font-weight-bold mb-2">Generate Payroll</h2>
+					<a href="payrollRecords" class="btn btn-secondary btn-sm"> Back
+						to Payroll List </a>
 				</div>
+
+
 
 				<div class="card shadow-sm">
 					<div class="card-body">
-					<h3 class="mb-3 text-center text-dark-emphasis">Generate Payroll</h3>
+						<h3 class="mb-3 text-center text-dark-emphasis">Generate
+							Payroll</h3>
 
 						<form action="generatePayroll" method="post">
 
 							<div class="row">
 
 								<!-- User Dropdown (FK) -->
-								<div class="col-md-6 mb-3">
-									<label class="form-label text-dark fw-semibold">Select Employee</label> <select
-										name="userId" class="form-select text-dark border-secondary" required>
+								<div class="col-md-12 mb-3">
+									<label class="form-label text-dark fw-semibold">Select
+										Employee</label> <select name="userId"
+										class="form-select text-dark border-secondary" required>
 
 										<option value="">-- Select Employee --</option>
 
-										<!-- users list must be sent from servlet -->
-										<c:forEach items="${users}" var="user">
+										<c:forEach items="${employees}" var="user">
 											<option value="${user.userId}">${user.firstName}
-												${user.lastName}</option>
+												${user.lastName} - ${user.role}</option>
 										</c:forEach>
 
 									</select>
 								</div>
 
-								<!-- Total Hours -->
-								<div class="col-md-6 mb-3">
-									<label class="form-label text-dark fw-semibold">Total Hours</label> <input
-										type="number" step="0.01" name="totalHours"
-										class="form-control text-dark border-secondary" placeholder="Enter total working hours"
-										required>
+								<!-- Start Date -->
+								<div class="mb-3">
+									<label class="form-label text-dark fw-semibold">Month Start
+										Date</label> <input type="date" name="periodStartDate"
+										class="form-control text-dark-emphasis border-secondary" value="${startDate}" readonly>
 								</div>
 
-								<!-- Salary Amount -->
-								<div class="col-md-6 mb-3">
-									<label class="form-label text-dark fw-semibold">Salary Amount</label> <input
-										type="number" step="0.01" name="salaryAmount"
-										class="form-control text-dark border-secondary" placeholder="Enter salary amount"
-										required>
-								</div>
-
-								<!-- Payment Date -->
-								<div class="col-md-6 mb-3">
-									<label class="form-label text-dark fw-semibold">Payment Date</label> <input
-										type="date" name="paymentDate" id="paymentDate"
-										class="form-control text-dark border-secondary" required>
+								<!-- End Date -->
+								<div class="mb-3">
+									<label class="form-label text-dark fw-semibold">Month End
+										Date</label> <input type="date" name="periodEndDate"
+										class="form-control text-dark-emphasis border-secondary" value="${endDate}" readonly>
 								</div>
 
 							</div>
@@ -86,7 +80,9 @@
 
 					</div>
 
+
 				</div>
+
 			</div>
 			<!-- partial:partials/_footer.html -->
 			<jsp:include page="../../GlobalFooter.jsp"></jsp:include>
@@ -94,14 +90,6 @@
 		<!-- main-panel ends -->
 	</div>
 	<!-- page-body-wrapper ends -->
-
-	<!-- Auto Set Today as Default Payment Date -->
-	<script>
-		window.onload = function() {
-			let today = new Date().toISOString().split('T')[0];
-			document.getElementById("paymentDate").value = today;
-		};
-	</script>
 
 </body>
 </html>

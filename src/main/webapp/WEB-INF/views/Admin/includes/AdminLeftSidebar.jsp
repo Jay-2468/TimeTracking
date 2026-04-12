@@ -113,7 +113,7 @@
 		</a>
 			<div class="collapse" id="managePayroll">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/admin/createPayroll">Create
+					<li class="nav-item"><a class="nav-link" href="/admin/generatePayroll">Create
 							Payroll</a></li>
 					<li class="nav-item"><a class="nav-link" href="/admin/payrollRecords">List
 							Payrolls</a></li>
@@ -128,7 +128,7 @@
 		</a>
 			<div class="collapse" id="manageInvoice">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/admin/createInvoice">Generate
+					<li class="nav-item"><a class="nav-link" href="/admin/generateInvoice">Generate
 							Invoices</a></li>
 					<li class="nav-item"><a class="nav-link" href="/admin/invoiceList">List
 							Invoices</a></li>
@@ -143,9 +143,9 @@
 		</a>
 			<div class="collapse" id="manageReports">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/admin/createReport">Generate
+					<li class="nav-item"><a class="nav-link" href="/admin/generateReport">Generate
 							Reports</a></li>
-					<li class="nav-item"><a class="nav-link" href="/admin/reportsList">List
+					<li class="nav-item"><a class="nav-link" href="/admin/listReports">List
 							Reports</a></li>
 				</ul>
 			</div></li>

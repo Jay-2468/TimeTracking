@@ -24,7 +24,7 @@
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h2 class="text-dark font-weight-bold mb-2">Generate Report</h2>
-					<a href="reportsList" class="btn btn-secondary btn-sm"> Back to
+					<a href="listReports" class="btn btn-secondary btn-sm"> Back to
 						Reports </a>
 				</div>
 
@@ -37,6 +37,20 @@
 
 							<div class="row">
 
+								<!-- Porject -->
+								<div class="mb-3">
+									<label class="form-label text-dark fw-semibold">Project</label>
+									<select name="projectId"
+										class="form-control text-dark border-secondary" required>
+										<option value="">---Select Project---</option>
+
+										<c:forEach items="${projects}" var="p">
+											<option value="${p.projectId}">${p.projectName}</option>
+										</c:forEach>
+
+									</select>
+								</div>
+
 								<!-- Report Type -->
 								<div class="col-md-6 mb-3">
 									<label class="form-label text-dark fw-semibold">Report
@@ -45,24 +59,27 @@
 										<option value="">-- Select Report Type --</option>
 										<option value="PROJECT">Project</option>
 										<option value="PRODUCTIVITY">Productivity</option>
-										<option value="BILLING">Billing</option>
 									</select>
 								</div>
 
-								<!-- Generated Date -->
-								<div class="col-md-6 mb-3">
-									<label class="form-label text-dark fw-semibold">Generated
-										Date</label> <input type="datetime-local" name="generatedDate"
-										id="generatedDate"
-										class="form-control text-dark border-secondary" readonly>
+								<!-- Report Title -->
+								<div class="col-12 mb-3">
+									<label class="form-label text-dark fw-semibold">Title</label> <input
+										class="form-control text-dark border-secondary" type="text"
+										name="reportTitle">
 								</div>
 
 								<!-- Date From and To -->
 								<div class="col-12 mb-3">
 									<label class="form-label text-dark fw-semibold">From
-										Date</label> <input type="date" name="fromDate"> <label
-										class="form-label text-dark fw-semibold">To Date</label><input
-										type="date" name="toDate">
+										Date</label> <input type="date" name="fromDate"
+										class="form-control text-dark border-secondary">
+								</div>
+
+								<div class="col-12 mb-3">
+									<label class="form-label text-dark fw-semibold">To Date</label><input
+										type="date" name="toDate"
+										class="form-control text-dark border-secondary">
 								</div>
 
 							</div>

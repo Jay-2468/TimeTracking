@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -22,55 +23,83 @@
 			<div class="content-wrapper">
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
-				<h2 class="text-dark font-weight-bold mb-2">Generate Invoice</h2>
+					<h2 class="text-dark font-weight-bold mb-2">Generate Invoice</h2>
 					<a href="invoiceList" class="btn btn-secondary btn-sm"> Back to
 						Invoices </a>
 				</div>
 
 				<div class="card shadow-sm">
 					<div class="card-body">
-					<h3 class="mb-3 text-center text-dark-emphasis">Generate Invoice</h3>
+						<h3 class="mb-3 text-center text-dark-emphasis">Generate
+							Invoice</h3>
 
 						<form action="generateInvoice" method="post">
 
 							<div class="row">
 
+								<!-- Porject -->
+								<div class="mb-3">
+									<label class="form-label text-dark fw-semibold">Project</label>
+									<select name="projectId"
+										class="form-control text-dark border-secondary">
+										<option value="">---Select Project---</option>
+
+										<c:forEach items="${projects}" var="p">
+											<option value="${p.projectId}">${p.projectName}</option>
+										</c:forEach>
+
+									</select>
+								</div>
+
 								<!-- Total Hours -->
 								<div class="col-md-4 mb-3">
-									<label class="form-label text-dark fw-semibold">Total Hours</label> <input
-										type="number" step="0.01" name="totalHours" id="totalHours"
-										class="form-control text-dark border-secondary" placeholder="Enter total hours" required>
+									<label class="form-label text-dark fw-semibold">Total
+										Hours</label> <input type="number" step="0.01" name="totalHours"
+										id="totalHours"
+										class="form-control text-dark border-secondary"
+										placeholder="Enter total hours" required>
 								</div>
 
 								<!-- Rate Per Hour -->
 								<div class="col-md-4 mb-3">
-									<label class="form-label text-dark fw-semibold">Rate Per Hour</label> <input
-										type="number" step="0.01" name="ratePerHour" id="ratePerHour"
-										class="form-control text-dark border-secondary" placeholder="Enter hourly rate" required>
+									<label class="form-label text-dark fw-semibold">Rate/Hour</label>
+									<input type="number" step="0.01" name="ratePerHour"
+										id="ratePerHour"
+										class="form-control text-dark border-secondary"
+										placeholder="Enter hourly rate" required>
 								</div>
 
 								<!-- Total Amount -->
 								<div class="col-md-4 mb-3">
-									<label class="form-label text-dark fw-semibold">Total Amount</label> <input
-										type="number" step="0.01" name="totalAmount" id="totalAmount"
+									<label class="form-label text-dark fw-semibold">Total
+										Amount</label> <input type="number" step="0.01" name="totalAmount"
+										id="totalAmount"
 										class="form-control text-dark border-secondary" readonly>
 								</div>
 
 								<!-- Invoice Date -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label text-dark fw-semibold">Invoice Date</label> <input
-										type="date" name="invoiceDate" id="invoiceDate"
+									<label class="form-label text-dark fw-semibold">Invoice
+										Date</label> <input type="date" name="invoiceDate" id="invoiceDate"
 										class="form-control text-dark border-secondary" required>
 								</div>
 
 								<!-- Payment Status -->
 								<div class="col-md-6 mb-3">
-									<label class="form-label text-dark fw-semibold">Payment Status</label> <select
-										name="paymentStatus" class="form-select text-dark border-secondary" required>
-										<option value="">-- Select Status --</option>
-										<option value="PAID">Paid</option>
+									<label class="form-label text-dark fw-semibold">Payment
+										Status</label> <select name="paymentStatus"
+										class="form-select text-dark border-secondary" required>
 										<option value="UNPAID">Unpaid</option>
+										<option value="PAID">Paid</option>
 									</select>
+								</div>
+
+								<!-- Description -->
+								<div class="mb-3">
+									<label class="form-label text-dark fw-semibold">Description</label>
+									<textarea name="description"
+										class="form-control text-dark border-secondary" rows="4"
+										required></textarea>
 								</div>
 
 							</div>
@@ -98,8 +127,7 @@
 			let hours = parseFloat(document.getElementById("totalHours").value) || 0;
 			let rate = parseFloat(document.getElementById("ratePerHour").value) || 0;
 
-			let total = hours * rate;
-			document.getElementById("totalAmount").value = total.toFixed(2);
+			document.getElementById("totalAmount").value = (hours * rate).toFixed(2);
 		}
 
 		document.getElementById("totalHours").addEventListener("input",
@@ -108,9 +136,8 @@
 				calculateTotal);
 
 		// Auto set today's date
-		window.onload = function() {
-			let today = new Date().toISOString().split('T')[0];
-			document.getElementById("invoiceDate").value = today;
+		window.onload = () => {
+    			document.getElementById("invoiceDate").value = new Date().toISOString().split('T')[0];
 		};
 	</script>
 

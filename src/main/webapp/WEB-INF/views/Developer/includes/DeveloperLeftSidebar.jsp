@@ -3,9 +3,9 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
 	<ul class="nav">
 		<li class="nav-item nav-category">Main</li>
-		<li class="nav-item"><a class="nav-link" href="/developer-dashboard">
-				<span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-				<span class="menu-title">Dashboard</span>
+		<li class="nav-item"><a class="nav-link"
+			href="/developer-dashboard"> <span class="icon-bg"><i
+					class="mdi mdi-cube menu-icon"></i></span> <span class="menu-title">Dashboard</span>
 		</a></li>
 
 		<li class="nav-item"><a class="nav-link"
@@ -42,8 +42,8 @@
 		</a>
 			<div class="collapse" id="manageTeams">
 				<ul class="nav flex-column sub-menu">
-					<li class="nav-item"><a class="nav-link" href="/developer/viewTeamMembers">View
-							Team Members</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="/developer/viewTeamMembers">View Team Members</a></li>
 				</ul>
 			</div></li>
 
@@ -51,7 +51,8 @@
 			data-bs-toggle="collapse" href="#manageTimeLogs"
 			aria-expanded="false" aria-controls="manageTimeLogs"> <span
 				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-				<span class="menu-title">Manage Time Logs</span> <i class="menu-arrow"></i>
+				<span class="menu-title">Manage Time Logs</span> <i
+				class="menu-arrow"></i>
 		</a>
 			<div class="collapse" id="manageTimeLogs">
 				<ul class="nav flex-column sub-menu">
@@ -66,7 +67,8 @@
 			data-bs-toggle="collapse" href="#manageTimesheets"
 			aria-expanded="false" aria-controls="manageTimesheets"> <span
 				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-				<span class="menu-title">Manage Timesheets</span> <i class="menu-arrow"></i>
+				<span class="menu-title">Manage Timesheets</span> <i
+				class="menu-arrow"></i>
 		</a>
 			<div class="collapse" id="manageTimesheets">
 				<ul class="nav flex-column sub-menu">
@@ -76,6 +78,11 @@
 						href="/developer/timesheetsList">List Timesheets</a></li>
 				</ul>
 			</div></li>
+
+		<li class="nav-item sub-menu"><a class="nav-link"
+			href="/developer/viewNotifications"> <span class="icon-bg"><i
+				class="mdi mdi-crosshairs-gps menu-icon"></i></span><span class="menu-title">View
+				Notifications</span></a></li>
 
 		<li class="nav-item sidebar-user-actions">
 			<div class="user-details">

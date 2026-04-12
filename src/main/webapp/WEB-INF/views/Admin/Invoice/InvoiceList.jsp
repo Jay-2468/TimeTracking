@@ -26,7 +26,7 @@
 
 				<div class="d-flex justify-content-between align-items-center mb-3">
 					<h3 class="mb-0 text-dark-emphasis">Invoices</h3>
-					<a href="createInvoice" class="btn btn-primary btn-sm"> <i
+					<a href="generateInvoice" class="btn btn-primary btn-sm"> <i
 						class="mdi mdi-plus-circle-outline"></i> Generate Invoice
 					</a>
 				</div>
@@ -38,12 +38,12 @@
 							class="table table-bordered table-hover align-middle text-center">
 							<thead class="table-dark">
 								<tr>
-									<th>Total Hours</th>
-									<th>Rate / Hour</th>
-									<th>Total Amount</th>
-									<th>Invoice Date</th>
-									<th>Payment Status</th>
-									<th>Actions</th>
+									<th>#</th>
+									<th>Invoice No</th>
+									<th>Project</th>
+									<th>Total</th>
+									<th>Status</th>
+									<th>Action</th>
 								</tr>
 							</thead>
 
@@ -51,44 +51,20 @@
 
 								<c:if test="${empty invoices}">
 									<tr>
-										<td colspan="6" class="text-dark-emphasis">No Invoices Found.</td>
+										<td colspan="6" class="text-dark-emphasis">No Invoices
+											Found.</td>
 									</tr>
 								</c:if>
 
-								<c:forEach items="${invoices}" var="invoice">
+								<c:forEach items="${invoices}" var="invoice" varStatus="i">
 									<tr>
-
-										<td class="text-dark-emphasis">${invoice.totalHours}</td>
-
-										<td class="text-dark-emphasis"><fmt:formatNumber value="${invoice.ratePerHour}"
-												type="currency" /></td>
-
-										<td class="text-dark-emphasis"> <fmt:formatNumber
-													value="${invoice.totalAmount}" type="currency" /></td>
-
-										<td class="text-dark-emphasis">${invoice.invoiceDate}</td>
-
-										<!-- Payment Status Badge -->
-										<td><c:choose>
-												<c:when test="${invoice.paymentStatus == 'PAID'}">
-													<span class="badge bg-success">Paid</span>
-												</c:when>
-												<c:otherwise>
-													<span class="badge bg-danger">Unpaid</span>
-												</c:otherwise>
-											</c:choose></td>
-
-										<!-- Actions -->
-										<td><a href="viewInvoice?invoiceId=${invoice.invoiceId}"
-											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>View
-										</a> <a href="editInvoice?invoiceId=${invoice.invoiceId}"
-											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>Edit
-										</a> <a href="deleteInvoice?invoiceId=${invoice.invoiceId}"
-											class="btn btn-sm btn-danger"
-											onclick="return confirm('Are you sure you want to delete this invoice?')">
-												<i class="mdi mdi-delete"></i>Delete
-										</a></td>
-
+										<td class="text-dark-emphasis">${i.count}</td>
+										<td class="text-dark-emphasis">${invoice.invoiceNumber}</td>
+										<td class="text-dark-emphasis">${invoice.project.projectName}</td>
+										<td class="text-dark-emphasis">${invoice.totalAmount}</td>
+										<td class="text-dark-emphasis">${invoice.paymentStatus}</td>
+										<td><a href="downloadInvoice?invoiceId=${invoice.invoiceId}"
+											class="btn btn-success btn-sm"> Download </a></td>
 									</tr>
 								</c:forEach>
 

@@ -1,36 +1,44 @@
 package com.grownited.entity;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "payments")
 public class PaymentEntity {
 
+	public enum PaymentStatus {
+	    SUCCESS, FAILED, PENDING
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long paymentId;
 
-	private Integer orderId;
+	@ManyToOne
+	@JoinColumn(name = "payroll_id")
+	private PayrollEntity payrollId;
 
+	@Column(precision = 10, scale = 2)
 	private BigDecimal amount;
-
-	private String paymentMode;
 
 	private String gateway;
 
-	private String paymentStatus;
+	private PaymentStatus paymentStatus;
 
 	@CreationTimestamp
-	private LocalDate paymentDate;
+	private LocalDateTime paymentDate;
 
 	private String transactionId;
 
@@ -44,12 +52,12 @@ public class PaymentEntity {
 		this.paymentId = paymentId;
 	}
 
-	public Integer getOrderId() {
-		return orderId;
+	public PayrollEntity getPayrollId() {
+		return payrollId;
 	}
 
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
+	public void setPayrollId(PayrollEntity payrollId) {
+		this.payrollId = payrollId;
 	}
 
 	public BigDecimal getAmount() {
@@ -60,14 +68,6 @@ public class PaymentEntity {
 		this.amount = amount;
 	}
 
-	public String getPaymentMode() {
-		return paymentMode;
-	}
-
-	public void setPaymentMode(String paymentMode) {
-		this.paymentMode = paymentMode;
-	}
-
 	public String getGateway() {
 		return gateway;
 	}
@@ -76,19 +76,19 @@ public class PaymentEntity {
 		this.gateway = gateway;
 	}
 
-	public String getPaymentStatus() {
+	public PaymentStatus getPaymentStatus() {
 		return paymentStatus;
 	}
 
-	public void setPaymentStatus(String paymentStatus) {
+	public void setPaymentStatus(PaymentStatus paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
 
-	public LocalDate getPaymentDate() {
+	public LocalDateTime getPaymentDate() {
 		return paymentDate;
 	}
 
-	public void setPaymentDate(LocalDate paymentDate) {
+	public void setPaymentDate(LocalDateTime paymentDate) {
 		this.paymentDate = paymentDate;
 	}
 

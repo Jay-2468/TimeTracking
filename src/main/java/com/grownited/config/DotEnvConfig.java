@@ -14,7 +14,7 @@ public class DotEnvConfig {
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer loadConfiguration() {
 		
-		Dotenv dotenv = Dotenv.load();
+		Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
 		
 		Properties props = new Properties();
 		

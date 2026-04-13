@@ -43,4 +43,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> // has t
 			) AND u.user_id <> :excludedUserId
 			""", nativeQuery = true)
 	List<UserEntity> findUnpaidUsersByUserIdNot(@Param("excludedUserId") Long excludedUserId);
+	
+	List<UserEntity> findByIsDeletedFalse();
 }

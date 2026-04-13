@@ -66,7 +66,7 @@
 										</a><a href="editProject?projectId=${project.projectId}"
 											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
 												Edit
-										</a> <a href="deleteProject?projectId=${project.projectId}"
+										</a> <a href="archiveProject?projectId=${project.projectId}"
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this project?')">
 												<i class="mdi mdi-delete"></i> Delete

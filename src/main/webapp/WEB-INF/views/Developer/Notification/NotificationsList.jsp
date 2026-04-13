@@ -94,11 +94,11 @@
 											</c:choose></td>
 
 										<!-- Actions -->
-										<td class="text-center"><a
+										<td class="text-center"><%-- <a
 											href="viewNotification?notificationId=${notification.notificationId}"
 											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>
 												View
-										</a> <a
+										</a> --%> <a
 											href="markAsRead?notificationId=${notification.notificationId}"
 											class="btn btn-sm btn-success"> <i class="mdi mdi-read"></i>Mark
 												as Read

@@ -32,8 +32,8 @@ public class ProjectMembersEntity {
 	private ProjectEntity project; // FK - Drop down
 
 	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private UserEntity user; // FK - Drop down
+	@JoinColumn(name = "assigned_to")
+	private UserEntity assignedTo; // FK - Drop down
 
 	private String roleInProject; // Developer, Tester(QA), Designer(UX/UI), etc.
 
@@ -46,10 +46,15 @@ public class ProjectMembersEntity {
 
 	@Enumerated(EnumType.STRING)
 	private Status status; // status: active / removed / completed
-	
+
+	private Boolean isRemoved;
+
 	@PrePersist
 	public void onCreate() {
 		this.status = Status.ACTIVE;
+		if (isRemoved == null) {
+			this.isRemoved = false;
+		}
 	}
 
 	public Long getTeamMemberId() {
@@ -68,12 +73,12 @@ public class ProjectMembersEntity {
 		this.project = project;
 	}
 
-	public UserEntity getUser() {
-		return user;
+	public UserEntity getAssignedTo() {
+		return assignedTo;
 	}
 
-	public void setUser(UserEntity user) {
-		this.user = user;
+	public void setAssignedTo(UserEntity assignedTo) {
+		this.assignedTo = assignedTo;
 	}
 
 	public String getRoleInProject() {
@@ -106,6 +111,14 @@ public class ProjectMembersEntity {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public Boolean getIsRemoved() {
+		return isRemoved;
+	}
+
+	public void setIsRemoved(Boolean isRemoved) {
+		this.isRemoved = isRemoved;
 	}
 
 }

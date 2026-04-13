@@ -46,7 +46,7 @@
 									<th>Total Hours</th>
 									<th>Log Type</th>
 									<th>Approval Status</th>
-									<th>Actions</th>
+									<!-- <th>Actions</th> -->
 								</tr>
 							</thead>
 
@@ -93,7 +93,7 @@
 											</c:choose></td>
 
 										<!-- Actions -->
-										<td class="text-center"><a
+										<%-- <td class="text-center"><a
 											href="viewTimeLog?logId=${log.logId}"
 											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i>
 												View
@@ -104,7 +104,7 @@
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this log?')">
 												<i class="mdi mdi-delete"></i> Delete
-										</a></td>
+										</a></td> --%>
 
 									</tr>
 								</c:forEach>

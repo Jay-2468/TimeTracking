@@ -42,7 +42,7 @@
 									<th>Week End</th>
 									<th>Total Hours</th>
 									<th>Status</th>
-									<th>Actions</th>
+									<!-- <th>Actions</th> -->
 								</tr>
 							</thead>
 
@@ -75,7 +75,7 @@
 											</c:choose></td>
 
 										<!-- Actions -->
-										<td><a href="viewTimesheet?id=${sheet.timesheetId}"
+										<%-- <td><a href="viewTimesheet?id=${sheet.timesheetId}"
 											class="btn btn-sm btn-info"><i class="mdi mdi-eye"></i>
 												View </a> <a href="editTimesheet?id=${sheet.timesheetId}"
 											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>Edit
@@ -83,7 +83,7 @@
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this timesheet?')">
 												<i class="mdi mdi-delete"></i>Delete
-										</a></td>
+										</a></td> --%>
 
 									</tr>
 								</c:forEach>

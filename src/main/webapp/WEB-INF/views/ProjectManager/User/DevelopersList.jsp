@@ -33,7 +33,7 @@
 					<div class="alert alert-warning">No users found.</div>
 				</c:if>
 
-				<!-- User Table -->
+				<!-- Developers Table -->
 				<c:if test="${not empty developers}">
 					<div class="table-responsive">
 						<table class="table table-bordered table-hover align-middle">

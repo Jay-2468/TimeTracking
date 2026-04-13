@@ -63,9 +63,6 @@
 									<label class="form-label text-dark fw-semibold">New Role</label> <select
 										name="newRole" class="form-select text-dark border-secondary" required>
 										<option value="">-- Select New Role --</option>
-										<!-- <option value="ADMIN">Admin</option>
-										<option value="PROJECT_MANAGER">Project Manager</option>
-										<option value="DEVELOPER">Developer</option> -->
 										<c:forEach items="${userRole}" var="role">
 											<option value="${role}">${role}</option>
 										</c:forEach>

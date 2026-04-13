@@ -102,7 +102,7 @@
 													href="editUser?userId=${user.userId}"
 													class="btn btn-sm btn-warning"> <i
 														class="mdi mdi-pencil"></i> Edit
-												</a> <a href="deleteUser?userId=${user.userId}"
+												</a> <a href="archiveUser?userId=${user.userId}"
 													class="btn btn-sm btn-danger"
 													onclick="return confirm('Are you sure you want to delete this user?')">
 														<i class="mdi mdi-delete"></i> Delete

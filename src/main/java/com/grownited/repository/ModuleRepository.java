@@ -11,5 +11,7 @@ import com.grownited.entity.UserEntity;
 @Repository
 public interface ModuleRepository extends JpaRepository<ModuleEntity, Long> {
 
-	List<ModuleEntity> findByCreatedBy(UserEntity createdBy);
+	List<ModuleEntity> findByCreatedByAndIsArchivedFalse(UserEntity createdBy);
+	
+	List<ModuleEntity> findByIsArchivedFalse();
 }

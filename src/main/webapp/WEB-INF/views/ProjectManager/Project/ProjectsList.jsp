@@ -58,9 +58,6 @@
 										<td class="text-center"><a
 											href="viewProject?projectId=${project.project.projectId}"
 											class="btn btn-sm btn-info"> <i class="mdi mdi-eye"></i> View
-										</a><a href="editProject?projectId=${project.project.projectId}"
-											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
-												Edit
 										</a></td>
 									</tr>
 								</c:forEach>

@@ -35,6 +35,7 @@
 							class="table table-bordered table-hover align-middle text-center">
 							<thead class="table-dark">
 								<tr>
+								<th>Submitted By</th>
 									<th>Week Start</th>
 									<th>Week End</th>
 									<th>Total Hours</th>
@@ -54,6 +55,7 @@
 								<c:forEach items="${timesheetsList}" var="sheet">
 									<tr>
 
+										<td class="text-dark-emphasis">${sheet.user.firstName} ${sheet.user.lastName}</td>
 										<td class="text-dark-emphasis">${sheet.weekStart}</td>
 										<td class="text-dark-emphasis">${sheet.weekEnd}</td>
 										<td class="text-dark-emphasis">${sheet.totalHours}</td>

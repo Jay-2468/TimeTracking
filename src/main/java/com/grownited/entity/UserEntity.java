@@ -12,6 +12,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity // This will tell to hibernate that you have to create table for this
@@ -55,6 +56,15 @@ public class UserEntity {
 
 	@Column(precision = 10, scale = 2)
 	private BigDecimal hourlyRate;
+
+	private Boolean isDeleted;
+	
+	@PrePersist
+	public void onCreate() {
+		if (isDeleted == null) {
+			this.isDeleted = false;
+		}
+	}
 
 	public String getFullUserName() {
 		return firstName + lastName;
@@ -146,6 +156,14 @@ public class UserEntity {
 
 	public void setHourlyRate(BigDecimal hourlyRate) {
 		this.hourlyRate = hourlyRate;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

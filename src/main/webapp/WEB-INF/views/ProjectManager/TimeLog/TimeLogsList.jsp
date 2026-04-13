@@ -36,7 +36,7 @@
 							<thead class="table-dark text-center">
 								<tr>
 									<th>Task</th>
-									<th>Developer</th>
+									<th>Submitted By</th>
 									<th>Start Time</th>
 									<th>End Time</th>
 									<th>Total Hours</th>

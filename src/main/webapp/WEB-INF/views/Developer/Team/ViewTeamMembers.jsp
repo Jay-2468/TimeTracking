@@ -60,9 +60,9 @@ body {
 								<tr>
 									<td class="text-dark-emphasis">${i.index + 1}</td>
 
-									<td class="text-dark-emphasis">${member.user.firstName}${member.user.lastName}</td>
+									<td class="text-dark-emphasis">${member.assignedTo.firstName}${member.assignedTo.lastName}</td>
 
-									<td class="text-dark-emphasis">${member.user.email}</td>
+									<td class="text-dark-emphasis">${member.assignedTo.email}</td>
 
 									<td class="text-dark-emphasis">${member.roleInProject}</td>
 
@@ -72,7 +72,7 @@ body {
 											${member.status} </span></td>
 
 									<td class="text-center"><a
-										href="view-user?userId=${member.user.userId}"
+										href="viewUser?userId=${member.assignedTo.userId}"
 										class="btn btn-sm btn-info text-white"> <i
 											class="mdi mdi-eye"></i> View
 									</a></td>

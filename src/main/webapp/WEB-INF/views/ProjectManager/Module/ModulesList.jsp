@@ -63,10 +63,10 @@
 										</a> <a href="/pm/editModule?moduleId=${module.moduleId}"
 											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
 												Edit
-										</a> <a href="/pm/deleteModule?moduleId=${module.moduleId}"
+										</a> <a href="/pm/archiveModule?moduleId=${module.moduleId}"
 											class="btn btn-sm btn-danger"
-											onclick="return confirm('Are you sure you want to delete this module?')">
-												<i class="mdi mdi-delete"></i> Delete
+											onclick="return confirm('Are you sure you want to archive this module?')">
+												<i class="mdi mdi-delete"></i> Archive
 										</a></td>
 									</tr>
 								</c:forEach>

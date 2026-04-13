@@ -3,6 +3,7 @@ package com.grownited.service;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +25,8 @@ public class PayrollService {
 
 	@Autowired
 	private TimeLogRepository timeLogRepo;
-	
-	public PayrollEntity generatePayroll(Long userId, String monthStartDate, String monthEndDate, 
-			UserEntity user) {
+
+	public PayrollEntity generatePayroll(Long userId, String monthStartDate, String monthEndDate, UserEntity user) {
 
 		UserEntity userEntity = userRepo.findById(userId).get();
 
@@ -58,5 +58,36 @@ public class PayrollService {
 	public void archivePayroll(Long payrollId) {
 
 	}
+	
+	public PayrollEntity findById(Long payrollId) {
+		Optional<PayrollEntity> opPayroll = payrollRepo.findById(payrollId);
+		PayrollEntity payroll = null;
+		if (opPayroll.isPresent()) {
+			payroll = opPayroll.get();
+		}
+		return payroll;
+	}
 
+	public void updatePayroll(PayrollEntity updated) {
+
+		PayrollEntity existing = payrollRepo.findById(updated.getPayrollId()).orElse(null);
+
+		if (existing != null) {
+
+			existing.setUser(updated.getUser());
+			existing.setTotalHours(updated.getTotalHours());
+			existing.setHourlyRate(updated.getHourlyRate());
+			existing.setBonus(updated.getBonus());
+			existing.setDeductions(updated.getDeductions());
+
+			existing.setPaymentDate(updated.getPaymentDate());
+			existing.setPeriodStartDate(updated.getPeriodStartDate());
+			existing.setPeriodEndDate(updated.getPeriodEndDate());
+
+			existing.setStatus(updated.getStatus());
+			existing.setPaidBy(updated.getPaidBy());
+
+			payrollRepo.save(existing); // triggers @PreUpdate
+		}
+	}
 }

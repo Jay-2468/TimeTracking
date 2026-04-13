@@ -63,7 +63,7 @@
 										</a> <a href="editModule?moduleId=${module.moduleId}"
 											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
 												Edit
-										</a> <a href="deleteModule?moduleId=${module.moduleId}"
+										</a> <a href="archiveModule?moduleId=${module.moduleId}"
 											class="btn btn-sm btn-danger"
 											onclick="return confirm('Are you sure you want to delete this module?')">
 												<i class="mdi mdi-delete"></i> Delete

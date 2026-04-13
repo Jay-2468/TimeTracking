@@ -10,9 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.entity.UserEntity;
+import com.grownited.entity.UserEntity.Role;
+import com.grownited.entity.UserEntity.Status;
 import com.grownited.repository.UserRepository;
+import com.grownited.service.UserService;
 
 @Controller
 @RequestMapping("/admin")
@@ -23,12 +27,14 @@ public class AdminUserController {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private UserService userService;
 
 	@GetMapping("/usersList")
 	public String usersList(Model model) {
 		
-		List<UserEntity> usersList = userRepository.findAll();
-		model.addAttribute("usersList", usersList);
+		model.addAttribute("usersList", userService.getAllUsersNotDeleted());
 		
 		return "Admin/User/UsersList";
 	}
@@ -44,7 +50,6 @@ public class AdminUserController {
 			model.addAttribute("user", userEntity);
 			return "Admin/User/ViewUser";
 		}
-
 	}
 
 	@GetMapping("/deleteUser")
@@ -93,6 +98,27 @@ public class AdminUserController {
 			user.setRole(newRole);
 			userRepository.save(user);
 		}
+		
+		return "redirect:/admin/usersList";
+	}
+	
+	@GetMapping("/editUser")
+	public String editUser(@RequestParam("userId") Long userId, Model model) {
+	    UserEntity user = userService.findById(userId);
+	    model.addAttribute("user", user);
+	    return "Admin/User/EditUserDetails";
+	}
+
+	@PostMapping("/updateUser")
+	public String updateUser(UserEntity user) {
+	    userService.updateUser(user);
+	    return "redirect:/usersList";
+	}
+	
+	@GetMapping("/archiveUser")
+	public String archiveUser(Long userId) {		
+		
+		userService.archiveUser(userId);
 		
 		return "redirect:/admin/usersList";
 	}

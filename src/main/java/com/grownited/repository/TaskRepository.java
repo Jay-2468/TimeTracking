@@ -22,4 +22,8 @@ public interface TaskRepository extends JpaRepository<TaskEntity, Long>{
 			WHERE t.project_Id = :projectId
 			""", nativeQuery = true)
 	List<TaskEntity> findByProject(@Param("projectId") Long projectId);
+	
+	List<TaskEntity> findByCreatedByAndIsArchivedFalse(UserEntity createdBy);
+
+	List<TaskEntity> findByIsArchivedFalse();
 }

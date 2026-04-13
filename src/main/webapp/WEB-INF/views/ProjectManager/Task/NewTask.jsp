@@ -40,8 +40,8 @@
 									name="moduleId" class="form-select text-dark border-secondary" required>
 									<option value="">-- Select Module --</option>
 
-									<c:forEach var="module" items="${moduleList}">
-										<option value="${module.moduleId}">${module.projectId}
+									<c:forEach var="module" items="${modules}">
+										<option value="${module.moduleId}">${module.project.projectName}
 											- ${module.moduleName}</option>
 									</c:forEach>
 

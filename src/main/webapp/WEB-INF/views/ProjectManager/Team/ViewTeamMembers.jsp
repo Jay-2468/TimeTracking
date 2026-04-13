@@ -63,10 +63,10 @@
 														<tr>
 															<td class="text-dark-emphasis">${i.count}</td>
 
-															<td class="text-dark-emphasis">${member.user.firstName}
-																${member.user.lastName}</td>
+															<td class="text-dark-emphasis">${member.assignedTo.firstName}
+																${member.assignedTo.lastName}</td>
 
-															<td class="text-dark-emphasis">${member.user.email}</td>
+															<td class="text-dark-emphasis">${member.assignedTo.email}</td>
 
 															<td class="text-dark-emphasis">${member.roleInProject}</td>
 
@@ -75,8 +75,17 @@
 															<td><span class="badge bg-success">
 																	${member.status} </span></td>
 
-															<td><a href="view-user?userId=${member.user.userId}"
-																class="btn btn-sm btn-primary"> View </a></td>
+															<td><a
+																href="viewDeveloper?userId=${member.assignedTo.userId}"
+																class="btn btn-sm btn-primary"> View </a> <c:choose>
+																	<c:when test="${member.assignedTo.role == 'DEVELOPER'}">
+																		<a
+																			href="removeDeveloper?userId=${member.assignedTo.userId}"
+																			class="btn btn-sm btn-danger"
+																			onclick="return confirm('Are you sure to remove this developer?')">
+																			Remove </a>
+																	</c:when>
+																</c:choose></td>
 														</tr>
 													</c:forEach>
 												</c:otherwise>
@@ -96,6 +105,6 @@
 	</div>
 	<!-- page-body-wrapper ends -->
 
-	
+
 </body>
 </html>

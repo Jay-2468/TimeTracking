@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
@@ -46,11 +47,20 @@ public class ModuleEntity {
 	@Enumerated(EnumType.STRING)
 	private ModuleStatus status;
 
+	private Boolean isArchived;
+
 	@CreationTimestamp
 	private LocalDateTime createdAt;
 
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
+
+	@PrePersist
+	public void prePersist() {
+		if (isArchived == null) {
+			isArchived = false;
+		}
+	}
 
 	public Long getModuleId() {
 		return moduleId;
@@ -90,6 +100,14 @@ public class ModuleEntity {
 
 	public void setCreatedBy(UserEntity createdBy) {
 		this.createdBy = createdBy;
+	}
+
+	public Boolean getIsArchived() {
+		return isArchived;
+	}
+
+	public void setIsArchived(Boolean isArchived) {
+		this.isArchived = isArchived;
 	}
 
 	public LocalDateTime getCreatedAt() {

@@ -14,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
@@ -67,6 +68,15 @@ public class ProjectEntity {
 	private Integer progress; // 0-100%
 
 	private Integer estimatedHours;
+
+	private Boolean isArchived;
+
+	@PrePersist
+	public void onCreate() {
+		if (isArchived == null) {
+			this.isArchived = false;
+		}
+	}
 
 	public Long getProjectId() {
 		return projectId;
@@ -178,6 +188,14 @@ public class ProjectEntity {
 
 	public void setEstimatedHours(Integer estimatedHours) {
 		this.estimatedHours = estimatedHours;
+	}
+
+	public Boolean getIsArchived() {
+		return isArchived;
+	}
+
+	public void setIsArchived(Boolean isArchived) {
+		this.isArchived = isArchived;
 	}
 
 }

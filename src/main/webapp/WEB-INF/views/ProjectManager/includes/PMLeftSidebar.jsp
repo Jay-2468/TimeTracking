@@ -70,7 +70,8 @@
 			data-bs-toggle="collapse" href="#manageDevelopers"
 			aria-expanded="false" aria-controls="manageDevelopers"> <span
 				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-				<span class="menu-title">View Developers</span> <i class="menu-arrow"></i>
+				<span class="menu-title">View Developers</span> <i
+				class="menu-arrow"></i>
 		</a>
 			<div class="collapse" id="manageDevelopers">
 				<ul class="nav flex-column sub-menu">

@@ -100,10 +100,10 @@
 										</a> <a href="editTask?taskId=${task.taskId}"
 											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>
 												Edit
-										</a> <a href="deleteTask?taskId=${task.taskId}"
+										</a> <a href="archiveTask?taskId=${task.taskId}"
 											class="btn btn-sm btn-danger"
-											onclick="return confirm('Are you sure you want to delete this task?')">
-												<i class="mdi mdi-delete"></i> Delete
+											onclick="return confirm('Are you sure you want to archive this task?')">
+												<i class="mdi mdi-delete"></i> Archive
 										</a></td>
 
 									</tr>

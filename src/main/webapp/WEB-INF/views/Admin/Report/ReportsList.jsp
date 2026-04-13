@@ -98,9 +98,9 @@
 										<td class="text-dark-emphasis">${r.productivityScore}%</td>
 
 										<!-- Actions -->
-										<td class="text-center"><a
+										<td class="text-center"><%-- <a
 											href="viewReportAnalysis?reportId=${r.reportId}"
-											class="btn btn-sm btn-primary">View</a> <a
+											class="btn btn-sm btn-primary">View</a> --%> <a
 											href="downloadReport?reportId=${r.reportId}"
 											class="btn btn-sm btn-success">Download</a></td>
 

@@ -55,7 +55,7 @@ public class AdminProjectMembersController {
 		ProjectEntity project = projectRepo.findById(projectId).get();
 		UserEntity userEntity = userRepo.findById(userId).get();
 		pmsEntity.setProject(project);
-		pmsEntity.setUser(userEntity);
+		pmsEntity.setAssignedTo(userEntity);
 		pmsEntity.setAssignedBy(user);
 		pmsEntity.setRoleInProject("Project Manager");
 		pmsRepo.save(pmsEntity);

@@ -16,6 +16,7 @@ import com.grownited.entity.UserEntity;
 import com.grownited.repository.ModuleRepository;
 import com.grownited.repository.TaskRepository;
 import com.grownited.repository.UserRepository;
+import com.grownited.service.TaskService;
 
 @Controller
 @RequestMapping("/developer")
@@ -23,39 +24,52 @@ public class DeveloperTaskController {
 
 	@Autowired
 	private TaskRepository taskRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
 	private ModuleRepository moduleRepository;
 	
+	@Autowired
+	private TaskService	taskService;
+
 	@GetMapping("/newTask")
 	public String newTask(Model model) {
-		
+
 		List<UserEntity> userList = userRepository.findAll();
 		model.addAttribute("userList", userList);
-		
+
 		return "Developer/Task/NewTask";
 	}
-	
+
 	@PostMapping("/createTask")
 	public String saveTask(TaskEntity taskEntity, Long moduleId) {
-		
+
 		ModuleEntity module = moduleRepository.findById(moduleId).get();
 		taskEntity.setProject(module.getProject());
 		taskRepository.save(taskEntity);
-		
+
 		return "redirect:/developer/tasksList";
 	}
-	
+
 	@GetMapping("/tasksList")
 	public String tasksList(Model model, @SessionAttribute("user") UserEntity user) {
-		
+
 		List<TaskEntity> tasksList = taskRepository.findByAssignedTo(user);
 		model.addAttribute("tasksList", tasksList);
-		
+
 		return "Developer/Task/TasksList";
 	}
-	
+
+	@GetMapping("/viewTask")
+	public String viewTask(Long taskId, Model model) {
+
+		TaskEntity task = taskService.getTaskById(taskId);
+
+		model.addAttribute("task", task);
+
+		return "Developer/Task/ViewTask";
+	}
+
 }

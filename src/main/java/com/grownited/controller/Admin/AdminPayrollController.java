@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.grownited.entity.PayrollEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.service.PayrollService;
 import com.grownited.service.UserService;
@@ -52,11 +54,11 @@ public class AdminPayrollController {
 	@PostMapping("/generatePayroll")
 	public String generatePayroll(Long userId, String periodStartDate, String periodEndDate,
 			@SessionAttribute("user") UserEntity user) {
-		
+
 		System.out.println(userId);
 		System.out.println(periodStartDate);
 		System.out.println(periodEndDate);
-		
+
 		payrollService.generatePayroll(userId, periodStartDate, periodEndDate, user);
 
 		return "redirect:/admin/payrollRecords";
@@ -76,5 +78,27 @@ public class AdminPayrollController {
 		payrollService.archivePayroll(payrollId);
 
 		return "redirect:/admin/payrollRecords";
+	}
+
+	@GetMapping("/editPayroll")
+	public String editPayroll(@RequestParam("payrollId") Long payrollId, Model model) {
+
+		PayrollEntity payroll = payrollService.findById(payrollId);
+
+		model.addAttribute("payroll", payroll);
+
+		// Enum
+		model.addAttribute("statuses", PayrollEntity.PayrollStatus.values());
+
+		// Users for dropdowns
+		model.addAttribute("users", userService.findAll());
+
+		return "Admin/Payroll/EditPayroll";
+	}
+
+	@PostMapping("/updatePayroll")
+	public String updatePayroll(PayrollEntity payroll) {
+		payrollService.updatePayroll(payroll);
+		return "redirect:/payrollRecords";
 	}
 }

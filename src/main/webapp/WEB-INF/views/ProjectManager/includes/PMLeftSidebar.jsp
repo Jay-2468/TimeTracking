@@ -94,15 +94,15 @@
 			</div></li>
 
 		<li class="nav-item"><a class="nav-link"
-			data-bs-toggle="collapse" href="#manageTimeSheets"
-			aria-expanded="false" aria-controls="manageTimeSheets"> <span
+			data-bs-toggle="collapse" href="#manageTimesheets"
+			aria-expanded="false" aria-controls="manageTimesheets"> <span
 				class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-				<span class="menu-title">Time Sheets</span> <i class="menu-arrow"></i>
+				<span class="menu-title">View Timesheets</span> <i class="menu-arrow"></i>
 		</a>
-			<div class="collapse" id="manageTimeSheets">
+			<div class="collapse" id="manageTimesheets">
 				<ul class="nav flex-column sub-menu">
 					<li class="nav-item"><a class="nav-link"
-						href="/pm/timesheetsList">List Time Sheets</a></li>
+						href="/pm/timesheetsList">List Timesheets</a></li>
 				</ul>
 			</div></li>
 

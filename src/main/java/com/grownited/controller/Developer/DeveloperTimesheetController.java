@@ -11,12 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.grownited.entity.TimesheetEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.TimeLogRepository;
 import com.grownited.repository.TimesheetRepository;
+import com.grownited.service.TimesheetService;
+import com.grownited.service.UserService;
 
 @Controller
 @RequestMapping("/developer")
@@ -28,6 +31,12 @@ public class DeveloperTimesheetController {
 	@Autowired
 	private TimeLogRepository timeLogRepo;
 
+	@Autowired
+	private TimesheetService  timesheetService;
+	
+	@Autowired
+	private UserService userService;
+	
 	@GetMapping("/createTimesheet")
 	public String createTimesheet() {
 
@@ -84,5 +93,26 @@ public class DeveloperTimesheetController {
 		timesheetRepo.deleteById(timesheetId);
 
 		return "redirect:/developer/timesheetsList";
+	}
+	
+	@GetMapping("/viewTimesheet")
+	public String viewTimesheet(Long timesheetId, Model model) {
+
+	    TimesheetEntity timesheet = timesheetService.getTimesheetById(timesheetId);
+
+	    model.addAttribute("timesheet", timesheet);
+
+	    return "Developer/Timesheet/ViewTimesheet";
+	}
+	
+	@GetMapping("/editTimesheet")
+	public String editTimesheet(@RequestParam("timesheetId") Long timesheetId, Model model) {
+
+	    TimesheetEntity timesheet = timesheetService.getTimesheetById(timesheetId);
+
+	    model.addAttribute("timesheet", timesheet);
+	    model.addAttribute("statuses", TimesheetEntity.Status.values());
+
+	    return "Developer/Timesheet/EditTimesheet";
 	}
 }

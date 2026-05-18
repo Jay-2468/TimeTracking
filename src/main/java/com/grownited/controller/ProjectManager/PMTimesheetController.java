@@ -8,9 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.entity.TimesheetEntity;
 import com.grownited.repository.TimesheetRepository;
+import com.grownited.service.TimesheetService;
+import com.grownited.service.UserService;
 
 @Controller
 @RequestMapping("/pm")
@@ -19,6 +22,13 @@ public class PMTimesheetController {
 	@Autowired
 	private TimesheetRepository timesheetRepo;
 
+
+	@Autowired
+	private TimesheetService  timesheetService;
+	
+	@Autowired
+	private UserService userService;
+	
 	@GetMapping("/timesheetsList")
 	public String timesheetsList(Model model) {
 		
@@ -69,5 +79,31 @@ public class PMTimesheetController {
 		}
 
 		return "redirect:/pm/timesheetsList";
+	}
+	
+	@GetMapping("/viewTimesheet")
+	public String viewTimesheet(Long timesheetId, Model model) {
+
+	    TimesheetEntity timesheet = timesheetService.getTimesheetById(timesheetId);
+
+	    model.addAttribute("timesheet", timesheet);
+
+	    return "ProjectManager/Timesheet/ViewTimesheet";
+	}
+	
+	@GetMapping("/editTimesheet")
+	public String editTimesheet(@RequestParam("timesheetId") Long timesheetId, Model model) {
+
+	    TimesheetEntity timesheet = timesheetService.getTimesheetById(timesheetId);
+
+	    model.addAttribute("timesheet", timesheet);
+
+	    // Enum
+	    model.addAttribute("statuses", TimesheetEntity.Status.values());
+
+	    // Users
+	    model.addAttribute("users", userService.findAll());
+
+	    return "ProjectManager/Timesheet/EditTimesheet";
 	}
 }

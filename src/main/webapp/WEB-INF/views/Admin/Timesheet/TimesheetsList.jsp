@@ -38,11 +38,12 @@
 							class="table table-bordered table-hover align-middle text-center">
 							<thead class="table-dark">
 								<tr>
+									<th>Submitted By</th>
 									<th>Week Start</th>
 									<th>Week End</th>
 									<th>Total Hours</th>
 									<th>Status</th>
-									<!-- <th>Actions</th> -->
+									<th>Actions</th>
 								</tr>
 							</thead>
 
@@ -57,6 +58,8 @@
 								<c:forEach items="${timesheetsList}" var="sheet">
 									<tr>
 
+										<td class="text-dark-emphasis">${sheet.user.firstName}
+											${sheet.user.lastName}</td>
 										<td class="text-dark-emphasis">${sheet.weekStart}</td>
 										<td class="text-dark-emphasis">${sheet.weekEnd}</td>
 										<td class="text-dark-emphasis">${sheet.totalHours}</td>
@@ -75,15 +78,32 @@
 											</c:choose></td>
 
 										<!-- Actions -->
-										<%-- <td><a href="viewTimesheet?id=${sheet.timesheetId}"
+										<td><a href="viewTimesheet?timesheetId=${sheet.timesheetId}"
 											class="btn btn-sm btn-info"><i class="mdi mdi-eye"></i>
-												View </a> <a href="editTimesheet?id=${sheet.timesheetId}"
-											class="btn btn-sm btn-warning"> <i class="mdi mdi-pencil"></i>Edit
-										</a> <a href="deleteTimesheet?id=${sheet.timesheetId}"
-											class="btn btn-sm btn-danger"
-											onclick="return confirm('Are you sure you want to delete this timesheet?')">
-												<i class="mdi mdi-delete"></i>Delete
-										</a></td> --%>
+												View </a> <!-- Approval Actions --> <c:choose>
+
+												<c:when test="${sheet.status == 'SUBMITTED'}">
+
+													<a href="approveTimesheet?timesheetId=${sheet.timesheetId}"
+														class="btn btn-sm btn-success"
+														onclick="return confirm('Approve this timesheet?')"> <i
+														class="mdi mdi-check"></i> Approve
+													</a>
+
+													<button class="btn btn-sm btn-warning"
+														onclick="rejectTimesheet(${sheet.timesheetId})">
+														<i class="mdi mdi-close"></i> Reject
+													</button>
+
+												</c:when>
+
+											</c:choose> <c:if test="${log.approvalStatus != 'APPROVED'}">
+												<a href="archiveTimesheet?timesheetId=${sheet.timesheetId}"
+													class="btn btn-sm btn-danger"
+													onclick="return confirm('Are you sure you want to archive this timesheet?')">
+													<i class="mdi mdi-archive"></i> Archive
+												</a>
+											</c:if></td>
 
 									</tr>
 								</c:forEach>

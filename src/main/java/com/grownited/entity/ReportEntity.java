@@ -23,7 +23,7 @@ import jakarta.persistence.Table;
 public class ReportEntity {
 
 	public enum ReportType {
-		PROJECT, PRODUCTIVITY, BILLING
+		PROJECT, PRODUCTIVITY
 	}
 
 	public enum ReportStatus {

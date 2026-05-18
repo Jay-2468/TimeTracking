@@ -98,11 +98,13 @@
 										<td class="text-dark-emphasis">${r.productivityScore}%</td>
 
 										<!-- Actions -->
-										<td class="text-center"><%-- <a
-											href="viewReportAnalysis?reportId=${r.reportId}"
-											class="btn btn-sm btn-primary">View</a> --%> <a
+										<td class="text-center">
+											<a
+											href="viewReport?reportId=${r.reportId}"
+											class="btn btn-sm btn-primary">View</a><a
 											href="downloadReport?reportId=${r.reportId}"
-											class="btn btn-sm btn-success">Download</a></td>
+											class="btn btn-sm btn-success">Download</a>
+										</td>
 
 									</tr>
 								</c:forEach>
@@ -110,18 +112,6 @@
 							</tbody>
 
 						</table>
-
-						<!-- 🔹 Charts Section -->
-						<div class="row mt-5">
-
-							<div class="col-md-12">
-								<div class="card p-3">
-									<canvas id="reportChart"></canvas>
-								</div>
-							</div>
-
-						</div>
-
 
 					</div>
 				</div>
@@ -132,41 +122,6 @@
 		<!-- main-panel ends -->
 	</div>
 	<!-- page-body-wrapper ends -->
-
-	<!-- Chart js -->
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script>
-		let reports = JSON.parse('${reportsJson}');
-
-		console.log("Reports:", reports);
-
-		if (reports && reports.length > 0 && reports[0].chartData) {
-
-			let chartData = JSON.parse(reports[0].chartData);
-
-			console.log("Chart Data:", chartData);
-
-			const canvas = document.getElementById('reportChart');
-
-			if (canvas) {
-				new Chart(canvas, {
-					type : 'line',
-					data : {
-						labels : chartData.labels || [],
-						datasets : [ {
-							label : 'Hours per Day',
-							data : chartData.data || [],
-							borderWidth : 2,
-							tension : 0.3
-						} ]
-					}
-				});
-			}
-
-		} else {
-			console.warn("No chart data available");
-		}
-	</script>
 
 </body>
 </html>

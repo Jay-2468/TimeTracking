@@ -43,7 +43,7 @@
 						</div>
 
 						<!-- Manager -->
-						<%-- <div class="form-group">
+						<div class="form-group">
 							<label>Manager</label> <select name="manager.userId"
 								class="form-control">
 								<c:forEach var="u" items="${users}">
@@ -52,10 +52,10 @@
 										${u.firstName} ${u.lastName}</option>
 								</c:forEach>
 							</select>
-						</div> --%>
+						</div>
 
 						<!-- Priority -->
-						<%-- <div class="form-group">
+						<div class="form-group">
 							<label>Priority</label> <select name="priority"
 								class="form-control">
 								<c:forEach var="p" items="${priorities}">
@@ -64,7 +64,7 @@
 										${p}</option>
 								</c:forEach>
 							</select>
-						</div> --%>
+						</div>
 
 						<!-- Dates -->
 						<div class="form-group">

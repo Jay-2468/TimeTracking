@@ -1,5 +1,6 @@
 package com.grownited.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,10 @@ public class TaskService {
 
 	@Autowired
 	private TaskRepository taskRepo;
+	
+	public List<TaskEntity> findAll() {
+		return taskRepo.findAll();
+	}
 
 	public void archiveTask(Long taskId) {
 		Optional<TaskEntity> opTask = taskRepo.findById(taskId);

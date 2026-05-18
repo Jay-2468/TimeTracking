@@ -74,7 +74,7 @@
 											</c:choose></td>
 
 										<!-- Actions -->
-										<td><a href="viewTimesheet?id=${sheet.timesheetId}"
+										<td><a href="viewTimesheet?timesheetId=${sheet.timesheetId}"
 											class="btn btn-sm btn-info"><i class="mdi mdi-eye"></i>
 												View </a>
 										<!-- Approval Actions --> <c:choose>
